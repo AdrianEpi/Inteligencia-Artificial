@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2020-10-08 10:47:15
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-08 11:04:01
+* @Last Modified time: 2020-10-08 17:47:41
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -131,4 +131,19 @@ void Sensor::set_East (unsigned e) {
 void Sensor::set_West (unsigned w) {
 	assert(w == 0 || w == 1);
 	w_ = w;
+}
+
+/**
+ * @brief      Updates the existing sensor with new values. Values must be 0 if empty, 1 otherwhise.
+ *
+ * @param[in]  n     The north position
+ * @param[in]  s     The south position
+ * @param[in]  e     The east position
+ * @param[in]  w     The west position
+ */
+void Sensor::updateSensor (unsigned n, unsigned s, unsigned e, unsigned w) {
+	set_North(n);
+	set_South(s);
+	set_East(e);
+	set_West(w);
 }

@@ -53,4 +53,7 @@ class Sensor {
         void set_East (unsigned e);
         void set_West (unsigned w);
 
+        // Functions
+        void updateSensor (unsigned n, unsigned s, unsigned e, unsigned w);
+
 };
