@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2020-10-08 16:43:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-08 17:44:17
+* @Last Modified time: 2020-10-09 16:47:32
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -36,11 +36,11 @@ Map::Map () {
 /**
  * @brief      Constructs a new instance.
  *
- * @param[in]  n     The rows
- * @param[in]  m     The columns
+ * @param[in]  x     The rows
+ * @param[in]  y     The columns
  */
-Map::Map (unsigned n, unsigned m) {
-	initialize(n, m);
+Map::Map (unsigned x, unsigned y) {
+	initialize(x, y);
 }
 
 /**
@@ -55,7 +55,7 @@ Map::~Map () {
  * @return     The rows.
  */
 unsigned Map::get_Rows (void) const {
-	return n_;
+	return x_;
 }
 
 /**
@@ -64,7 +64,7 @@ unsigned Map::get_Rows (void) const {
  * @return     The columns.
  */
 unsigned Map::get_Columns (void) const {
-	return m_;
+	return y_;
 }
 
 /**
@@ -79,19 +79,19 @@ std::vector<std::vector<unsigned>> Map::get_Map (void) const {
 /**
  * @brief      Sets the rows.
  *
- * @param[in]  n     The new value
+ * @param[in]  x     The new value
  */
-void Map::set_Rows (unsigned n) {
-	n_ = n;
+void Map::set_Rows (unsigned x) {
+	x_ = x;
 }
 
 /**
  * @brief      Sets the columns.
  *
- * @param[in]  m     The new value
+ * @param[in]  y     The new value
  */
-void Map::set_Columns (unsigned m) {
-	m_ = m;
+void Map::set_Columns (unsigned y) {
+	y_ = y;
 }
 
 /**
@@ -116,13 +116,13 @@ void Map::set_Map (std::vector<std::vector<unsigned>> map) {
 /**
  * @brief      Initializes the map with all the positions empty (0)
  *
- * @param[in]  n     The rows
- * @param[in]  m     The columns
+ * @param[in]  x     The rows
+ * @param[in]  y     The columns
  */
-void Map::initialize (unsigned n, unsigned m) {
-	assert(n > 0 && m > 0);
-	set_Rows(n + 2);
-	set_Columns(m + 2);
+void Map::initialize (unsigned x, unsigned y) {
+	assert(x > 0 && y > 0);
+	set_Rows(x + 2);
+	set_Columns(y + 2);
 	map_.resize(get_Rows() + 1);
 	for (int i = 0; i <= get_Rows(); i++) {
 		map_[i].resize(get_Columns() + 1);
@@ -135,7 +135,21 @@ void Map::initialize (unsigned n, unsigned m) {
 }
 
 /**
- * @brief      Prints the map.
+ * @brief      Adds an obstacle on the given coordinates.
+ *
+ * @param[in]  x     The coordinate x.
+ * @param[in]  y     The coordinate y.
+ */
+void Map::addObstacle (unsigned x, unsigned y) {
+	assert(x >= 1 && y >= 1);
+	map_[x][y] = 1;
+}
+
+/**
+ * @brief      Prints the map. An empty block will be displayed in case theres no obstacle
+ *             and the car has not been there. A '#' will be shown in the obstacles positions.
+ *             A 'X' will be shown in the places where the car has been. Apart from that 'S' means
+ *             the starts position and "F" the finish line.
  *
  * @param      os  The output stream
  *
@@ -145,7 +159,31 @@ std::ostream& Map::printMap (std::ostream& os) const {
 	os << std::endl << "Map size " << map_.size() - 3 << "x" << map_[0].size() - 3 << std::endl << "\t| ";
 	for (int i = 1; i < get_Rows() - 1; i++) {
 		for (int j = 1; j < get_Columns() - 1; j++) {
-			os << map_[i][j] << " | ";
+			switch (map_[i][j]) {
+				case 0:
+					os << "  | ";
+					break;
+
+				case 1:
+					os << "# | ";
+					break;
+
+				case 2:
+					os << "X | ";
+					break;
+
+				case 3:
+					os << "S | ";
+					break;
+
+				case 4:
+					os << "F | ";
+					break;
+
+				default:
+					std::cout << "ERROR";
+					break;
+			}
 		}
 		os << std::endl;
 		if (i < get_Rows() - 2) {

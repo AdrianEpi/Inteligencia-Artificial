@@ -27,20 +27,22 @@
 /*------------------------------------------------*/
 
 /**
- * @brief      This class describes the map where the car is going to move, an empty position is stored as "0", an obstacle as "1" and a position in which the car has been "2".
+ * @brief      This class describes the map where the car is going to move, an empty position 
+ *             is stored as "0", an obstacle as "1" and a position in which the car has been "2".
+ *             Also "3" will be used as the start position and "4" as the finish line.
  */
 class Map {
 
     private:
         // Attributes
-        unsigned n_;    // The rows
-        unsigned m_;    // The columns
+        unsigned x_;    // The rows
+        unsigned y_;    // The columns
         std::vector<std::vector<unsigned>> map_;  // The map of the game
 
     public:
         // Builders & Destroyer
         Map ();
-        Map (unsigned n, unsigned m);
+        Map (unsigned x, unsigned y);
         ~Map ();
 
         // Getters & Setters
@@ -48,12 +50,13 @@ class Map {
         unsigned get_Columns (void) const;
         std::vector<std::vector<unsigned>> get_Map (void) const;
 
-        void set_Rows (unsigned n);
-        void set_Columns (unsigned m);
+        void set_Rows (unsigned x);
+        void set_Columns (unsigned y);
         void set_Map (std::vector<std::vector<unsigned>> map);
 
         // Functions
-        void initialize (unsigned n, unsigned m);
+        void initialize (unsigned x, unsigned y);
+        void addObstacle (unsigned x, unsigned y);
 
         // Write
         std::ostream& printMap (std::ostream& os) const;
