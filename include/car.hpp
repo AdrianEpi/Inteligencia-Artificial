@@ -2,7 +2,7 @@
 =========================================================================================
     =                                                                              =
     =            Proyect:       Práctica 1. Estrategias de Búsqueda                =
-    =            File name:     main.cpp                                           =
+    =            File name:     car.hpp                                            =
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =            Fecha:         08/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
@@ -13,33 +13,45 @@
     =                                                                              =
 =========================================================================================
 =======================================================================================*/
-/*
-* @Author: Adrian Epifanio
-* @Date:   2020-10-08 11:04:26
-* @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-09 15:58:51
-*/
 /*------------------  FUNCTIONS  -----------------*/
 
-#include "../include/sensor.hpp"
-#include "../include/map.hpp"
-#include "../include/car.hpp"
+#pragma once 
+
+/*------------------------------------------------*/
+/*------------------  LIBRARIES  -----------------*/
+
+#include <cassert>
+#include <iostream>
 
 /*------------------------------------------------*/
 
-#include <iostream>
+/**
+ * @brief      This class describes a car. A car has as attributes the position of the car at the current moment on the map.
+ */
+class Car {
+    
+    private:
+        // Attributes
+        unsigned coordinateX_;
+        unsigned coordinateY_;
 
-int main (void) {
-	// Test create a sensor
-	Sensor test;
-	// Testing maps sizes
-	Map a;
-	a.initialize(2, 3);
-	a.printMap(std::cout);
-	Map b;
-	b.initialize(7, 9);
-	a.set_Map(b.get_Map());
-	a.printMap(std::cout);
-	// Test create a car
-	Car newCar;
-}
+    public:
+        // Builders & Destroyer
+        Car ();
+        Car (unsigned x, unsigned y);
+        ~Car ();
+
+        // Getters & Setters
+        unsigned get_CoordinateX (void) const;
+        unsigned get_CoordinateY (void) const;
+
+        void set_CoordinateX (unsigned x);
+        void set_CoordinateY (unsigned y);
+
+        // Functions
+        void updatePosition (unsigned x, unsigned y);
+
+        // Write
+        std::ostream& printCarPosition (std::ostream& os) const;
+
+};

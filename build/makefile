@@ -1,7 +1,7 @@
 # Variables
 TIME =$(LOGPATH)$(shell date)
 # Variable objetos
-OBJECTS = main.o sensor.o map.o
+OBJECTS = main.o sensor.o map.o car.o
 # Flags de compilacion
 CFLAGS = -c -std=c++17
 
@@ -18,6 +18,9 @@ sensor.o: ../src/sensor.cpp ../include/sensor.hpp
 
 map.o: ../src/map.cpp ../include/map.hpp
 	g++ $(CFLAGS) ../src/map.cpp
+
+car.o: ../src/car.cpp ../include/car.hpp
+	g++ $(CFLAGS) ../src/car.cpp
 
 
 
