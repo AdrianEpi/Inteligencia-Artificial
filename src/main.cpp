@@ -17,19 +17,18 @@
 * @Author: Adrian Epifanio
 * @Date:   2020-10-08 11:04:26
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-09 16:48:38
+* @Last Modified time: 2020-10-09 18:12:11
 */
 /*------------------  FUNCTIONS  -----------------*/
 
-#include "../include/sensor.hpp"
-#include "../include/map.hpp"
-#include "../include/car.hpp"
+#include "../include/game.hpp"
 
 /*------------------------------------------------*/
 
 #include <iostream>
 
 int main (void) {
+	/*
 	// Test create a sensor
 	Sensor test;
 	// Testing maps sizes
@@ -44,5 +43,8 @@ int main (void) {
 	a.addObstacle(1,4);
 	a.printMap(std::cout);
 	// Test create a car
-	Car newCar;
+	Car newCar;*/
+	Game newGame;
+	newGame.generateObstacles();
+	newGame.get_Map().printMap(std::cout);
 }

@@ -38,9 +38,9 @@ class Sensor {
 
     public:
         // Builders & Destroyer
-        Sensor ();
+        Sensor (void);
         Sensor (unsigned n, unsigned s, unsigned e, unsigned w);
-        ~Sensor ();
+        ~Sensor (void);
 
         // Getters & Setters
         unsigned get_North (void) const;
@@ -52,8 +52,5 @@ class Sensor {
         void set_South (unsigned s);
         void set_East (unsigned e);
         void set_West (unsigned w);
-
-        // Functions
-        void updateSensor (unsigned n, unsigned s, unsigned e, unsigned w);
 
 };

@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2020-10-09 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-09 15:59:45
+* @Last Modified time: 2020-10-09 17:12:32
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -28,7 +28,7 @@
 /**
  * @brief      Constructs a new instance.
  */
-Car::Car () {
+Car::Car (void) {
 	updatePosition(1, 1);
 }
 
@@ -45,7 +45,7 @@ Car::Car (unsigned x, unsigned y) {
 /**
  * @brief      Destroys the object.
  */
-Car::~Car () {
+Car::~Car (void) {
 }
 
 /**
@@ -67,6 +67,15 @@ unsigned Car::get_CoordinateY (void) const {
 }
 
 /**
+ * @brief      Gets the sensor.
+ *
+ * @return     The sensor.
+ */
+Sensor Car::get_Sensor (void) const {
+	return sensor_;
+}
+
+/**
  * @brief      Sets the coordinate x.
  *
  * @param[in]  x     The new value
@@ -85,6 +94,15 @@ void Car::set_CoordinateY (unsigned y) {
 }
 
 /**
+ * @brief      Sets the sensor.
+ *
+ * @param[in]  newSensor  The new sensor
+ */
+void Car::set_Sensor (Sensor newSensor) {
+	sensor_ = newSensor;
+}
+
+/**
  * @brief      Updates the car position in map.
  *
  * @param[in]  x     The coordinate X
@@ -94,6 +112,21 @@ void Car::updatePosition (unsigned x, unsigned y) {
 	assert(x >= 1 && y >= 1);
 	set_CoordinateX(x);
 	set_CoordinateY(y);
+}
+
+/**
+ * @brief      Updates the existing sensor with new values. Values must be 0 if empty, 1 otherwhise.
+ *
+ * @param[in]  n     The north position
+ * @param[in]  s     The south position
+ * @param[in]  e     The east position
+ * @param[in]  w     The west position
+ */
+void Car::updateSensor (unsigned n, unsigned s, unsigned e, unsigned w) {
+	sensor_.set_North(n);
+	sensor_.set_South(s);
+	sensor_.set_East(e);
+	sensor_.set_West(w);
 }
 
 /**

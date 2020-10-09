@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2020-10-08 16:43:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-09 16:47:32
+* @Last Modified time: 2020-10-09 19:44:44
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -28,7 +28,7 @@
 /**
  * @brief      Constructs a new instance.
  */
-Map::Map () {
+Map::Map (void) {
 	set_Rows(0);
 	set_Columns(0);
 }
@@ -46,7 +46,7 @@ Map::Map (unsigned x, unsigned y) {
 /**
  * @brief      Destroys the object.
  */
-Map::~Map () {
+Map::~Map (void) {
 }
 
 /**
@@ -129,7 +129,12 @@ void Map::initialize (unsigned x, unsigned y) {
 	}
 	for (int i = 0; i <= get_Rows(); i++) {
 		for (int j = 0; j <= get_Columns(); j++) {
-			map_[i][j] = 0;
+			if (i == 0 || j == 0 || i == get_Rows() || j == get_Columns()) {
+				map_[i][j] = 1;
+			}
+			else {
+				map_[i][j] = 0;
+			}
 		}
 	}
 }
@@ -139,10 +144,18 @@ void Map::initialize (unsigned x, unsigned y) {
  *
  * @param[in]  x     The coordinate x.
  * @param[in]  y     The coordinate y.
+ *
+ * @return     True if introduced correctly, false otherwhise.
  */
-void Map::addObstacle (unsigned x, unsigned y) {
+bool Map::addObstacle (unsigned x, unsigned y) {
 	assert(x >= 1 && y >= 1);
-	map_[x][y] = 1;
+	if (map_[x][y] == 0) {
+		map_[x][y] = 1;
+	}
+	else {
+		std::cout << std::endl << "Sorry, that place is already used.";
+	}
+	
 }
 
 /**
@@ -156,9 +169,9 @@ void Map::addObstacle (unsigned x, unsigned y) {
  * @return     The output stream
  */
 std::ostream& Map::printMap (std::ostream& os) const {
-	os << std::endl << "Map size " << map_.size() - 3 << "x" << map_[0].size() - 3 << std::endl << "\t| ";
-	for (int i = 1; i < get_Rows() - 1; i++) {
-		for (int j = 1; j < get_Columns() - 1; j++) {
+	os << std::endl << "Map size " << map_.size() - 3 << "x" << map_[0].size() - 3 << std::endl << "\t";
+	for (int i = 0; i <= get_Rows(); i++) {
+		for (int j = 0; j <= get_Columns(); j++) {
 			switch (map_[i][j]) {
 				case 0:
 					os << "  | ";
@@ -185,9 +198,6 @@ std::ostream& Map::printMap (std::ostream& os) const {
 					break;
 			}
 		}
-		os << std::endl;
-		if (i < get_Rows() - 2) {
-			os << "\t| ";
-		}
+		os << std::endl << "\t";
 	}
 }

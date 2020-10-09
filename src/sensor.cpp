@@ -17,7 +17,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2020-10-08 10:47:15
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-08 17:47:41
+* @Last Modified time: 2020-10-09 17:12:40
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -28,7 +28,7 @@
 /**
  * @brief      Constructs a new instance.
  */
-Sensor::Sensor () {
+Sensor::Sensor (void) {
 	set_North(0);
 	set_South(0);
 	set_East(0);
@@ -53,7 +53,7 @@ Sensor::Sensor (unsigned n, unsigned s, unsigned e, unsigned w) {
 /**
  * @brief      Destroys the object.
  */
-Sensor::~Sensor () {
+Sensor::~Sensor (void) {
 }
 
 /**
@@ -131,19 +131,4 @@ void Sensor::set_East (unsigned e) {
 void Sensor::set_West (unsigned w) {
 	assert(w == 0 || w == 1);
 	w_ = w;
-}
-
-/**
- * @brief      Updates the existing sensor with new values. Values must be 0 if empty, 1 otherwhise.
- *
- * @param[in]  n     The north position
- * @param[in]  s     The south position
- * @param[in]  e     The east position
- * @param[in]  w     The west position
- */
-void Sensor::updateSensor (unsigned n, unsigned s, unsigned e, unsigned w) {
-	set_North(n);
-	set_South(s);
-	set_East(e);
-	set_West(w);
 }

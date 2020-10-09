@@ -41,9 +41,9 @@ class Map {
 
     public:
         // Builders & Destroyer
-        Map ();
+        Map (void);
         Map (unsigned x, unsigned y);
-        ~Map ();
+        ~Map (void);
 
         // Getters & Setters
         unsigned get_Rows (void) const;
@@ -56,7 +56,7 @@ class Map {
 
         // Functions
         void initialize (unsigned x, unsigned y);
-        void addObstacle (unsigned x, unsigned y);
+        bool addObstacle (unsigned x, unsigned y);
 
         // Write
         std::ostream& printMap (std::ostream& os) const;
