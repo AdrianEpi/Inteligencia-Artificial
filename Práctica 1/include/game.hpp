@@ -4,6 +4,7 @@
     =            Proyect:       Práctica 1. Estrategias de Búsqueda                =
     =            File name:     game.hpp                                           =
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
+    =                           Luciano Sekulic Gregoris                           =
     =            Fecha:         08/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =

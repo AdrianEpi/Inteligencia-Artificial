@@ -4,6 +4,7 @@
     =            Proyect:       Práctica 1. Estrategias de Búsqueda                =
     =            File name:     main.cpp                                           =
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
+    =                           Luciano Sekulic Gregoris                           =
     =            Fecha:         08/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
@@ -12,12 +13,12 @@
     =                           Escuela Superior de Ingeniería y Tecnología        =
     =                                                                              =
 =========================================================================================
-=======================================================================================*/
 /*
 * @Author: Adrian Epifanio
+* 		   Luciano Sekulic 
 * @Date:   2020-10-08 11:04:26
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-09 18:12:11
+* @Last Modified time: 2020-10-19 13:49:11
 */
 /*------------------  FUNCTIONS  -----------------*/
 
