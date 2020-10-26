@@ -22,8 +22,8 @@
 * 		   Luciano Sekulic 
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
-* @Last Modified by:   Yeixon Morales
-* @Last Modified time: 2020-10-26 11:40:28
+* @Last Modified by:   Adrian Epifanio
+* @Last Modified time: 2020-10-26 13:55:16
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -31,6 +31,9 @@
 
 /*------------------------------------------------*/
 
+/**
+ * @brief      Constructs a new instance.
+ */
 Game::Game (void) {
 	unsigned input;
 	std::cout << std::endl << "Introduce the number of rows: ";
@@ -62,6 +65,15 @@ Game::Game (void) {
 	map_.initialize(get_M(), get_N());
 }
 
+/**
+ * @brief      Constructs a new instance.
+ *
+ * @param[in]  m           The rows
+ * @param[in]  n           The columns
+ * @param[in]  startPoint  The start point
+ * @param[in]  finishLine  The finish line
+ * @param[in]  obstacles   The obstacles
+ */
 Game::Game (unsigned m, unsigned n, std::pair<unsigned, unsigned> startPoint, std::pair<unsigned, unsigned> finishLine, unsigned obstacles) {
 	assert(m > 0 && n > 0);
 	set_M(m);
@@ -74,65 +86,141 @@ Game::Game (unsigned m, unsigned n, std::pair<unsigned, unsigned> startPoint, st
 	map_.initialize(get_M(), get_N());
 }
 
+/**
+ * @brief      Destroys the object.
+ */
 Game::~Game (void) {
 }
 
+/**
+ * @brief      Gets the m.
+ *
+ * @return     The m.
+ */
 unsigned Game::get_M (void) const {
 	return m_;
 }
 
+/**
+ * @brief      Gets the n.
+ *
+ * @return     The n.
+ */
 unsigned Game::get_N (void) const {
 	return n_;
 }
 
+/**
+ * @brief      Gets the obstacles.
+ *
+ * @return     The obstacles.
+ */
 unsigned Game::get_Obstacles (void) const {
 	return obstacles_;
 }
 
+/**
+ * @brief      Gets the start point.
+ *
+ * @return     The start point.
+ */
 std::pair<unsigned, unsigned> Game::get_StartPoint (void) const {
 	return startPoint_;
 }
 
+/**
+ * @brief      Gets the finish line.
+ *
+ * @return     The finish line.
+ */
 std::pair<unsigned, unsigned> Game::get_FinishLine (void) const {
 	return finishLine_;
 }
 
+/**
+ * @brief      Gets the car.
+ *
+ * @return     The car.
+ */
 Car Game::get_Car (void) const {
 	return car_;
 }
 
+/**
+ * @brief      Gets the map.
+ *
+ * @return     The map.
+ */
 Map Game::get_Map (void) const {
 	return map_;
 }
 
+/**
+ * @brief      Sets the m.
+ *
+ * @param[in]  m     The new value
+ */
 void Game::set_M (unsigned m) {
 	m_ = m;
 }
 
+/**
+ * @brief      Sets the n.
+ *
+ * @param[in]  n     The new value
+ */
 void Game::set_N (unsigned n) {
 	n_ = n;
 }
 
+/**
+ * @brief      Sets the obstacles.
+ *
+ * @param[in]  obstacles  The obstacles
+ */
 void Game::set_Obstacles (unsigned obstacles) {
 	obstacles_ = obstacles;
 }
 
+/**
+ * @brief      Sets the start point.
+ *
+ * @param[in]  startPoint  The start point
+ */
 void Game::set_StartPoint (std::pair<unsigned, unsigned> startPoint) {
 	startPoint_ = startPoint;
 }
 
+/**
+ * @brief      Sets the finish line.
+ *
+ * @param[in]  finishLine  The finish line
+ */
 void Game::set_FinishLine (std::pair<unsigned, unsigned> finishLine) {
 	finishLine_ = finishLine;
 }
 
+/**
+ * @brief      Sets the car.
+ *
+ * @param[in]  car   The new value
+ */
 void Game::set_Car (Car car) {
 	car_ = car;
 }
 
+/**
+ * @brief      Sets the map.
+ *
+ * @param[in]  map   The new value
+ */
 void Game::set_Map (Map map) {
 	map_ = map;
 }
 
+/**
+ * @brief      Generate obstacles on the given positions
+ */
 void Game::generateObstacles (void) {
 	for (int i = 0; i < get_Obstacles(); i++) {
 		bool validObstacle = false;
@@ -145,7 +233,6 @@ void Game::generateObstacles (void) {
 			validObstacle = map_.addObstacle(tmpX, tmpY);
 		}
 	}
-
 }
 
 void Game::generateRandomObstacles (void) {

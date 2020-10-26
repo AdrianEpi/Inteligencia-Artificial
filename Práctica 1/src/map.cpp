@@ -22,8 +22,8 @@
 * 		   Luciano Sekulic 
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 16:43:42
-* @Last Modified by:   Yeixon Morales
-* @Last Modified time: 2020-10-26 11:40:28
+* @Last Modified by:   Adrian Epifanio
+* @Last Modified time: 2020-10-26 13:54:04
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -155,6 +155,7 @@ void Map::initialize (unsigned x, unsigned y) {
  */
 bool Map::addObstacle (unsigned x, unsigned y) {
 	assert(x >= 1 && y >= 1);
+	assert(x <= get_Rows() && y <= get_Columns());
 	if (map_[x][y] == 0) {
 		map_[x][y] = 1;
 	}
