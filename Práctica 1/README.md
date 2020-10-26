@@ -3,8 +3,11 @@ IA 2020-2021
 
 # Author:
 Adrián Epifanio Rodríguez Hernández: alu0101158280@ull.edu.es
+
 Luciano Sekulic Gregoris: alu0101022239@ull.edu.es
+
 Yeixon Morales Gonzalez: alu0101133324@ull.edu.es
+
 
 This directory is organised as follows:
 
