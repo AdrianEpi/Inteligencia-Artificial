@@ -5,10 +5,13 @@
     =            File name:     car.cpp                                            =
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
+    =                           Yeixon Morales Gonzalez                            =
     =            Fecha:         08/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
+    =                           alu0101022239@ull.edu.es                           =
+    =                           alu0101133324@ull.edu.es                           =
     =            Place:         Universidad De La Laguna                           =
     =                           Escuela Superior de Ingeniería y Tecnología        =
     =                                                                              =
@@ -17,9 +20,10 @@
 /*
 * @Author: Adrian Epifanio
 * 		   Luciano Sekulic 
+* 		   Yeixon Morales 
 * @Date:   2020-10-09 15:50:33
-* @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-19 13:48:17
+* @Last Modified by:   Yeixon Morales
+* @Last Modified time: 2020-10-26 11:40:28
 */
 /*------------------  FUNCTIONS  -----------------*/
 
