@@ -22,8 +22,8 @@
 * 		   Luciano Sekulic 
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 11:04:26
-* @Last Modified by:   Yeixon Morales
-* @Last Modified time: 2020-10-26 11:40:28
+* @Last Modified by:   Adrian Epifanio
+* @Last Modified time: 2020-10-26 12:55:38
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -50,6 +50,7 @@ int main (void) {
 	a.printMap(std::cout);
 	// Test create a car
 	Car newCar;*/
+	std::cout << "\033[;32mHola mundo!\033[0m" << std::endl;
 	Game newGame;
 	newGame.generateObstacles();
 	newGame.get_Map().printMap(std::cout);
