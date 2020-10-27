@@ -2,11 +2,11 @@
 =========================================================================================
     =                                                                              =
     =            Proyect:       Práctica 1. Estrategias de Búsqueda                =
-    =            File name:     main.cpp                                           =
+    =            File name:     Colorize.cpp                                       =
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
-    =            Fecha:         08/10/2020                                         =
+    =            Fecha:         27/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
@@ -19,42 +19,33 @@
 =======================================================================================*/
 /*
 * @Author: Adrian Epifanio
-* 		   Luciano Sekulic 
-* 		   Yeixon Morales 
-* @Date:   2020-10-08 11:04:26
+* @Date:   2020-10-27 21:31:27
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-27 21:40:10
+* @Last Modified time: 2020-10-27 21:43:25
 */
-/*------------------  FUNCTIONS  -----------------*/
-
-#include "../include/game.hpp"
 #include "../include/Colorize.hpp"
 
-/*------------------------------------------------*/
 
-#include <iostream>
+/**
+ * @brief      Constructs a new instance.
+ */
+Colorize::Colorize (void) {
+}
 
-int main (void) {
-	Colorize colorizer;
-	std::cout << std::endl << colorizer.writeRed("Hola mundo") << std::endl;
-	/*
-	// Test create a sensor
-	Sensor test;
-	// Testing maps sizes
-	Map a;
-	a.initialize(2, 3);
-	a.printMap(std::cout);
-	Map b;
-	b.initialize(7, 9);
-	a.set_Map(b.get_Map());
-	a.addObstacle(5,5);
-	a.addObstacle(3,5);
-	a.addObstacle(1,4);
-	a.printMap(std::cout);
-	// Test create a car
-	Car newCar;*/
-	//std::cout << "\033[;32mHola mundo!\033[0m" << std::endl;
-	/*Game newGame;
-	newGame.generateObstacles();
-	newGame.get_Map().printMap(std::cout);*/
+/**
+ * @brief      Destroys the object.
+ */
+Colorize::~Colorize (void) {
+}
+
+/**
+ * @brief      Writes a red.
+ *
+ * @param[in]  myString  My string
+ *
+ * @return     The text written in red
+ */
+std::string Colorize::writeRed (std::string myString) {
+	myString = "\033[31m" + myString + "\033[00m";
+	return myString;
 }

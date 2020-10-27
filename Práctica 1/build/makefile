@@ -1,7 +1,7 @@
 # Variables
 TIME =$(LOGPATH)$(shell date)
 # Variable objetos
-OBJECTS = main.o sensor.o map.o car.o game.o
+OBJECTS = main.o sensor.o map.o car.o game.o Chrono.o Colorize.o
 # Flags de compilacion
 CFLAGS = -c -std=c++17
 
@@ -24,6 +24,12 @@ car.o: ../src/car.cpp ../include/car.hpp
 
 game.o: ../src/game.cpp ../include/game.hpp
 	g++ $(CFLAGS) ../src/game.cpp
+
+Chrono.o: ../src/Chrono.cpp ../include/Chrono.hpp
+	g++ $(CFLAGS) ../src/Chrono.cpp
+
+Colorize.o: ../src/Colorize.cpp ../include/Colorize.hpp
+	g++ $(CFLAGS) ../src/Colorize.cpp
 
 
 
