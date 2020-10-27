@@ -37,6 +37,9 @@
 int main (void) {
 	Colorize colorizer;
 	std::cout << std::endl << colorizer.writeRed("Hola mundo") << std::endl;
+	std::cout << std::endl << colorizer.writeMagenta("Hola mundo") << std::endl;
+	std::cout << std::endl << colorizer.paintGreen("Hola mundo") << std::endl;
+	std::cout << std::endl << colorizer.paintYellow("Hola mundo") << std::endl;
 	/*
 	// Test create a sensor
 	Sensor test;

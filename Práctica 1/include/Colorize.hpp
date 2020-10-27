@@ -32,5 +32,20 @@ class Colorize {
 		Colorize (void);
 		~Colorize (void);
 
-		std::string writeRed (std::string myString);
+		std::string writeGrey (std::string myString);
+        std::string writeRed (std::string myString);
+        std::string writeGreen (std::string myString);
+        std::string writeYellow (std::string myString);
+        std::string writeBlue (std::string myString);
+        std::string writeMagenta (std::string myString);
+        std::string writeCyan (std::string myString);
+        std::string writeWhite (std::string myString);
+        std::string paintGrey (std::string myString);
+        std::string paintRed (std::string myString);
+        std::string paintGreen (std::string myString);
+        std::string paintYellow (std::string myString);
+        std::string paintBlue (std::string myString);
+        std::string paintMagenta (std::string myString);
+        std::string paintCyan (std::string myString);
+        std::string paintWhite (std::string myString);
 };
