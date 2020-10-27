@@ -21,7 +21,7 @@
 * @Author: Adrian Epifanio
 * @Date:   2020-10-27 21:31:27
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-27 21:43:25
+* @Last Modified time: 2020-10-27 22:05:21
 */
 #include "../include/Colorize.hpp"
 
@@ -47,5 +47,5 @@ Colorize::~Colorize (void) {
  */
 std::string Colorize::writeRed (std::string myString) {
 	myString = "\033[31m" + myString + "\033[00m";
-	return myString;
+	return myString; 
 }
