@@ -28,6 +28,8 @@
 
 #include <cassert>
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 
 /*------------------------------------------------*/
 
@@ -67,8 +69,8 @@ class Game {
         void set_Map (Map map);
 
         // Fuctions
-        void generateObstacles (void);
-        void generateRandomObstacles (void);
+        void generateManualObstacles (void);
+        void generateRandomObstacles (unsigned ammount);
 
 
 

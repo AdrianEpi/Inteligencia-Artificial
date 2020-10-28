@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-26 13:55:16
+* @Last Modified time: 2020-10-28 08:38:18
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -221,7 +221,7 @@ void Game::set_Map (Map map) {
 /**
  * @brief      Generate obstacles on the given positions
  */
-void Game::generateObstacles (void) {
+void Game::generateManualObstacles (void) {
 	for (int i = 0; i < get_Obstacles(); i++) {
 		bool validObstacle = false;
 		while (!validObstacle) {
@@ -235,6 +235,22 @@ void Game::generateObstacles (void) {
 	}
 }
 
-void Game::generateRandomObstacles (void) {
-
+/**
+ * @brief      Generate any ammount of random obstacles that is less than the 95% of the map size
+ *
+ * @param[in]  ammount  The ammount
+ */
+void Game::generateRandomObstacles (unsigned ammount) {
+	assert(ammount <= (0.95 * (map_.get_Rows() - 2) * (map_.get_Columns() - 2)));
+	int counter = 0;
+	bool validObstacle = false;
+	while (counter < ammount) {
+		unsigned tmpX = (1 + rand() % (map_.get_Rows() - 2));
+		unsigned tmpY = (1 + rand() % (map_.get_Columns() - 2));
+		validObstacle = map_.addObstacle(tmpX, tmpY);
+		if (validObstacle) {
+			counter++;
+			validObstacle = false;
+		}
+	}
 }

@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 16:43:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-26 13:54:04
+* @Last Modified time: 2020-10-28 08:37:32
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -133,9 +133,9 @@ void Map::initialize (unsigned x, unsigned y) {
 	for (int i = 0; i <= get_Rows(); i++) {
 		map_[i].resize(get_Columns() + 1);
 	}
-	for (int i = 0; i <= get_Rows(); i++) {
-		for (int j = 0; j <= get_Columns(); j++) {
-			if (i == 0 || j == 0 || i == get_Rows() || j == get_Columns()) {
+	for (int i = 0; i < get_Rows(); i++) {
+		for (int j = 0; j < get_Columns(); j++) {
+			if (i == 0 || j == 0 || i == get_Rows() - 1 || j == get_Columns() - 1) {
 				map_[i][j] = 1;
 			}
 			else {
@@ -155,12 +155,15 @@ void Map::initialize (unsigned x, unsigned y) {
  */
 bool Map::addObstacle (unsigned x, unsigned y) {
 	assert(x >= 1 && y >= 1);
-	assert(x <= get_Rows() && y <= get_Columns());
+	assert(x < get_Rows() && y < get_Columns());
 	if (map_[x][y] == 0) {
 		map_[x][y] = 1;
+		//std::cout << std::endl << "Obstacle inserted correctly";
+		return true;
 	}
 	else {
-		std::cout << std::endl << "Sorry, that place is already used.";
+		//std::cout << std::endl << "Sorry, that place is already used.";
+		return false;
 	}
 	
 }
@@ -177,8 +180,8 @@ bool Map::addObstacle (unsigned x, unsigned y) {
  */
 std::ostream& Map::printMap (std::ostream& os) const {
 	os << std::endl << "Map size " << map_.size() - 3 << "x" << map_[0].size() - 3 << std::endl << "\t";
-	for (int i = 0; i <= get_Rows(); i++) {
-		for (int j = 0; j <= get_Columns(); j++) {
+	for (int i = 0; i < get_Rows(); i++) {
+		for (int j = 0; j < get_Columns(); j++) {
 			switch (map_[i][j]) {
 				case 0:
 					os << "  | ";

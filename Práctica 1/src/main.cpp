@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 11:04:26
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-28 07:28:48
+* @Last Modified time: 2020-10-28 08:38:44
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -35,6 +35,8 @@
 #include <iostream>
 
 int main (void) {
+	srand(time(NULL));	// For generating random numbers
+
 	Colorize colorizer;
 	std::cout << std::endl << colorizer.writeRed("Hola mundo") << std::endl;
 	std::cout << std::endl << colorizer.writeMagenta("Hola mundo") << std::endl;
@@ -57,7 +59,7 @@ int main (void) {
 	// Test create a car
 	Car newCar;*/
 	//std::cout << "\033[;32mHola mundo!\033[0m" << std::endl;
-	/*Game newGame;
-	newGame.generateObstacles();
-	newGame.get_Map().printMap(std::cout);*/
+	Game newGame;
+	newGame.generateRandomObstacles(10);
+	newGame.get_Map().printMap(std::cout);
 }
