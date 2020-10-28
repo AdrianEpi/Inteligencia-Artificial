@@ -28,10 +28,12 @@
 
 /*------------------------------------------------*/
 class Colorize {
+
 	public:
 		Colorize (void);
 		~Colorize (void);
 
+		// Text color functions
 		std::string writeGrey (std::string myString);
         std::string writeRed (std::string myString);
         std::string writeGreen (std::string myString);
@@ -40,6 +42,8 @@ class Colorize {
         std::string writeMagenta (std::string myString);
         std::string writeCyan (std::string myString);
         std::string writeWhite (std::string myString);
+
+        // Background color functions
         std::string paintGrey (std::string myString);
         std::string paintRed (std::string myString);
         std::string paintGreen (std::string myString);
