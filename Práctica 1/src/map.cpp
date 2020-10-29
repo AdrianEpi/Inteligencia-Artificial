@@ -168,6 +168,18 @@ bool Map::addObstacle (unsigned x, unsigned y) {
 	
 }
 
+void Map::addStartPoint (unsigned x, unsigned y) {
+	assert(x >= 1 && y >= 1);
+	assert(x < get_Rows() && y < get_Columns());
+	map_[x][y] = 3;
+}
+
+void Map::addFinishLine (unsigned x, unsigned y) {
+	assert(x >= 1 && y >= 1);
+	assert(x < get_Rows() && y < get_Columns());
+	map_[x][y] = 4;
+}
+
 /**
  * @brief      Prints the map. An empty block will be displayed in case theres no obstacle
  *             and the car has not been there. A '#' will be shown in the obstacles positions.
@@ -179,16 +191,18 @@ bool Map::addObstacle (unsigned x, unsigned y) {
  * @return     The output stream
  */
 std::ostream& Map::printMap (std::ostream& os) const {
+	Colorize color;
 	os << std::endl << "Map size " << map_.size() - 3 << "x" << map_[0].size() - 3 << std::endl << "\t";
 	for (int i = 0; i < get_Rows(); i++) {
+		os << color.writeYellow(" | ");
 		for (int j = 0; j < get_Columns(); j++) {
 			switch (map_[i][j]) {
 				case 0:
-					os << "  | ";
+					os << color.writeYellow("  | ");
 					break;
 
 				case 1:
-					os << "# | ";
+					os << color.writeRed("#") << color.writeYellow(" | ");
 					break;
 
 				case 2:
@@ -196,11 +210,11 @@ std::ostream& Map::printMap (std::ostream& os) const {
 					break;
 
 				case 3:
-					os << "S | ";
+					os << color.writeMagenta("S") << color.writeYellow(" | ");
 					break;
 
 				case 4:
-					os << "F | ";
+					os << color.writeGreen("F") << color.writeYellow(" | ");
 					break;
 
 				default:
@@ -210,4 +224,5 @@ std::ostream& Map::printMap (std::ostream& os) const {
 		}
 		os << std::endl << "\t";
 	}
+	return os;
 }

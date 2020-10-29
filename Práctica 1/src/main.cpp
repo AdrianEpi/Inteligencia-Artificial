@@ -59,7 +59,7 @@ int main (void) {
 	// Test create a car
 	Car newCar;*/
 	//std::cout << "\033[;32mHola mundo!\033[0m" << std::endl;
-	Game newGame;
-	newGame.generateRandomObstacles(10);
+	Game newGame("../inputs/input.txt");
+	//newGame.generateRandomObstacles(150);
 	newGame.get_Map().printMap(std::cout);
 }

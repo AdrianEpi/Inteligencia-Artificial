@@ -264,11 +264,3 @@ float Chrono::get_MicroSeconds (void) {
 	return totalTime_;
 }
 
-/**
- * @brief      Gets the complete time.
- *
- * @return     The time.
- */
-std::string Chrono::get_Time (void) {
-
-}

@@ -144,5 +144,6 @@ void Car::updateSensor (unsigned n, unsigned s, unsigned e, unsigned w) {
  */
 std::ostream& Car::printCarPosition (std::ostream& os) const {
 	os << "The car position  is: (" << get_CoordinateX() << "," << get_CoordinateY() << ")." << std::endl;
+	return os;
 }
 

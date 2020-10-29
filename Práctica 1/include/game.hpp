@@ -30,6 +30,9 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include <fstream>
+#include <cstring>
+ 
 
 /*------------------------------------------------*/
 
@@ -48,7 +51,7 @@ class Game {
     public:
         //Builders & Destroyer
         Game (void);
-        Game (unsigned m, unsigned n, std::pair<unsigned, unsigned> startPoint, std::pair<unsigned, unsigned> finishLine, unsigned obstacles);
+        Game (std::string);
         ~Game (void);
 
         // Getters & Setters
@@ -71,6 +74,10 @@ class Game {
         // Fuctions
         void generateManualObstacles (void);
         void generateRandomObstacles (unsigned ammount);
+        void dataSaver (std::string data, int mode);
+
+        // Read
+        void readFile (std::string file);
 
 
 

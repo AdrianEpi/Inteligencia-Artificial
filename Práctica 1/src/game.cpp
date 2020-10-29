@@ -61,30 +61,17 @@ Game::Game (void) {
 	std::cout << std::endl << "Introduce the number of obstacles: ";
 	std::cin >> input;
 	set_Obstacles(input);
-
+	
 	map_.initialize(get_M(), get_N());
+	
 }
 
-/**
- * @brief      Constructs a new instance.
- *
- * @param[in]  m           The rows
- * @param[in]  n           The columns
- * @param[in]  startPoint  The start point
- * @param[in]  finishLine  The finish line
- * @param[in]  obstacles   The obstacles
- */
-Game::Game (unsigned m, unsigned n, std::pair<unsigned, unsigned> startPoint, std::pair<unsigned, unsigned> finishLine, unsigned obstacles) {
-	assert(m > 0 && n > 0);
-	set_M(m);
-	set_N(n);
-	startPoint_.first = startPoint.first;
-	startPoint_.second = startPoint.second;
-	finishLine_.first = finishLine.first;
-	finishLine_.second = finishLine.second;
-	obstacles = obstacles;
-	map_.initialize(get_M(), get_N());
+
+
+Game::Game (std::string inputFile) {
+	readFile(inputFile);
 }
+
 
 /**
  * @brief      Destroys the object.
@@ -253,4 +240,100 @@ void Game::generateRandomObstacles (unsigned ammount) {
 			validObstacle = false;
 		}
 	}
+}
+
+
+void Game::dataSaver (std::string data, int mode) {
+	int counter = 0;
+	std::string tmp = "";
+	bool firstData = true;
+	int aux = 0;
+	int aux2 = 0;
+	while (counter <= data.length()) {
+		if ((data[counter] != ' ') && (data[counter] != '\n') && (data[counter] != '\0')) {
+			tmp += data[counter];
+		}
+		else {
+			aux = std::atoi(tmp.c_str());
+			switch (mode) {
+				case 0: // Map size
+					if (firstData) {
+						firstData = false;
+						set_M(aux);
+					}
+					else {
+						set_N(aux);
+					}
+					break;
+
+				case 1: // Start point
+					if (firstData) {
+						firstData = false;
+						startPoint_.first = aux;
+					}
+					else {
+						startPoint_.second = aux;
+					}
+					break;
+
+				case 2: // Finish line
+					if (firstData) {
+						firstData = false;
+						finishLine_.first = aux;
+					}
+					else {
+						finishLine_.second = aux;
+					}
+					break;
+
+				case 3: // obstacles numbers
+					set_Obstacles(aux);
+					break;	
+
+				case 4: // Obstacles position
+					if (firstData) {
+						firstData = false;
+						aux2 = aux;
+					}
+					else {
+						map_.addObstacle(aux2, aux);
+					}
+					break;
+
+				default:
+					std::cout << std::endl << "Error on data saver" << std::endl;
+					break;
+			}
+			tmp = "";
+		}
+		counter++;
+	}
+}
+
+
+void Game::readFile (std::string inputFile) {
+	std::ifstream file(inputFile, std::ios::in);
+	if (file.fail()) {
+		std::cout << std::endl << "Error 404. File not found" << std::endl;
+		exit(1);
+	}
+	else {
+		std::string line = "";
+		getline(file, line);
+		dataSaver(line, 0);
+		getline(file, line);
+		dataSaver(line, 1);
+		getline(file, line);
+		dataSaver(line, 2);
+		getline(file, line);
+		dataSaver(line, 3);
+		map_.initialize(get_M(), get_N());
+		map_.addStartPoint(startPoint_.first, startPoint_.second);
+		map_.addFinishLine(finishLine_.first, finishLine_.second);
+		for (int i = 0; i < get_Obstacles(); i++) {
+			getline(file, line);
+			dataSaver(line, 4);
+		}
+	}
+	file.close();
 }

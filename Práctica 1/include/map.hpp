@@ -20,6 +20,7 @@
 /*------------------  FUNCTIONS  -----------------*/
 
 #pragma once 
+#include "Colorize.hpp"
 
 /*------------------------------------------------*/
 /*------------------  LIBRARIES  -----------------*/
@@ -61,6 +62,8 @@ class Map {
         // Functions
         void initialize (unsigned x, unsigned y);
         bool addObstacle (unsigned x, unsigned y);
+        void addStartPoint (unsigned x, unsigned y);
+        void addFinishLine (unsigned x, unsigned y);
 
         // Write
         std::ostream& printMap (std::ostream& os) const;
