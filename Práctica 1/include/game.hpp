@@ -79,7 +79,8 @@ class Game {
         Game& operator= (const Game& newGame);
 
         // Fuctions
-        void generateManualObstacles (void);
+        void manualData (void);
+        void generateManualObstacles (unsigned ammount);
         void generateRandomObstacles (unsigned ammount);
         void dataSaver (std::string& data, int mode);
 

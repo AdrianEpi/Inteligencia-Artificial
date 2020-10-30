@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-30 09:39:23
+* @Last Modified time: 2020-10-30 10:52:57
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -35,37 +35,7 @@
  * @brief      Constructs a new instance.
  */
 Game::Game (void) {
-	unsigned input;
-	std::cout << std::endl << "Introduce the number of rows: ";
-	std::cin >> input;
-	set_M(input);
-
-	std::cout << std::endl << "Introduce the number of columns: ";
-	std::cin >> input;
-	set_N(input);
-
-	std::cout << std::endl << "Introduce the start X position: ";
-	std::cin >> input;
-	startPoint_.first = input;
-	std::cout << std::endl << "Introduce the start Y position: ";
-	std::cin >> input;
-	startPoint_.second = input;
-
-	std::cout << std::endl << "Introduce the finish X position: ";
-	std::cin >> input;
-	finishLine_.first = input;
-	std::cout << std::endl << "Introduce the finish Y position: ";
-	std::cin >> input;
-	finishLine_.second = input;
-
-	std::cout << std::endl << "Introduce the number of obstacles: ";
-	std::cin >> input;
-	set_Obstacles(input);
-	
-	map_.initialize(get_M(), get_N());
 }
-
-
 
 /**
  * @brief      Constructs a new instance from the data read by file.
@@ -75,7 +45,6 @@ Game::Game (void) {
 Game::Game (std::string inputFile) {
 	readFile(inputFile);
 }
-
 
 /**
  * @brief      Destroys the object.
@@ -209,6 +178,33 @@ void Game::set_Map (Map map) {
 	map_ = map;
 }
 
+/**
+ * @brief      Method for introducing the game parametres by keyboard.
+ */
+void Game::manualData (void) {
+	unsigned input;
+	std::cout << std::endl << "Introduce the number of rows: ";
+	std::cin >> input;
+	set_M(input);
+	std::cout << std::endl << "Introduce the number of columns: ";
+	std::cin >> input;
+	set_N(input);
+	std::cout << std::endl << "Introduce the start X position: ";
+	std::cin >> input;
+	startPoint_.first = input;
+	std::cout << std::endl << "Introduce the start Y position: ";
+	std::cin >> input;
+	startPoint_.second = input;
+	std::cout << std::endl << "Introduce the finish X position: ";
+	std::cin >> input;
+	finishLine_.first = input;
+	std::cout << std::endl << "Introduce the finish Y position: ";
+	std::cin >> input;
+	finishLine_.second = input;
+	map_.initialize(get_M(), get_N());
+	map_.addStartPoint(startPoint_.first, startPoint_.second);
+	map_.addFinishLine(finishLine_.first, finishLine_.second);
+}
 
 /**
  * @brief      Assignment operator.
@@ -230,18 +226,29 @@ Game& Game::operator= (const Game& newGame) {
 
 /**
  * @brief      Generate obstacles on the given positions
+ *
+ * @param[in]  ammount  The ammount
  */
-void Game::generateManualObstacles (void) {
-	for (int i = 0; i < get_Obstacles(); i++) {
-		bool validObstacle = false;
-		while (!validObstacle) {
-			unsigned tmpX, tmpY;
-			std::cout << get_Obstacles() - i << " remaining obstacles, introduce the x coordinate: ";
-			std::cin >> tmpX;
-			std::cout << get_Obstacles() - i << " remaining obstacles, introduce the y coordinate: ";
-			std::cin >> tmpY;
-			validObstacle = map_.addObstacle(tmpX, tmpY);
+void Game::generateManualObstacles (unsigned ammount) {
+	if ((get_Obstacles() + ammount) <= (0.95 * (map_.get_Rows() - 2) * (map_.get_Columns() - 2))) {
+		for (int i = 0; i < ammount; i++) {
+			bool validObstacle = false;
+			while (!validObstacle) {
+				unsigned tmpX, tmpY;
+				std::cout << get_Obstacles() - i << " remaining obstacles, introduce the x coordinate: ";
+				std::cin >> tmpX;
+				std::cout << get_Obstacles() - i << " remaining obstacles, introduce the y coordinate: ";
+				std::cin >> tmpY;
+				validObstacle = map_.addObstacle(tmpX, tmpY);
+				if (!validObstacle) {
+					std::cout << std::endl << "Sorry that position is already used";
+				}
+			}
 		}
+		set_Obstacles(get_Obstacles() + ammount);
+	}
+	else {
+		std::cout << std::endl << "Sorry too many obstacles in map right now";
 	}
 }
 
@@ -251,7 +258,7 @@ void Game::generateManualObstacles (void) {
  * @param[in]  ammount  The ammount
  */
 void Game::generateRandomObstacles (unsigned ammount) {
-	assert(ammount <= (0.95 * (map_.get_Rows() - 2) * (map_.get_Columns() - 2)));
+	assert((get_Obstacles() +ammount) <= (0.95 * (map_.get_Rows() - 2) * (map_.get_Columns() - 2)));
 	int counter = 0;
 	bool validObstacle = false;
 	while (counter < ammount) {
@@ -263,6 +270,7 @@ void Game::generateRandomObstacles (unsigned ammount) {
 			validObstacle = false;
 		}
 	}
+	set_Obstacles(get_Obstacles() + ammount);
 }
 
 /**
