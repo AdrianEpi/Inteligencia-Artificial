@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-30 08:50:16
+* @Last Modified time: 2020-10-30 09:39:23
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -374,4 +374,26 @@ void Game::readFile (std::string& inputFile) {
 		}
 	}
 	file.close();
+}
+
+/**
+ * @brief      Saves game data into a file for being able to load that game later.
+ *
+ * @param      os    The output stream
+ *
+ * @return     The output stream
+ */
+std::ostream& Game::saveData (std::ostream& os) const {
+	os << get_M() << " " << get_N() << std::endl;
+	os << get_StartPoint().first << " " << get_StartPoint().second << std::endl;
+	os << get_FinishLine().first << " " << get_FinishLine().second << std::endl;
+	os << get_Obstacles() << std::endl;
+	for (int i = 1; i < map_.get_Rows() - 1; i++) {
+		for (int j = 1; j < map_.get_Columns() - 1; j++) {
+			if (map_.get_Map()[i][j] == 1) {
+				os << i << " " << j << std::endl;
+			}
+		}
+	}
+	return os;
 }

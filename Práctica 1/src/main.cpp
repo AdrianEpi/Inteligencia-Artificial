@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 11:04:26
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-30 08:50:57
+* @Last Modified time: 2020-10-30 09:37:09
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -38,5 +38,8 @@ int main (void) {
 	srand(time(NULL));	// For generating random numbers
 	Game newGame("../inputs/input.txt");
 	//newGame.generateRandomObstacles(150);
-	newGame.get_Map().printMap(std::cout);
+	std::ofstream os("../outputs/output.txt");
+	std::ofstream os2("../inputs/savedMap.txt");
+	newGame.get_Map().saveMap(os);
+    newGame.saveData(os2);
 }	

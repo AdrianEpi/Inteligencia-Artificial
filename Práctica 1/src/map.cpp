@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 16:43:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-30 08:31:27
+* @Last Modified time: 2020-10-30 09:28:13
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -250,6 +250,55 @@ std::ostream& Map::printMap (std::ostream& os) const {
 					break;
 			}
 			os << color.writeYellow(" | ");
+		}
+		os << std::endl << "\t";
+	}
+	os << std::endl;
+	return os;
+}
+
+/**
+ * @brief      Saves the map to a file. An empty block will be displayed in case theres no obstacle
+ *             and the car has not been there. A '#' will be shown in the obstacles positions.
+ *             A 'X' will be shown in the places where the car has been. Apart from that 'S' means
+ *             the starts position and "F" the finish line.
+ *
+ * @param      os  The output stream
+ *
+ * @return     The output stream
+ */
+std::ostream& Map::saveMap (std::ostream& os) const {
+	os << std::endl << "Map size " << map_.size() - 3 << "x" << map_[0].size() - 3 << std::endl << "\t";
+	for (int i = 0; i < get_Rows(); i++) {
+		os << " | ";
+		for (int j = 0; j < get_Columns(); j++) {
+			switch (map_[i][j]) {
+				case 0:
+					os << " ";
+					break;
+
+				case 1:
+					os << "#";
+					break;
+
+				case 2:
+					os << "X";
+					break;
+
+				case 3:
+					os << "S";
+					break;
+
+				case 4:
+					os << "F";
+					break;
+
+				default:
+					std::cout << "Error painting the map.";
+					exit(1);
+					break;
+			}
+			os << " | ";
 		}
 		os << std::endl << "\t";
 	}

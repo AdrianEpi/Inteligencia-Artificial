@@ -85,7 +85,6 @@ class Game {
 
         // Read
         void readFile (std::string& file);
-
-
+        std::ostream& saveData (std::ostream& os) const;
 
 }; 

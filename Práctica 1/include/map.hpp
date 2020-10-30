@@ -70,5 +70,5 @@ class Map {
 
         // Write
         std::ostream& printMap (std::ostream& os) const;
-
+        std::ostream& saveMap (std::ostream& os) const;
 };
