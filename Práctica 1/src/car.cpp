@@ -22,8 +22,8 @@
 * 		   Luciano Sekulic 
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 15:50:33
-* @Last Modified by:   Yeixon Morales
-* @Last Modified time: 2020-10-26 11:40:28
+* @Last Modified by:   Adrian Epifanio
+* @Last Modified time: 2020-10-30 08:02:17
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -109,6 +109,20 @@ void Car::set_Sensor (Sensor newSensor) {
 }
 
 /**
+ * @brief      Assignment operator.
+ *
+ * @param[in]  newCar  The new car
+ *
+ * @return     The result of the assignment
+ */
+Car& Car::operator= (const Car& newCar) {
+	set_CoordinateX(newCar.get_CoordinateX());
+	set_CoordinateY(newCar.get_CoordinateY());
+	set_Sensor(newCar.get_Sensor());
+	return *this;
+}
+
+/**
  * @brief      Updates the car position in map.
  *
  * @param[in]  x     The coordinate X
@@ -128,7 +142,7 @@ void Car::updatePosition (unsigned x, unsigned y) {
  * @param[in]  e     The east position
  * @param[in]  w     The west position
  */
-void Car::updateSensor (unsigned n, unsigned s, unsigned e, unsigned w) {
+void Car::updateSensor (unsigned& n, unsigned& s, unsigned& e, unsigned& w) {
 	sensor_.set_North(n);
 	sensor_.set_South(s);
 	sensor_.set_East(e);

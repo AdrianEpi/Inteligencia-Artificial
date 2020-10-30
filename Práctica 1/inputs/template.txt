@@ -1,0 +1,8 @@
+SizeX SizeY
+StartPointX StartPointY
+FinishLineX FinishLineY
+ObstaclesNumber
+obst1X obst1Y
+obst2X obst2Y
+obst3X obst3Y
+...

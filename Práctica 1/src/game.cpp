@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-28 08:38:18
+* @Last Modified time: 2020-10-30 08:50:16
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -63,11 +63,15 @@ Game::Game (void) {
 	set_Obstacles(input);
 	
 	map_.initialize(get_M(), get_N());
-	
 }
 
 
 
+/**
+ * @brief      Constructs a new instance from the data read by file.
+ *
+ * @param[in]  inputFile  The input file
+ */
 Game::Game (std::string inputFile) {
 	readFile(inputFile);
 }
@@ -205,6 +209,25 @@ void Game::set_Map (Map map) {
 	map_ = map;
 }
 
+
+/**
+ * @brief      Assignment operator.
+ *
+ * @param[in]  newGame  The new game
+ *
+ * @return     The result of the assignment
+ */
+Game& Game::operator= (const Game& newGame) {
+	set_M(newGame.get_M());
+	set_N(newGame.get_N());
+	set_Obstacles(newGame.get_Obstacles());
+	set_StartPoint(newGame.get_StartPoint());
+	set_FinishLine(newGame.get_FinishLine());
+	set_Car(newGame.get_Car());
+	set_Map(newGame.get_Map());
+	return *this;
+}
+
 /**
  * @brief      Generate obstacles on the given positions
  */
@@ -242,13 +265,18 @@ void Game::generateRandomObstacles (unsigned ammount) {
 	}
 }
 
-
-void Game::dataSaver (std::string data, int mode) {
-	int counter = 0;
+/**
+ * @brief      Stores the data readen by the readFile method. It has one mode for each
+ *             type of data. 0 -> Map size, 1 -> Start point, 2 -> finish line,
+ *             3 -> obstacles ammount, 4 -> each obstacle position
+ *
+ * @param[in]  data  The data
+ * @param[in]  mode  The mode
+ */
+void Game::dataSaver (std::string& data, int mode) {
 	std::string tmp = "";
 	bool firstData = true;
-	int aux = 0;
-	int aux2 = 0;
+	int aux = 0, aux2 = 0, counter = 0;
 	while (counter <= data.length()) {
 		if ((data[counter] != ' ') && (data[counter] != '\n') && (data[counter] != '\0')) {
 			tmp += data[counter];
@@ -258,7 +286,6 @@ void Game::dataSaver (std::string data, int mode) {
 			switch (mode) {
 				case 0: // Map size
 					if (firstData) {
-						firstData = false;
 						set_M(aux);
 					}
 					else {
@@ -268,7 +295,6 @@ void Game::dataSaver (std::string data, int mode) {
 
 				case 1: // Start point
 					if (firstData) {
-						firstData = false;
 						startPoint_.first = aux;
 					}
 					else {
@@ -278,7 +304,6 @@ void Game::dataSaver (std::string data, int mode) {
 
 				case 2: // Finish line
 					if (firstData) {
-						firstData = false;
 						finishLine_.first = aux;
 					}
 					else {
@@ -286,13 +311,12 @@ void Game::dataSaver (std::string data, int mode) {
 					}
 					break;
 
-				case 3: // obstacles numbers
+				case 3: // Obstacles ammount
 					set_Obstacles(aux);
 					break;	
 
 				case 4: // Obstacles position
 					if (firstData) {
-						firstData = false;
 						aux2 = aux;
 					}
 					else {
@@ -302,7 +326,11 @@ void Game::dataSaver (std::string data, int mode) {
 
 				default:
 					std::cout << std::endl << "Error on data saver" << std::endl;
+					exit(1);
 					break;
+			}
+			if (firstData) {
+				firstData = false;
 			}
 			tmp = "";
 		}
@@ -310,26 +338,36 @@ void Game::dataSaver (std::string data, int mode) {
 	}
 }
 
-
-void Game::readFile (std::string inputFile) {
+/**
+ * @brief      Reads a the data from a file.
+ *
+ * @param[in]  inputFile  The input file
+ */
+void Game::readFile (std::string& inputFile) {
 	std::ifstream file(inputFile, std::ios::in);
 	if (file.fail()) {
-		std::cout << std::endl << "Error 404. File not found" << std::endl;
+		std::cout << std::endl << "Error 404, file not found." << std::endl;
 		exit(1);
 	}
 	else {
 		std::string line = "";
+		// Map size
 		getline(file, line);
 		dataSaver(line, 0);
+		// Start point
 		getline(file, line);
 		dataSaver(line, 1);
+		// Finish line
 		getline(file, line);
 		dataSaver(line, 2);
+		// Obstacles ammount
 		getline(file, line);
 		dataSaver(line, 3);
+
 		map_.initialize(get_M(), get_N());
 		map_.addStartPoint(startPoint_.first, startPoint_.second);
 		map_.addFinishLine(finishLine_.first, finishLine_.second);
+		// Each obstacle position
 		for (int i = 0; i < get_Obstacles(); i++) {
 			getline(file, line);
 			dataSaver(line, 4);

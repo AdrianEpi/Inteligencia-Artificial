@@ -36,6 +36,10 @@
 
 /*------------------------------------------------*/
 
+/**
+ * @brief      This class describes the game of the calculation of the minimum
+ *             route for an autonomous car.
+ */
 class Game {
 
     private:
@@ -71,13 +75,16 @@ class Game {
         void set_Car (Car car);
         void set_Map (Map map);
 
+        // Operators Overload
+        Game& operator= (const Game& newGame);
+
         // Fuctions
         void generateManualObstacles (void);
         void generateRandomObstacles (unsigned ammount);
-        void dataSaver (std::string data, int mode);
+        void dataSaver (std::string& data, int mode);
 
         // Read
-        void readFile (std::string file);
+        void readFile (std::string& file);
 
 
 

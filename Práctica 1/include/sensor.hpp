@@ -29,7 +29,8 @@
 /*------------------------------------------------*/
 
 /**
- * @brief      This class describes a sensor. A sensor must know if the adjacent directions are empty (0) or not (1)
+ * @brief      This class describes a sensor. A sensor must know if the adjacent directions
+ *             are empty (0) or not (1)
  */
 class Sensor {
 
@@ -57,4 +58,6 @@ class Sensor {
         void set_East (unsigned e);
         void set_West (unsigned w);
 
+        // Operators Overload
+        Sensor& operator= (const Sensor& newSensor);
 };

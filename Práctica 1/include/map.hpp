@@ -59,6 +59,9 @@ class Map {
         void set_Columns (unsigned y);
         void set_Map (std::vector<std::vector<unsigned>> map);
 
+        // Operators Overload
+        Map& operator= (const Map& newMap);
+
         // Functions
         void initialize (unsigned x, unsigned y);
         bool addObstacle (unsigned x, unsigned y);

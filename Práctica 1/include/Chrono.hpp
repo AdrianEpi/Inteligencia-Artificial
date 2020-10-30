@@ -30,6 +30,9 @@
 
 /*------------------------------------------------*/
 
+/**
+ * @brief      This class describes a chrono.
+ */
 class Chrono {
 	
 	private:

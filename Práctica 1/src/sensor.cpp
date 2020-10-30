@@ -22,8 +22,8 @@
 * 		   Luciano Sekulic 
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 10:47:15
-* @Last Modified by:   Yeixon Morales
-* @Last Modified time: 2020-10-26 11:40:28
+* @Last Modified by:   Adrian Epifanio
+* @Last Modified time: 2020-10-30 08:41:06
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -105,7 +105,7 @@ unsigned Sensor::get_West (void) const {
  *
  */
 void Sensor::set_North (unsigned n) {
-	assert(n == 0 || n == 1);
+	assert((n >= 0) && (n <= 4));
 	n_ = n;
 }
 
@@ -115,7 +115,7 @@ void Sensor::set_North (unsigned n) {
  * @param[in]  s     The new value. Value must be 0 if empty, 1 otherwhise.
  */
 void Sensor::set_South (unsigned s) {
-	assert(s == 0 || s == 1);
+	assert((s >= 0) && (s <= 4));
 	s_ = s;
 }
 
@@ -125,7 +125,7 @@ void Sensor::set_South (unsigned s) {
  * @param[in]  e     The new value. Value must be 0 if empty, 1 otherwhise.
  */
 void Sensor::set_East (unsigned e) {
-	assert(e == 0 || e == 1);
+	assert((e >= 0) && (e <= 4));
 	e_ = e;
 }
 
@@ -135,6 +135,21 @@ void Sensor::set_East (unsigned e) {
  * @param[in]  w     The new value. Value must be 0 if empty, 1 otherwhise.
  */
 void Sensor::set_West (unsigned w) {
-	assert(w == 0 || w == 1);
+	assert((w >= 0) && (w <= 4));
 	w_ = w;
+}
+
+/**
+ * @brief      Assignment operator.
+ *
+ * @param[in]  newSensor  The new sensor
+ *
+ * @return     The result of the assignment
+ */
+Sensor& Sensor::operator= (const Sensor& newSensor) {
+	set_North(newSensor.get_North());
+	set_South(newSensor.get_South());
+	set_East(newSensor.get_East());
+	set_West(newSensor.get_West());
+	return *this;
 }

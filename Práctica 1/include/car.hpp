@@ -57,9 +57,12 @@ class Car {
         void set_CoordinateY (unsigned y);
         void set_Sensor (Sensor newSensor);
 
+        // Operators Overload
+        Car& operator= (const Car& newCar);
+
         // Functions
         void updatePosition (unsigned x, unsigned y);
-        void updateSensor (unsigned n, unsigned s, unsigned e, unsigned w);
+        void updateSensor (unsigned& n, unsigned& s, unsigned& e, unsigned& w);
 
         // Write
         std::ostream& printCarPosition (std::ostream& os) const;

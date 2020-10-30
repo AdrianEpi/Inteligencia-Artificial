@@ -27,29 +27,35 @@
 #include <iostream>
 
 /*------------------------------------------------*/
+
+
+/**
+ * @brief      This class describes a colorizer.
+ */
 class Colorize {
 
 	public:
+        // Builder & Destroyer
 		Colorize (void);
 		~Colorize (void);
 
 		// Text color functions
-		std::string writeGrey (std::string myString);
-        std::string writeRed (std::string myString);
-        std::string writeGreen (std::string myString);
-        std::string writeYellow (std::string myString);
-        std::string writeBlue (std::string myString);
-        std::string writeMagenta (std::string myString);
-        std::string writeCyan (std::string myString);
-        std::string writeWhite (std::string myString);
+		std::string writeGrey (const std::string& myString);
+        std::string writeRed (const std::string& myString);
+        std::string writeGreen (const std::string& myString);
+        std::string writeYellow (const std::string& myString);
+        std::string writeBlue (const std::string& myString);
+        std::string writeMagenta (const std::string& myString);
+        std::string writeCyan (const std::string& myString);
+        std::string writeWhite (const std::string& myString);
 
         // Background color functions
-        std::string paintGrey (std::string myString);
-        std::string paintRed (std::string myString);
-        std::string paintGreen (std::string myString);
-        std::string paintYellow (std::string myString);
-        std::string paintBlue (std::string myString);
-        std::string paintMagenta (std::string myString);
-        std::string paintCyan (std::string myString);
-        std::string paintWhite (std::string myString);
+        std::string paintGrey (const std::string& myString);
+        std::string paintRed (const std::string& myString);
+        std::string paintGreen (const std::string& myString);
+        std::string paintYellow (const std::string& myString);
+        std::string paintBlue (const std::string& myString);
+        std::string paintMagenta (const std::string& myString);
+        std::string paintCyan (const std::string& myString);
+        std::string paintWhite (const std::string& myString);
 };

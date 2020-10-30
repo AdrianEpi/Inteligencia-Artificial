@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 16:43:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-28 08:37:32
+* @Last Modified time: 2020-10-30 08:31:27
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -106,17 +106,21 @@ void Map::set_Columns (unsigned y) {
  * @param[in]  map   The new value
  */
 void Map::set_Map (std::vector<std::vector<unsigned>> map) {
-	// We initilize the map as map.size() - 3 because size is always 1 more than real size,
-	// the other 2 units to reach 3 is because the initialize function creates the map 2 rows 
-	// and 2 columns bigger than the real size for making the sensor count right.
-	if ((map.size() != get_Rows() + 1) || (map[0].size() != get_Columns() + 1)) {
-		initialize(map.size() - 3, map[0].size() - 3);
-	}
-	for (int i = 0; i <= get_Rows(); i++) {
-		for (int j = 0; j <= get_Columns(); j++) {
-			map_[i][j] = map[i][j];
-		}
-	}
+	map_ = map;
+}
+
+/**
+ * @brief      Assignment operator.
+ *
+ * @param[in]  newMap  The new map
+ *
+ * @return     The result of the assignment
+ */
+Map& Map::operator= (const Map& newMap) {
+	set_Rows(newMap.get_Rows());
+	set_Columns(newMap.get_Columns());
+	set_Map(newMap.get_Map());
+	return *this;
 }
 
 /**
@@ -126,7 +130,7 @@ void Map::set_Map (std::vector<std::vector<unsigned>> map) {
  * @param[in]  y     The columns
  */
 void Map::initialize (unsigned x, unsigned y) {
-	assert(x > 0 && y > 0);
+	assert((x > 0) && (y > 0));
 	set_Rows(x + 2);
 	set_Columns(y + 2);
 	map_.resize(get_Rows() + 1);
@@ -146,7 +150,7 @@ void Map::initialize (unsigned x, unsigned y) {
 }
 
 /**
- * @brief      Adds an obstacle on the given coordinates.
+ * @brief      Adds an obstacle at the given coordinates.
  *
  * @param[in]  x     The coordinate x.
  * @param[in]  y     The coordinate y.
@@ -154,29 +158,52 @@ void Map::initialize (unsigned x, unsigned y) {
  * @return     True if introduced correctly, false otherwhise.
  */
 bool Map::addObstacle (unsigned x, unsigned y) {
-	assert(x >= 1 && y >= 1);
-	assert(x < get_Rows() && y < get_Columns());
+	assert((x >= 1) && (y >= 1) && (x < get_Rows()) && (y < get_Columns()));
 	if (map_[x][y] == 0) {
 		map_[x][y] = 1;
-		//std::cout << std::endl << "Obstacle inserted correctly";
 		return true;
 	}
 	else {
-		//std::cout << std::endl << "Sorry, that place is already used.";
 		return false;
 	}
 	
 }
 
+/**
+ * @brief      Adds the start point at the given coordinates.
+ *
+ * @param[in]  x     The coordinate x.
+ * @param[in]  y     The coordinate y.
+ */
 void Map::addStartPoint (unsigned x, unsigned y) {
-	assert(x >= 1 && y >= 1);
-	assert(x < get_Rows() && y < get_Columns());
+	assert((x >= 1) && (y >= 1) && (x < get_Rows()) && (y < get_Columns()));
+	for (int i = 0; i < get_Rows(); i++) {
+		for (int j = 0; j < get_Columns(); j++) {
+			if (map_[i][j] == 3) {
+				map_[i][j] = 0;
+				break;
+			}
+		}
+	}
 	map_[x][y] = 3;
 }
 
+/**
+ * @brief      Adds the finish line at the given coordinates.
+ *
+ * @param[in]  x     The coordinate x.
+ * @param[in]  y     The coordinate y.
+ */
 void Map::addFinishLine (unsigned x, unsigned y) {
-	assert(x >= 1 && y >= 1);
-	assert(x < get_Rows() && y < get_Columns());
+	assert((x >= 1) && (y >= 1) && (x < get_Rows()) && (y < get_Columns()));
+	for (int i = 0; i < get_Rows(); i++) {
+		for (int j = 0; j < get_Columns(); j++) {
+			if (map_[i][j] == 4) {
+				map_[i][j] = 0;
+				break;
+			}
+		}
+	}
 	map_[x][y] = 4;
 }
 
@@ -198,31 +225,34 @@ std::ostream& Map::printMap (std::ostream& os) const {
 		for (int j = 0; j < get_Columns(); j++) {
 			switch (map_[i][j]) {
 				case 0:
-					os << color.writeYellow("  | ");
+					os << " ";
 					break;
 
 				case 1:
-					os << color.writeRed("#") << color.writeYellow(" | ");
+					os << color.writeRed("#");
 					break;
 
 				case 2:
-					os << "X | ";
+					os << "X";
 					break;
 
 				case 3:
-					os << color.writeMagenta("S") << color.writeYellow(" | ");
+					os << color.writeMagenta("S");
 					break;
 
 				case 4:
-					os << color.writeGreen("F") << color.writeYellow(" | ");
+					os << color.writeGreen("F");
 					break;
 
 				default:
-					std::cout << "ERROR";
+					std::cout << "Error painting the map.";
+					exit(1);
 					break;
 			}
+			os << color.writeYellow(" | ");
 		}
 		os << std::endl << "\t";
 	}
+	os << std::endl;
 	return os;
 }
