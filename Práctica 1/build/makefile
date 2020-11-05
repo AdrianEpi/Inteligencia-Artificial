@@ -1,7 +1,9 @@
 # Variables
 TIME =$(LOGPATH)$(shell date)
 # Variable objetos
-OBJECTS = main.o sensor.o map.o car.o game.o Chrono.o Colorize.o HeuristicFunction.o EuclideanDistance.o ManhattanDistance.o
+OBJECTS = main.o sensor.o map.o car.o game.o Chrono.o Colorize.o $(HEURISTICS) $(ALGORITHMS)
+ALGORITHMS = SearchAlgorithm.o A-starAlgorithm.o GreedyAlgorithm.o
+HEURISTICS = HeuristicFunction.o EuclideanDistance.o ManhattanDistance.o
 # Flags de compilacion
 CFLAGS = -c -std=c++17
 
@@ -40,6 +42,14 @@ EuclideanDistance.o: ../src/EuclideanDistance.cpp ../include/EuclideanDistance.h
 ManhattanDistance.o: ../src/ManhattanDistance.cpp ../include/ManhattanDistance.hpp
 	g++ $(CFLAGS) ../src/ManhattanDistance.cpp
 
+SearchAlgorithm.o: ../src/SearchAlgorithm.cpp ../include/SearchAlgorithm.hpp
+	g++ $(CFLAGS) ../src/SearchAlgorithm.cpp
+
+A-starAlgorithm.o: ../src/A-starAlgorithm.cpp ../include/A-starAlgorithm.hpp
+	g++ $(CFLAGS) ../src/A-starAlgorithm.cpp
+
+GreedyAlgorithm.o: ../src/GreedyAlgorithm.cpp ../include/GreedyAlgorithm.hpp
+	g++ $(CFLAGS) ../src/GreedyAlgorithm.cpp
 
 
 .PHONY: clean

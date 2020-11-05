@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 16:43:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-30 09:28:13
+* @Last Modified time: 2020-11-05 16:53:26
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -205,6 +205,18 @@ void Map::addFinishLine (unsigned x, unsigned y) {
 		}
 	}
 	map_[x][y] = 4;
+}
+
+/**
+ * @brief      Changes the element in that position of the map
+ *
+ * @param[in]  x        The x coordinate
+ * @param[in]  y        The y coordinate
+ * @param[in]  element  The element
+ */
+void Map::changeBox (unsigned x, unsigned y, unsigned element) {
+	assert((x >= 1) && (y >= 1) && (x < get_Rows()) && (y < get_Columns()));
+	map_[x][y] = element;
 }
 
 /**

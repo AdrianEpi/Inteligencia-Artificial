@@ -51,5 +51,5 @@ class HeuristicFunction {
         void set_Distance (float newDistance);
 
         // Functions
-        virtual float calculateDistance (Car& car, std::pair<unsigned, unsigned> finishLine);
+        virtual float calculateDistance (Car& car, std::pair<unsigned, unsigned>& finishLine);
 };

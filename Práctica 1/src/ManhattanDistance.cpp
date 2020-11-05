@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 14:27:03
+* @Last Modified time: 2020-11-05 16:59:44
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -51,6 +51,6 @@ ManhattanDistance::~ManhattanDistance (void) {
  *
  * @return     The distance.
  */
-float ManhattanDistance::calculateDistance (Car& car, std::pair<unsigned, unsigned> finishLine) {
+float ManhattanDistance::calculateDistance (Car& car, std::pair<unsigned, unsigned>& finishLine) {
     return (abs(finishLine.first - car.get_CoordinateX()) + abs(finishLine.second - car.get_CoordinateY()));
 }

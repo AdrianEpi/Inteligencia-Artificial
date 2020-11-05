@@ -35,8 +35,10 @@
 class ManhattanDistance : public HeuristicFunction {
 
     public:
+        // Builder & Destroyer
         ManhattanDistance (void);
         virtual ~ManhattanDistance (void);
 
-        float calculateDistance (Car& car, std::pair<unsigned, unsigned> finishLine);
+        // Function
+        float calculateDistance (Car& car, std::pair<unsigned, unsigned>& finishLine);
 };

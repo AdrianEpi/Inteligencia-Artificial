@@ -2,7 +2,7 @@
 =========================================================================================
     =                                                                              =
     =            Proyect:       Práctica 1. Estrategias de Búsqueda                =
-    =            File name:     EuclideanDistance.cpp                              =
+    =            File name:     GreedyAlgorithm.hpp                                =
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
@@ -17,40 +17,28 @@
     =                                                                              =
 =========================================================================================
 =======================================================================================*/
-/*
-* @Author: Adrian Epifanio
-* 		   Luciano Sekulic 
-* 		   Yeixon Morales 
-* @Date:   2020-11-05 15:50:33
-* @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 16:59:28
-*/
 /*------------------  FUNCTIONS  -----------------*/
 
-#include "../include/EuclideanDistance.hpp"
+#pragma once 
+#include "SearchAlgorithm.hpp"
+
+/*------------------------------------------------*/
+/*------------------  LIBRARIES  -----------------*/
+
+
 
 /*------------------------------------------------*/
 
 /**
- * @brief      Constructs a new instance.
+ * @brief      This class describes a search algorithm using a greedy design.
  */
-EuclideanDistance::EuclideanDistance (void) {
-}
+class GreedyAlgorithm : public SearchAlgorithm {
 
-/**
- * @brief      Destroys the object.
- */
-EuclideanDistance::~EuclideanDistance (void) {
-}
+    public:
+        // Builder & Destroyer
+        GreedyAlgorithm (void);
+        virtual ~GreedyAlgorithm (void);
 
-/**
- * @brief      Calculates the distance using the euclidean distance.
- *
- * @param      car         The car
- * @param[in]  finishLine  The finish line
- *
- * @return     The distance.
- */
-float EuclideanDistance::calculateDistance (Car& car, std::pair<unsigned, unsigned>& finishLine) {
-    return (sqrt(pow((finishLine.first - car.get_CoordinateX()), 2) + pow((finishLine.second - car.get_CoordinateY()), 2)));
-}
+        // Function
+        void runAlgorithm (Map map, Car car, HeuristicFunction& heuristic, std::pair<unsigned, unsigned>& finishLine);
+};
