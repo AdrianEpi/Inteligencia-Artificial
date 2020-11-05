@@ -22,8 +22,8 @@
 #pragma once 
 #include "../include/map.hpp"
 #include "../include/car.hpp"
-#include "../include/ManhattanDistance.hpp"
-#include "../include/EuclideanDistance.hpp"
+#include "../include/A-starAlgorithm.hpp"
+#include "../include/GreedyAlgorithm.hpp"
 
 /*------------------------------------------------*/
 /*------------------  LIBRARIES  -----------------*/
@@ -54,6 +54,7 @@ class Game {
         Car car_;                                   // The car object
         Map map_;                                   // The game map
         HeuristicFunction* heuristicFunction_;      // The heuristic function that is going to be used
+        SearchAlgorithm* algorithm_;                // The algorithm thats going to follow the car
 
     public:
         //Builders & Destroyer
@@ -69,6 +70,8 @@ class Game {
         std::pair<unsigned, unsigned> get_FinishLine (void) const;
         Car get_Car (void) const;
         Map get_Map (void) const;
+        HeuristicFunction* get_HeuristicFunction (void) const;
+        SearchAlgorithm* get_SearchAlgorithm (void) const;
 
         void set_M (unsigned m);
         void set_N (unsigned n);
@@ -77,6 +80,8 @@ class Game {
         void set_FinishLine (std::pair<unsigned, unsigned> finishLine);
         void set_Car (Car car);
         void set_Map (Map map);
+        void get_HeuristicFunction (HeuristicFunction* newHeuristicFunction);
+        void get_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm);
 
         // Operators Overload
         Game& operator= (const Game& newGame);
@@ -87,6 +92,7 @@ class Game {
         void generateManualObstacles (unsigned ammount);
         void generateRandomObstacles (unsigned ammount);
         void dataSaver (std::string& data, int mode);
+        void findSolution (void);
 
         // Read
         void readFile (std::string& file);

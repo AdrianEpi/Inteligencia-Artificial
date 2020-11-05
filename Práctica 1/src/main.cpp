@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 11:04:26
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 14:55:54
+* @Last Modified time: 2020-11-05 22:34:26
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -124,7 +124,7 @@ bool selector (Game& myGame, unsigned sentinel, bool& generatedGame) {
         myGame.saveData(os);
     }
     else if (sentinel == 8 && generatedGame) {
-        ////////// NOT IMPLEMENTED YET
+        myGame.findSolution();
         return false;
     }
     else if (sentinel == 9 && generatedGame) {

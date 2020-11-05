@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 17:06:29
+* @Last Modified time: 2020-11-05 22:11:32
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -86,7 +86,7 @@ void SearchAlgorithm::set_Solution (std::pair<Map, float> newSolution) {
  * @param[in]  car        The car
  * @param      heuristic  The heuristic
  */
-void SearchAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction& heuristic, std::pair<unsigned, unsigned>& finishLine) {
+void SearchAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine) {
 }
 
 /**
@@ -97,7 +97,7 @@ void SearchAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction& heurist
  *
  * @return     True if it can be expanded, false otherwise
  */
-bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction& heuristic, std::pair<unsigned, unsigned>& finishLine) {
+bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine) {
 	bool expanded = false;
 	Car newCar;
 	if ((map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() + 1] == 0) && ((car.get_CoordinateY() + 1) != map.get_Rows())) {
@@ -108,10 +108,14 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction& heuristic
 		leaf.first.changeBox(car.get_CoordinateX(), car.get_CoordinateY() + 1, 5);
 		newCar.set_CoordinateX(car.get_CoordinateX());
 		newCar.set_CoordinateY(car.get_CoordinateY() + 1);
-		leaf.second = heuristic.calculateDistance(newCar, finishLine);
+		std::pair<unsigned, unsigned> carPosition;
+		carPosition.first = car.get_CoordinateX();
+		carPosition.second = car.get_CoordinateY() + 1;
+		leaf.first.set_CarPosition(carPosition);
+		leaf.second = heuristic -> calculateDistance(newCar, finishLine);
 		tree_.push_back(leaf);
 	}
-	if ((map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() - 1] == 0) && ((car.get_CoordinateY() + 1) != 0)) {
+	/*if ((map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() - 1] == 0) && ((car.get_CoordinateY() + 1) != 0)) {
 		expanded = true;
 		std::pair<Map, float> leaf;
 		leaf.first = map;
@@ -119,7 +123,11 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction& heuristic
 		leaf.first.changeBox(car.get_CoordinateX(), car.get_CoordinateY() - 1, 5);
 		newCar.set_CoordinateX(car.get_CoordinateX());
 		newCar.set_CoordinateY(car.get_CoordinateY() - 1);
-		leaf.second = heuristic.calculateDistance(newCar, finishLine);
+		std::pair<unsigned, unsigned> carPosition;
+		carPosition.first = car.get_CoordinateX();
+		carPosition.second = car.get_CoordinateY() - 1;
+		leaf.first.set_CarPosition(carPosition);
+		leaf.second = heuristic -> calculateDistance(newCar, finishLine);
 		tree_.push_back(leaf);
 	}
 	if ((map.get_Map()[car.get_CoordinateX() + 1][car.get_CoordinateY()] == 0) && ((car.get_CoordinateX() + 1) != map.get_Columns())) {
@@ -130,7 +138,11 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction& heuristic
 		leaf.first.changeBox(car.get_CoordinateX() + 1, car.get_CoordinateY(), 5);
 		newCar.set_CoordinateX(car.get_CoordinateX() + 1);
 		newCar.set_CoordinateY(car.get_CoordinateY());
-		leaf.second = heuristic.calculateDistance(newCar, finishLine);
+		std::pair<unsigned, unsigned> carPosition;
+		carPosition.first = car.get_CoordinateX() + 1;
+		carPosition.second = car.get_CoordinateY();
+		leaf.first.set_CarPosition(carPosition);
+		leaf.second = heuristic -> calculateDistance(newCar, finishLine);
 		tree_.push_back(leaf);
 	}
 	if ((map.get_Map()[car.get_CoordinateX() - 1][car.get_CoordinateY()] == 0) && ((car.get_CoordinateX() + 1) != 0)) {
@@ -141,8 +153,29 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction& heuristic
 		leaf.first.changeBox(car.get_CoordinateX() - 1, car.get_CoordinateY(), 5);
 		newCar.set_CoordinateX(car.get_CoordinateX() - 1);
 		newCar.set_CoordinateY(car.get_CoordinateY());
-		leaf.second = heuristic.calculateDistance(newCar, finishLine);
+		std::pair<unsigned, unsigned> carPosition;
+		carPosition.first = car.get_CoordinateX() - 1;
+		carPosition.second = car.get_CoordinateY();
+		leaf.first.set_CarPosition(carPosition);
+		leaf.second = heuristic -> calculateDistance(newCar, finishLine);
 		tree_.push_back(leaf);
-	}
+	}*/
 	return expanded;
+}
+
+/**
+ * @brief      Finds the node with lowest distance to finishLine f(n).
+ *
+ * @return     The position in the vector of the node.
+ */
+int SearchAlgorithm::lowestDistance (void) {
+	int pos = 0;
+	float distance = MAXDISTANCE;
+	for (int i = 0; i < tree_.size(); i++) {
+		if (tree_[i].second < distance) {
+			distance = tree_[i].second;
+			pos = i;
+		}
+	}
+	return pos;
 }

@@ -40,5 +40,5 @@ class GreedyAlgorithm : public SearchAlgorithm {
         virtual ~GreedyAlgorithm (void);
 
         // Function
-        void runAlgorithm (Map map, Car car, HeuristicFunction& heuristic, std::pair<unsigned, unsigned>& finishLine);
+        void runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine);
 };

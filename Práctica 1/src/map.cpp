@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 16:43:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 16:53:26
+* @Last Modified time: 2020-11-05 22:32:15
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -83,6 +83,15 @@ std::vector<std::vector<unsigned>> Map::get_Map (void) const {
 }
 
 /**
+ * @brief      Gets the car position.
+ *
+ * @return     The car position.
+ */
+std::pair<unsigned, unsigned>  Map::get_CarPosition (void) const {
+	return carPosition_;
+}
+
+/**
  * @brief      Sets the rows.
  *
  * @param[in]  x     The new value
@@ -110,6 +119,15 @@ void Map::set_Map (std::vector<std::vector<unsigned>> map) {
 }
 
 /**
+ * @brief      Sets the car position.
+ *
+ * @param[in]  position  The position
+ */
+void Map::set_CarPosition (std::pair<unsigned, unsigned> position) {
+	carPosition_ = position;
+}
+
+/**
  * @brief      Assignment operator.
  *
  * @param[in]  newMap  The new map
@@ -117,9 +135,9 @@ void Map::set_Map (std::vector<std::vector<unsigned>> map) {
  * @return     The result of the assignment
  */
 Map& Map::operator= (const Map& newMap) {
-	set_Rows(newMap.get_Rows());
-	set_Columns(newMap.get_Columns());
-	set_Map(newMap.get_Map());
+	this->set_Rows(newMap.get_Rows());
+	this->set_Columns(newMap.get_Columns());
+	this->set_Map(newMap.get_Map());
 	return *this;
 }
 

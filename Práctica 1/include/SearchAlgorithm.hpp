@@ -54,6 +54,8 @@ class SearchAlgorithm {
         void set_Solution (std::pair<Map, float> newSolution);
 
         // Functions
-        virtual void runAlgorithm (Map map, Car car, HeuristicFunction& heuristic, std::pair<unsigned, unsigned>& finishLine);
-        bool expandLeaf (Map map, Car car, HeuristicFunction& heuristic, std::pair<unsigned, unsigned>& finishLine);
+        virtual void runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine);
+        bool expandLeaf (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine);
+        int lowestDistance (void);
 };
+

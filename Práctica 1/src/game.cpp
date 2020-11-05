@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 14:45:03
+* @Last Modified time: 2020-11-05 22:36:16
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -36,6 +36,7 @@
  */
 Game::Game (void) {
 	heuristicFunction_ = new ManhattanDistance();
+	algorithm_ = new GreedyAlgorithm();
 }
 
 /**
@@ -117,6 +118,24 @@ Map Game::get_Map (void) const {
 }
 
 /**
+ * @brief      Gets the heuristic function.
+ *
+ * @return     The heuristic function.
+ */
+HeuristicFunction* Game::get_HeuristicFunction (void) const {
+	return heuristicFunction_;
+}
+
+/**
+ * @brief      Gets the search algorithm.
+ *
+ * @return     The search algorithm.
+ */
+SearchAlgorithm* Game::get_SearchAlgorithm (void) const {
+	return algorithm_;
+}
+
+/**
  * @brief      Sets the m.
  *
  * @param[in]  m     The new value
@@ -180,6 +199,24 @@ void Game::set_Map (Map map) {
 }
 
 /**
+ * @brief      Gets the heuristic function.
+ *
+ * @param      newHeuristicFunction  The new heuristic function
+ */
+void Game::get_HeuristicFunction (HeuristicFunction* newHeuristicFunction) {
+	heuristicFunction_ = newHeuristicFunction;
+}
+
+/**
+ * @brief      Gets the search algorithm.
+ *
+ * @param      newSearchAlgorithm  The new search algorithm
+ */
+void Game::get_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm) {
+	algorithm_ = newSearchAlgorithm;
+}
+
+/**
  * @brief      Selects the heuristic function that is going to use the program
  *
  * @param[in]  selector  The selector
@@ -189,11 +226,11 @@ void Game::selectHeuristicFunction (int selector) {
 		case 0:
 			break;
 		case 1:
-			heuristicFunction_ = new ManhattanDistance();
+			heuristicFunction_ = new EuclideanDistance();
 			break;
 
 		case 2: 
-			heuristicFunction_ = new EuclideanDistance();
+			heuristicFunction_ = new ManhattanDistance();
 			break;
 
 		default:
@@ -283,7 +320,7 @@ void Game::generateManualObstacles (unsigned ammount) {
  * @param[in]  ammount  The ammount
  */
 void Game::generateRandomObstacles (unsigned ammount) {
-	assert((get_Obstacles() +ammount) <= (0.95 * (map_.get_Rows() - 2) * (map_.get_Columns() - 2)));
+	assert((get_Obstacles() +ammount) <= ((map_.get_Rows() - 2) * (map_.get_Columns() - 2)));
 	int counter = 0;
 	bool validObstacle = false;
 	while (counter < ammount) {
@@ -369,6 +406,18 @@ void Game::dataSaver (std::string& data, int mode) {
 		}
 		counter++;
 	}
+}
+
+void Game::findSolution (void) {
+	car_.set_CoordinateX(startPoint_.first);
+	car_.set_CoordinateY(startPoint_.second);
+	algorithm_ -> runAlgorithm(get_Map(), get_Car(), get_HeuristicFunction(), finishLine_);
+	if (algorithm_ -> get_Solution().second == MAXDISTANCE) {
+		std::cout << std::endl << "There's no possible way for the car to go to the finish line" << std::endl;
+	}
+	else {
+		map_ = algorithm_ -> get_Solution().first;
+	}	
 }
 
 /**
