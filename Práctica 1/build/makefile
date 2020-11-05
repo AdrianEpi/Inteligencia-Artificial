@@ -1,7 +1,7 @@
 # Variables
 TIME =$(LOGPATH)$(shell date)
 # Variable objetos
-OBJECTS = main.o sensor.o map.o car.o game.o Chrono.o Colorize.o
+OBJECTS = main.o sensor.o map.o car.o game.o Chrono.o Colorize.o HeuristicFunction.o EuclideanDistance.o ManhattanDistance.o
 # Flags de compilacion
 CFLAGS = -c -std=c++17
 
@@ -30,6 +30,15 @@ Chrono.o: ../src/Chrono.cpp ../include/Chrono.hpp
 
 Colorize.o: ../src/Colorize.cpp ../include/Colorize.hpp
 	g++ $(CFLAGS) ../src/Colorize.cpp
+
+HeuristicFunction.o: ../src/HeuristicFunction.cpp ../include/HeuristicFunction.hpp
+	g++ $(CFLAGS) ../src/HeuristicFunction.cpp
+
+EuclideanDistance.o: ../src/EuclideanDistance.cpp ../include/EuclideanDistance.hpp
+	g++ $(CFLAGS) ../src/EuclideanDistance.cpp
+
+ManhattanDistance.o: ../src/ManhattanDistance.cpp ../include/ManhattanDistance.hpp
+	g++ $(CFLAGS) ../src/ManhattanDistance.cpp
 
 
 
