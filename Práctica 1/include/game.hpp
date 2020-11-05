@@ -22,6 +22,8 @@
 #pragma once 
 #include "../include/map.hpp"
 #include "../include/car.hpp"
+#include "../include/ManhattanDistance.hpp"
+#include "../include/EuclideanDistance.hpp"
 
 /*------------------------------------------------*/
 /*------------------  LIBRARIES  -----------------*/
@@ -51,6 +53,7 @@ class Game {
         std::pair<unsigned, unsigned> finishLine_;  // The coordinates of the finish line
         Car car_;                                   // The car object
         Map map_;                                   // The game map
+        HeuristicFunction* heuristicFunction_;      // The heuristic function that is going to be used
 
     public:
         //Builders & Destroyer
@@ -79,6 +82,7 @@ class Game {
         Game& operator= (const Game& newGame);
 
         // Fuctions
+        void selectHeuristicFunction (int selector);
         void manualData (void);
         void generateManualObstacles (unsigned ammount);
         void generateRandomObstacles (unsigned ammount);

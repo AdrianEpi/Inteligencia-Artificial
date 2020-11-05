@@ -25,16 +25,18 @@
 /*------------------------------------------------*/
 /*------------------  LIBRARIES  -----------------*/
 
-#include <cassert>
-#include <iostream>
+#include <cmath>
 
 /*------------------------------------------------*/
 
+/**
+ * @brief      This class describes the euclidean distance.
+ */
 class EuclideanDistance : public HeuristicFunction {
 
     public:
         EuclideanDistance (void);
         virtual ~EuclideanDistance (void);
 
-        unsigned calculateDistance (Map& map);
+        float calculateDistance (Car& car, std::pair<unsigned, unsigned> finishLine);
 };

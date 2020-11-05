@@ -20,7 +20,8 @@
 /*------------------  FUNCTIONS  -----------------*/
 
 #pragma once 
-#include "map.hpp"
+#include "car.hpp"
+#define MAXDISTANCE 999999999
 
 /*------------------------------------------------*/
 /*------------------  LIBRARIES  -----------------*/
@@ -30,11 +31,14 @@
 
 /*------------------------------------------------*/
 
+/**
+ * @brief      This class describes an heuristic function.
+ */
 class HeuristicFunction {
     
     private:
         // Attributes
-        unsigned distance_;
+        float distance_;
 
     public:
         // Builder & Destroyer
@@ -42,10 +46,10 @@ class HeuristicFunction {
         virtual ~HeuristicFunction (void);
 
         // Getter & Setter
-        unsigned get_Distance (void) const;
+        float get_Distance (void) const;
 
-        void set_Distance (unsigned newDistance);
+        void set_Distance (float newDistance);
 
         // Functions
-        virtual unsigned calculateDistance (Map& map);
+        virtual float calculateDistance (Car& car, std::pair<unsigned, unsigned> finishLine);
 };

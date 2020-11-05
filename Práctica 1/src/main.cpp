@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 11:04:26
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-30 10:54:35
+* @Last Modified time: 2020-11-05 14:55:54
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -51,7 +51,7 @@ void menu (Game& myGame) {
     unsigned selection = 0;
     bool generatedGame = false;
     while (!finishGame) {
-        std::cout << std::endl << "\t=====Welcome to the \"Minimum Route Calculator For A Autonomous Car\" simulator. =====" << std::endl;
+        std::cout << std::endl << "\t=====   Welcome to the \"Minimum Route Calculator For An Autonomous Car\" simulator.   =====" << std::endl;
         std::cout << std::endl << "\t 1. Introduce the game specs by keyboard.";
         std::cout << std::endl << "\t 2. Load a data file.";
         std::cout << std::endl << "\t 3. Generate random obstacles";
@@ -61,6 +61,7 @@ void menu (Game& myGame) {
         std::cout << std::endl << "\t 7. Save data to file for using it again";
         std::cout << std::endl << "\t 8. Generate Solution";
         std::cout << std::endl << "\t 9. Show trace";
+        std::cout << std::endl << "\t 10. Choose heuristic function";
         std::cout << std::endl << "\t 0. Exit" << std::endl;
         std::cin >> selection;
         finishGame = selector(myGame, selection, generatedGame);
@@ -128,6 +129,15 @@ bool selector (Game& myGame, unsigned sentinel, bool& generatedGame) {
     }
     else if (sentinel == 9 && generatedGame) {
         ////////// NOT IMPLEMENTED YET
+        return false;
+    }
+    else if (sentinel == 10 && generatedGame) {
+        std::cout << std::endl << "Please select the heuristic function you want to run";
+        std::cout << std::endl << "1. Euclidean distance";
+        std::cout << std::endl << "2. Manhattan distance";
+        std::cout << std::endl << "0. Cancel\n";
+        std::cin >> sentinel;
+        myGame.selectHeuristicFunction(sentinel);
         return false;
     }
     else {

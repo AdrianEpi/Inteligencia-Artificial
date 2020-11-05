@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-30 10:52:57
+* @Last Modified time: 2020-11-05 14:45:03
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -35,6 +35,7 @@
  * @brief      Constructs a new instance.
  */
 Game::Game (void) {
+	heuristicFunction_ = new ManhattanDistance();
 }
 
 /**
@@ -176,6 +177,30 @@ void Game::set_Car (Car car) {
  */
 void Game::set_Map (Map map) {
 	map_ = map;
+}
+
+/**
+ * @brief      Selects the heuristic function that is going to use the program
+ *
+ * @param[in]  selector  The selector
+ */
+void Game::selectHeuristicFunction (int selector) {
+	switch(selector) {
+		case 0:
+			break;
+		case 1:
+			heuristicFunction_ = new ManhattanDistance();
+			break;
+
+		case 2: 
+			heuristicFunction_ = new EuclideanDistance();
+			break;
+
+		default:
+			std::cout << std::endl << "Sorry, that heuristic function does not exist." << std::endl;
+			exit(1);
+			break;
+	}
 }
 
 /**

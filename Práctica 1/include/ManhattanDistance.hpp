@@ -25,16 +25,18 @@
 /*------------------------------------------------*/
 /*------------------  LIBRARIES  -----------------*/
 
-#include <cassert>
-#include <iostream>
+#include <cmath>
 
 /*------------------------------------------------*/
 
+/**
+ * @brief      This class describes the manhattan distance.
+ */
 class ManhattanDistance : public HeuristicFunction {
 
     public:
         ManhattanDistance (void);
         virtual ~ManhattanDistance (void);
 
-        unsigned calculateDistance (Map& map);
+        float calculateDistance (Car& car, std::pair<unsigned, unsigned> finishLine);
 };
