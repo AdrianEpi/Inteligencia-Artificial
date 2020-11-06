@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 22:33:52
+* @Last Modified time: 2020-11-06 09:42:34
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -59,33 +59,23 @@ void GreedyAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heurist
     tree_.push_back(root);
     bool finished = false;    
     while (!finished) {
-        std::cout << std::endl << "entra" << std::endl;
-        int nodeToExpand = lowestDistance();
-        std::cout << std::endl << "LLEGA 1" << std::endl;
-        if (tree_[nodeToExpand].second == MAXDISTANCE) {
-            break;
-        }
+        int nodeToExpand = lowestDistance();        
         map = tree_[nodeToExpand].first;
-        std::cout << std::endl << "LLEGA2" << std::endl;
-        car.set_CoordinateX(map.get_CarPosition().first);
-        car.set_CoordinateY(map.get_CarPosition().second);
-        std::cout << std::endl << "LLEGA3" << std::endl;
+        car.set_CoordinateX(tree_[nodeToExpand].first.get_CarPosition().first);
+        car.set_CoordinateY(tree_[nodeToExpand].first.get_CarPosition().second);
         if ((car.get_CoordinateX() == finishLine.first) && (car.get_CoordinateY() == finishLine.second)) {
-            std::cout << std::endl << "CON SOLUCION" << std::endl;
             solution_ = tree_[nodeToExpand];
             finished = true;
         }
-        else {
-            std::cout << std::endl << "LLEGA4" << std::endl;
-            expandLeaf(map, car, heuristic, finishLine);
-            std::cout << std::endl << "LLEGA5" << std::endl;
-            tree_[nodeToExpand].second = MAXDISTANCE; 
-            std::cout << std::endl << "LLEGA6" << std::endl;
+        else if (tree_[nodeToExpand].second == MAXDISTANCE) {
+            break;
         }
-        std::cout << std::endl << "LLEGA" << std::endl;
+        else {
+            expandLeaf(tree_[nodeToExpand].first, car, heuristic, finishLine);
+            tree_[nodeToExpand].second = MAXDISTANCE; 
+        }
     }
     if (finished == false) {
-        std::cout << std::endl << "SINSOLUTION" << std::endl;
         solution_.second = MAXDISTANCE;
     }
 }

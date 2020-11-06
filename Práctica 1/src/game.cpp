@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 22:36:16
+* @Last Modified time: 2020-11-06 09:40:34
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -37,6 +37,7 @@
 Game::Game (void) {
 	heuristicFunction_ = new ManhattanDistance();
 	algorithm_ = new GreedyAlgorithm();
+	set_Obstacles(0);
 }
 
 /**
@@ -408,15 +409,20 @@ void Game::dataSaver (std::string& data, int mode) {
 	}
 }
 
+/**
+ * @brief      Finds the solution running the selected algorithm.
+ */
 void Game::findSolution (void) {
 	car_.set_CoordinateX(startPoint_.first);
 	car_.set_CoordinateY(startPoint_.second);
+	map_.set_CarPosition(startPoint_);
 	algorithm_ -> runAlgorithm(get_Map(), get_Car(), get_HeuristicFunction(), finishLine_);
 	if (algorithm_ -> get_Solution().second == MAXDISTANCE) {
-		std::cout << std::endl << "There's no possible way for the car to go to the finish line" << std::endl;
+		std::cout << std::endl << "There's no possible way for the car to reach the finish line" << std::endl;
 	}
 	else {
 		map_ = algorithm_ -> get_Solution().first;
+		map_.changeBox(startPoint_.first, startPoint_.second, 3);
 	}	
 }
 

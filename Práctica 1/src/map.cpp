@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 16:43:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 22:32:15
+* @Last Modified time: 2020-11-06 08:57:50
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -138,6 +138,7 @@ Map& Map::operator= (const Map& newMap) {
 	this->set_Rows(newMap.get_Rows());
 	this->set_Columns(newMap.get_Columns());
 	this->set_Map(newMap.get_Map());
+	this->set_CarPosition(newMap.get_CarPosition());
 	return *this;
 }
 
