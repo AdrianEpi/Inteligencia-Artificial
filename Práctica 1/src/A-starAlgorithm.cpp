@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-06 17:18:12
+* @Last Modified time: 2020-11-06 17:22:58
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -63,7 +63,6 @@ bool AStarAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristi
     root.first = map;
     root.second = heuristic -> calculateDistance(car, finishLine);
     tree_.push_back(root);
-
     bool finished = false;    
     while (!finished) {
         int nodeToExpand = lowestDistance();        

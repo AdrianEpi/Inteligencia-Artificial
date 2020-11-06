@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-06 17:16:35
+* @Last Modified time: 2020-11-06 17:22:23
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -36,7 +36,7 @@
  */
 Game::Game (void) {
 	heuristicFunction_ = new ManhattanDistance();
-	algorithm_ = new GreedyAlgorithm();
+	algorithm_ = new AStarAlgorithm();
 	set_Obstacles(0);
 }
 
