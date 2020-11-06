@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-06 09:41:38
+* @Last Modified time: 2020-11-06 17:13:54
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -53,12 +53,21 @@ std::vector<std::pair<Map, float>> SearchAlgorithm::get_Tree (void) const {
 }
 
 /**
- * @brief      Gets the solution.
+ * @brief      Gets the solution position.
  *
- * @return     The solution.
+ * @return     The solution position.
  */
-std::pair<Map, float> SearchAlgorithm::get_Solution (void) const {
-	return solution_;
+unsigned SearchAlgorithm::get_SolutionPosition (void) const {
+	return solutionPosition_;
+}
+
+/**
+ * @brief      Gets the parent branch.
+ *
+ * @return     The parent branch.
+ */
+std::vector<std::pair<unsigned, bool>> SearchAlgorithm::get_ParentBranch (void) const {
+	return parentBranch_;
 }
 
 /**
@@ -71,22 +80,16 @@ void SearchAlgorithm::set_Tree (std::vector<std::pair<Map, float>> newTree) {
 }
 
 /**
- * @brief      Sets the solution.
- *
- * @param[in]  newSolution  The new solution
- */
-void SearchAlgorithm::set_Solution (std::pair<Map, float> newSolution) {
-	solution_ = newSolution;
-}
-
-/**
  * @brief      Runs the search algorithm
  *
- * @param[in]  map        The map
- * @param[in]  car        The car
- * @param      heuristic  The heuristic
+ * @param[in]  map         The map
+ * @param[in]  car         The car
+ * @param      heuristic   The heuristic
+ * @param      finishLine  The finish line
+ *
+ * @return     True if there's solution, false otherwise
  */
-void SearchAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine) {
+bool SearchAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine) {
 }
 
 /**
@@ -97,10 +100,12 @@ void SearchAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heurist
  *
  * @return     True if it can be expanded, false otherwise
  */
-bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine) {
+bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine, int& parent, bool isAStar) {
 	bool expanded = false;
 	Car newCar;
-	if (((map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() + 1] == 0) || (map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() + 1] == 4)) && ((car.get_CoordinateY() + 1) != map.get_Rows())) {
+	std::pair<unsigned, unsigned> startPoint = tree_[0].first.get_CarPosition();
+	car.updateSensor(map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() - 1], map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() + 1], map.get_Map()[car.get_CoordinateX() + 1][car.get_CoordinateY()], map.get_Map()[car.get_CoordinateX() - 1][car.get_CoordinateY()]);
+	if (((car.get_Sensor().get_South() == 0) || (car.get_Sensor().get_South() == 4)) && ((car.get_CoordinateY() + 1) != map.get_Rows())) {
 		expanded = true;
 		std::pair<Map, float> leaf;
 		leaf.first = map;
@@ -111,10 +116,23 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic
 		carPosition.first = car.get_CoordinateX();
 		carPosition.second = car.get_CoordinateY() + 1;
 		leaf.first.set_CarPosition(carPosition);
-		leaf.second = heuristic -> calculateDistance(newCar, finishLine);
+		if (isAStar) {
+			std::cout << std::endl << "ENTER" << tree_[parentBranch_[parent].first].first.get_CarPosition().first << tree_[parentBranch_[parent].first].first.get_CarPosition().second << std::endl;
+			Car tmpCar(tree_[parentBranch_[parent].first].first.get_CarPosition().first, tree_[parentBranch_[parent].first].first.get_CarPosition().second);
+			tmpCar.printCarPosition(std::cout);
+			std::cout << std::endl << "DISTANCES: "<<heuristic -> calculateDistance(newCar, finishLine) << ", " << tree_[parentBranch_[parent].first].second << ", " << heuristic -> calculateDistance(tmpCar, finishLine) << std::endl;
+			leaf.second = (heuristic -> calculateDistance(newCar, finishLine) + accumulatedDistance_[parent]);
+		}
+		else {
+			leaf.second = heuristic -> calculateDistance(newCar, finishLine);
+		}
 		tree_.push_back(leaf);
+		accumulatedDistance_.push_back(accumulatedDistance_[parent] + 1);
+		std::pair<unsigned, bool> tmp;
+		tmp.first = parent;
+		parentBranch_.push_back(tmp);
 	}
-	if (((map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() - 1] == 0) || (map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() - 1] == 4)) && ((car.get_CoordinateY() + 1) != 0)) {
+	if (((car.get_Sensor().get_North() == 0) || (car.get_Sensor().get_North() == 4)) && ((car.get_CoordinateY() + 1) != 0)) {
 		expanded = true;
 		std::pair<Map, float> leaf;
 		leaf.first = map;
@@ -125,10 +143,23 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic
 		carPosition.first = car.get_CoordinateX();
 		carPosition.second = car.get_CoordinateY() - 1;
 		leaf.first.set_CarPosition(carPosition);
-		leaf.second = heuristic -> calculateDistance(newCar, finishLine);
+		if (isAStar) {
+			std::cout << std::endl << "ENTER" << tree_[parentBranch_[parent].first].first.get_CarPosition().first << tree_[parentBranch_[parent].first].first.get_CarPosition().second << std::endl;
+			Car tmpCar(tree_[parentBranch_[parent].first].first.get_CarPosition().first, tree_[parentBranch_[parent].first].first.get_CarPosition().second);
+			tmpCar.printCarPosition(std::cout);
+			std::cout << std::endl << "DISTANCES: "<<heuristic -> calculateDistance(newCar, finishLine) << ", " << tree_[parentBranch_[parent].first].second << ", " << heuristic -> calculateDistance(tmpCar, finishLine) << std::endl;
+			leaf.second = (heuristic -> calculateDistance(newCar, finishLine) + accumulatedDistance_[parent]);
+		}
+		else {
+			leaf.second = heuristic -> calculateDistance(newCar, finishLine);
+		}
 		tree_.push_back(leaf);
+		accumulatedDistance_.push_back(accumulatedDistance_[parent] + 1);
+		std::pair<unsigned, bool> tmp;
+		tmp.first = parent;
+		parentBranch_.push_back(tmp);
 	}
-	if (((map.get_Map()[car.get_CoordinateX() + 1][car.get_CoordinateY()] == 0) || (map.get_Map()[car.get_CoordinateX() + 1][car.get_CoordinateY()] == 4)) && ((car.get_CoordinateX() + 1) != map.get_Columns())) {
+	if (((car.get_Sensor().get_East() == 0) || (car.get_Sensor().get_East() == 4)) && ((car.get_CoordinateX() + 1) != map.get_Columns())) {
 		expanded = true;
 		std::pair<Map, float> leaf;
 		leaf.first = map;
@@ -139,10 +170,23 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic
 		carPosition.first = car.get_CoordinateX() + 1;
 		carPosition.second = car.get_CoordinateY();
 		leaf.first.set_CarPosition(carPosition);
-		leaf.second = heuristic -> calculateDistance(newCar, finishLine);
+		if (isAStar) {
+			std::cout << std::endl << "ENTER" << tree_[parentBranch_[parent].first].first.get_CarPosition().first << tree_[parentBranch_[parent].first].first.get_CarPosition().second << std::endl;
+			Car tmpCar(tree_[parentBranch_[parent].first].first.get_CarPosition().first, tree_[parentBranch_[parent].first].first.get_CarPosition().second);
+			tmpCar.printCarPosition(std::cout);
+			std::cout << std::endl << "DISTANCES: "<<heuristic -> calculateDistance(newCar, finishLine) << ", " << tree_[parentBranch_[parent].first].second << ", " << heuristic -> calculateDistance(tmpCar, finishLine) << std::endl;
+			leaf.second = (heuristic -> calculateDistance(newCar, finishLine) + accumulatedDistance_[parent]);
+		}
+		else {
+			leaf.second = heuristic -> calculateDistance(newCar, finishLine);
+		}
 		tree_.push_back(leaf);
+		accumulatedDistance_.push_back(accumulatedDistance_[parent] + 1);
+		std::pair<unsigned, bool> tmp;
+		tmp.first = parent;
+		parentBranch_.push_back(tmp);
 	}
-	if (((map.get_Map()[car.get_CoordinateX() - 1][car.get_CoordinateY()] == 0) || (map.get_Map()[car.get_CoordinateX() - 1][car.get_CoordinateY()] == 4)) && ((car.get_CoordinateX() + 1) != 0)) {
+	if (((car.get_Sensor().get_West() == 0) || (car.get_Sensor().get_West() == 4)) && ((car.get_CoordinateX() + 1) != 0)) {
 		expanded = true;
 		std::pair<Map, float> leaf;
 		leaf.first = map;
@@ -153,8 +197,21 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic
 		carPosition.first = car.get_CoordinateX() - 1;
 		carPosition.second = car.get_CoordinateY();
 		leaf.first.set_CarPosition(carPosition);
-		leaf.second = heuristic -> calculateDistance(newCar, finishLine);
+		if (isAStar) {
+			std::cout << std::endl << "ENTER" << tree_[parentBranch_[parent].first].first.get_CarPosition().first << tree_[parentBranch_[parent].first].first.get_CarPosition().second << std::endl;
+			Car tmpCar(tree_[parentBranch_[parent].first].first.get_CarPosition().first, tree_[parentBranch_[parent].first].first.get_CarPosition().second);
+			tmpCar.printCarPosition(std::cout);
+			std::cout << std::endl << "DISTANCES: "<<heuristic -> calculateDistance(newCar, finishLine) << ", " << tree_[parentBranch_[parent].first].second << ", " << heuristic -> calculateDistance(tmpCar, finishLine) << std::endl;
+			leaf.second = (heuristic -> calculateDistance(newCar, finishLine) + accumulatedDistance_[parent]);
+		}
+		else {
+			leaf.second = heuristic -> calculateDistance(newCar, finishLine);
+		}
 		tree_.push_back(leaf);
+		accumulatedDistance_.push_back(accumulatedDistance_[parent] + 1);
+		std::pair<unsigned, bool> tmp;
+		tmp.first = parent;
+		parentBranch_.push_back(tmp);
 	}
 	return expanded;
 }
@@ -168,7 +225,7 @@ int SearchAlgorithm::lowestDistance (void) {
 	int pos = 0;
 	float distance = MAXDISTANCE;
 	for (int i = 0; i < tree_.size(); i++) {
-		if (tree_[i].second < distance) {
+		if (tree_[i].second < distance && parentBranch_[i].second == false) {
 			distance = tree_[i].second;
 			pos = i;
 		}

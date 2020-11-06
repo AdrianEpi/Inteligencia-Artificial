@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-06 09:42:34
+* @Last Modified time: 2020-11-06 17:18:21
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -35,6 +35,11 @@
  * @brief      Constructs a new instance.
  */
 GreedyAlgorithm::GreedyAlgorithm (void) {
+    std::pair<unsigned, bool> rootParent;
+    rootParent.first = 0;
+    rootParent.second = false;
+    parentBranch_.push_back(rootParent);
+    accumulatedDistance_.push_back(0);
 }
 
 /**
@@ -50,8 +55,10 @@ GreedyAlgorithm::~GreedyAlgorithm (void) {
  * @param[in]  car         The car
  * @param      heuristic   The heuristic
  * @param      finishLine  The finish line
+ *
+ * @return     True if there's solution, false otherwise
  */
-void GreedyAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine) {
+bool GreedyAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine) {
     // Generate the root of the tree 
     std::pair<Map, float> root;
     root.first = map;
@@ -64,18 +71,18 @@ void GreedyAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heurist
         car.set_CoordinateX(tree_[nodeToExpand].first.get_CarPosition().first);
         car.set_CoordinateY(tree_[nodeToExpand].first.get_CarPosition().second);
         if ((car.get_CoordinateX() == finishLine.first) && (car.get_CoordinateY() == finishLine.second)) {
-            solution_ = tree_[nodeToExpand];
-            finished = true;
+            solutionPosition_ = nodeToExpand;
+            return true;
         }
         else if (tree_[nodeToExpand].second == MAXDISTANCE) {
             break;
         }
         else {
-            expandLeaf(tree_[nodeToExpand].first, car, heuristic, finishLine);
+            expandLeaf(tree_[nodeToExpand].first, car, heuristic, finishLine, nodeToExpand, false);
             tree_[nodeToExpand].second = MAXDISTANCE; 
         }
     }
     if (finished == false) {
-        solution_.second = MAXDISTANCE;
+        return false;
     }
 }

@@ -38,8 +38,10 @@ class SearchAlgorithm {
 
     protected:
         // Attributes
-        std::vector<std::pair<Map, float>> tree_;   // Vector with the map and the evaluation function in that moment
-        std::pair<Map, float> solution_;            // The solution of the algorithm
+        std::vector<std::pair<Map, float>> tree_;               // Vector with the map and the evaluation function in that moment
+        unsigned solutionPosition_;                             // The position of the solution in vector
+        std::vector<std::pair<unsigned, bool>> parentBranch_;   // It will store on each position the parent branch of that position on the tree vector
+        std::vector<unsigned> accumulatedDistance_;
 
     public:
         // Builder & Destroyer
@@ -48,14 +50,16 @@ class SearchAlgorithm {
 
         // Getters & Setters
         std::vector<std::pair<Map, float>> get_Tree (void) const;
-        std::pair<Map, float> get_Solution (void) const;
+        unsigned get_SolutionPosition (void) const;
+        std::vector<std::pair<unsigned, bool>> get_ParentBranch (void) const;
 
         void set_Tree (std::vector<std::pair<Map, float>> newTree);
-        void set_Solution (std::pair<Map, float> newSolution);
+        void set_SolutionPosition (unsigned newSolutionPosition);
+        void set_ParentBranch (std::vector<std::pair<unsigned, bool>> newParentBranch);
 
         // Functions
-        virtual void runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine);
-        bool expandLeaf (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine);
+        virtual bool runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine);
+        bool expandLeaf (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine, int& parent, bool isAStar);
         int lowestDistance (void);
 };
 

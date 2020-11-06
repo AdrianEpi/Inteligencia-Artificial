@@ -40,5 +40,5 @@ class AStarAlgorithm : public SearchAlgorithm {
         virtual ~AStarAlgorithm (void);
 
         // Function
-        void runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine);
+        bool runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine);
 };
