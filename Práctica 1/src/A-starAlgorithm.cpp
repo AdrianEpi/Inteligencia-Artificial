@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-06 17:22:58
+* @Last Modified time: 2020-11-07 10:26:27
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -39,6 +39,7 @@ AStarAlgorithm::AStarAlgorithm (void) {
     rootParent.second = false;
     parentBranch_.push_back(rootParent);
     accumulatedDistance_.push_back(0);
+    set_SolutionPosition(0);
 }
 
 /**
@@ -63,19 +64,29 @@ bool AStarAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristi
     root.first = map;
     root.second = heuristic -> calculateDistance(car, finishLine);
     tree_.push_back(root);
-    bool finished = false;    
+    bool finished = false;
+    if ((map.get_Map()[finishLine.first + 1][finishLine.second] == 1) && (map.get_Map()[finishLine.first - 1][finishLine.second] == 1) && (map.get_Map()[finishLine.first][finishLine.second + 1] == 1) && (map.get_Map()[finishLine.first][finishLine.second - 1] == 1)) {
+        return false;
+    }
     while (!finished) {
         int nodeToExpand = lowestDistance();        
         map = tree_[nodeToExpand].first;
         car.set_CoordinateX(tree_[nodeToExpand].first.get_CarPosition().first);
         car.set_CoordinateY(tree_[nodeToExpand].first.get_CarPosition().second);
         if ((car.get_CoordinateX() == finishLine.first) && (car.get_CoordinateY() == finishLine.second)) {
-            if (tree_[solutionPosition_].second <= tree_[nodeToExpand].second) {
-                break;
+            if (solutionPosition_ != 0) {
+                if (tree_[solutionPosition_].second < tree_[nodeToExpand].second) {
+                    solutionPosition_ = nodeToExpand;
+                    parentBranch_[nodeToExpand].second = true;
+                }
+                else {
+                    finished = true;
+                }
             }
-            solutionPosition_ = nodeToExpand;
-            parentBranch_[nodeToExpand].second = true;
-
+            else {
+                solutionPosition_ = nodeToExpand;
+                parentBranch_[nodeToExpand].second = true;
+            }
         }
         else if (nodeToExpand == 0 && parentBranch_[nodeToExpand].second == true) {
             break;
@@ -83,7 +94,6 @@ bool AStarAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristi
         else {
             expandLeaf(tree_[nodeToExpand].first, car, heuristic, finishLine, nodeToExpand, true);
             parentBranch_[nodeToExpand].second = true; 
-            tree_[nodeToExpand].first.printMap(std::cout);
         }
     }
     if (finished == false) {

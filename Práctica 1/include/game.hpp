@@ -24,6 +24,7 @@
 #include "../include/car.hpp"
 #include "../include/A-starAlgorithm.hpp"
 #include "../include/GreedyAlgorithm.hpp"
+#include "../include/Chrono.hpp"
 
 /*------------------------------------------------*/
 /*------------------  LIBRARIES  -----------------*/

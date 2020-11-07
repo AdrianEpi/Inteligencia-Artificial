@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 11:04:26
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-06 08:59:09
+* @Last Modified time: 2020-11-07 10:24:39
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -79,6 +79,7 @@ void menu (Game& myGame) {
  * @return     True if program finishes, false otherwise
  */
 bool selector (Game& myGame, unsigned sentinel, bool& generatedGame) {
+    system("clear");
     std::string auxString = "";
     unsigned auxUnsigned;
     if (sentinel == 0) {

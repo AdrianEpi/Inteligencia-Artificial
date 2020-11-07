@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-06 17:26:03
+* @Last Modified time: 2020-11-07 09:54:17
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -77,6 +77,24 @@ std::vector<std::pair<unsigned, bool>> SearchAlgorithm::get_ParentBranch (void) 
  */
 void SearchAlgorithm::set_Tree (std::vector<std::pair<Map, float>> newTree) {
 	tree_ = newTree;
+}
+
+/**
+ * @brief      Sets the solution position.
+ *
+ * @param[in]  newPos  The new position
+ */
+void SearchAlgorithm::set_SolutionPosition (unsigned newPos) {
+	solutionPosition_ = newPos;
+}
+
+/**
+ * @brief      Sets the parent branch.
+ *
+ * @param[in]  newParents  The new parents
+ */
+void SearchAlgorithm::set_ParentBranch (std::vector<std::pair<unsigned, bool>> newParents) {
+	parentBranch_ = newParents;
 }
 
 /**

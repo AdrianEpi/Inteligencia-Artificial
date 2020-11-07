@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-06 17:22:23
+* @Last Modified time: 2020-11-07 10:23:33
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -416,13 +416,18 @@ void Game::findSolution (void) {
 	car_.set_CoordinateX(startPoint_.first);
 	car_.set_CoordinateY(startPoint_.second);
 	map_.set_CarPosition(startPoint_);
+	Chrono temporizer;
+	temporizer.startChrono();
 	if (algorithm_ -> runAlgorithm(get_Map(), get_Car(), get_HeuristicFunction(), finishLine_) == false) {
+		temporizer.stopChrono();
 		std::cout << std::endl << "There's no possible way for the car to reach the finish line" << std::endl;
 	}
 	else {
+		temporizer.stopChrono();
 		map_ = algorithm_ -> get_Tree()[algorithm_ -> get_SolutionPosition()].first;
 		map_.changeBox(startPoint_.first, startPoint_.second, 3);
 	}	
+	std::cout << std::endl << "CPU Time: " << temporizer.get_Seconds(5) << " seconds." << std::endl;
 }
 
 /**
