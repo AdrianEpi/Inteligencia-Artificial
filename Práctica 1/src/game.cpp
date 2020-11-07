@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-07 10:23:33
+* @Last Modified time: 2020-11-07 11:06:20
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -35,8 +35,8 @@
  * @brief      Constructs a new instance.
  */
 Game::Game (void) {
-	heuristicFunction_ = new ManhattanDistance();
-	algorithm_ = new AStarAlgorithm();
+	selectHeuristicFunction(2);
+	selectAlgorithm(1);
 	set_Obstacles(0);
 }
 
@@ -116,6 +116,15 @@ Car Game::get_Car (void) const {
  */
 Map Game::get_Map (void) const {
 	return map_;
+}
+
+/**
+ * @brief      Gets the solution.
+ *
+ * @return     The solution.
+ */
+Map Game::get_Solution (void) const {
+	return solution_;
 }
 
 /**
@@ -200,6 +209,15 @@ void Game::set_Map (Map map) {
 }
 
 /**
+ * @brief      Sets the solution.
+ *
+ * @param[in]  map   The new value
+ */
+void Game::set_Solution (Map map) {
+	solution_ = map;
+}
+
+/**
  * @brief      Gets the heuristic function.
  *
  * @param      newHeuristicFunction  The new heuristic function
@@ -215,6 +233,24 @@ void Game::get_HeuristicFunction (HeuristicFunction* newHeuristicFunction) {
  */
 void Game::get_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm) {
 	algorithm_ = newSearchAlgorithm;
+}
+
+/**
+ * @brief      Assignment operator.
+ *
+ * @param[in]  newGame  The new game
+ *
+ * @return     The result of the assignment
+ */
+Game& Game::operator= (const Game& newGame) {
+	set_M(newGame.get_M());
+	set_N(newGame.get_N());
+	set_Obstacles(newGame.get_Obstacles());
+	set_StartPoint(newGame.get_StartPoint());
+	set_FinishLine(newGame.get_FinishLine());
+	set_Car(newGame.get_Car());
+	set_Map(newGame.get_Map());
+	return *this;
 }
 
 /**
@@ -236,6 +272,32 @@ void Game::selectHeuristicFunction (int selector) {
 
 		default:
 			std::cout << std::endl << "Sorry, that heuristic function does not exist." << std::endl;
+			exit(1);
+			break;
+	}
+}
+
+/**
+ * @brief      Selects the search algorithm that is going to run the program.
+ *
+ * @param[in]  selector  The selector
+ */
+void Game::selectAlgorithm (int selector) {
+	switch(selector) {
+		case 0:
+			break;
+		case 1:
+			algorithmSelector_ = 1;
+			algorithm_ = new AStarAlgorithm();
+			break;
+
+		case 2: 
+			algorithmSelector_ = 2;
+			algorithm_ = new GreedyAlgorithm();
+			break;
+
+		default:
+			std::cout << std::endl << "Sorry, that algorithm does not exist." << std::endl;
 			exit(1);
 			break;
 	}
@@ -270,24 +332,6 @@ void Game::manualData (void) {
 }
 
 /**
- * @brief      Assignment operator.
- *
- * @param[in]  newGame  The new game
- *
- * @return     The result of the assignment
- */
-Game& Game::operator= (const Game& newGame) {
-	set_M(newGame.get_M());
-	set_N(newGame.get_N());
-	set_Obstacles(newGame.get_Obstacles());
-	set_StartPoint(newGame.get_StartPoint());
-	set_FinishLine(newGame.get_FinishLine());
-	set_Car(newGame.get_Car());
-	set_Map(newGame.get_Map());
-	return *this;
-}
-
-/**
  * @brief      Generate obstacles on the given positions
  *
  * @param[in]  ammount  The ammount
@@ -298,9 +342,9 @@ void Game::generateManualObstacles (unsigned ammount) {
 			bool validObstacle = false;
 			while (!validObstacle) {
 				unsigned tmpX, tmpY;
-				std::cout << get_Obstacles() - i << " remaining obstacles, introduce the x coordinate: ";
+				std::cout << ammount - i << " remaining obstacles, introduce the x coordinate: ";
 				std::cin >> tmpX;
-				std::cout << get_Obstacles() - i << " remaining obstacles, introduce the y coordinate: ";
+				std::cout << ammount - i << " remaining obstacles, introduce the y coordinate: ";
 				std::cin >> tmpY;
 				validObstacle = map_.addObstacle(tmpX, tmpY);
 				if (!validObstacle) {
@@ -413,6 +457,7 @@ void Game::dataSaver (std::string& data, int mode) {
  * @brief      Finds the solution running the selected algorithm.
  */
 void Game::findSolution (void) {
+	selectAlgorithm(algorithmSelector_);
 	car_.set_CoordinateX(startPoint_.first);
 	car_.set_CoordinateY(startPoint_.second);
 	map_.set_CarPosition(startPoint_);
@@ -424,8 +469,8 @@ void Game::findSolution (void) {
 	}
 	else {
 		temporizer.stopChrono();
-		map_ = algorithm_ -> get_Tree()[algorithm_ -> get_SolutionPosition()].first;
-		map_.changeBox(startPoint_.first, startPoint_.second, 3);
+		solution_ = algorithm_ -> get_Tree()[algorithm_ -> get_SolutionPosition()].first;
+		solution_.changeBox(startPoint_.first, startPoint_.second, 3);
 	}	
 	std::cout << std::endl << "CPU Time: " << temporizer.get_Seconds(5) << " seconds." << std::endl;
 }

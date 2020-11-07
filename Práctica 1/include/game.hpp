@@ -54,8 +54,10 @@ class Game {
         std::pair<unsigned, unsigned> finishLine_;  // The coordinates of the finish line
         Car car_;                                   // The car object
         Map map_;                                   // The game map
+        Map solution_;                              // The solution    
         HeuristicFunction* heuristicFunction_;      // The heuristic function that is going to be used
         SearchAlgorithm* algorithm_;                // The algorithm thats going to follow the car
+        unsigned algorithmSelector_;                // The selected algorithm for being able to reset it
 
     public:
         //Builders & Destroyer
@@ -71,6 +73,7 @@ class Game {
         std::pair<unsigned, unsigned> get_FinishLine (void) const;
         Car get_Car (void) const;
         Map get_Map (void) const;
+        Map get_Solution (void) const;
         HeuristicFunction* get_HeuristicFunction (void) const;
         SearchAlgorithm* get_SearchAlgorithm (void) const;
 
@@ -81,6 +84,7 @@ class Game {
         void set_FinishLine (std::pair<unsigned, unsigned> finishLine);
         void set_Car (Car car);
         void set_Map (Map map);
+        void set_Solution (Map map);
         void get_HeuristicFunction (HeuristicFunction* newHeuristicFunction);
         void get_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm);
 
@@ -89,6 +93,7 @@ class Game {
 
         // Fuctions
         void selectHeuristicFunction (int selector);
+        void selectAlgorithm (int selector);
         void manualData (void);
         void generateManualObstacles (unsigned ammount);
         void generateRandomObstacles (unsigned ammount);
