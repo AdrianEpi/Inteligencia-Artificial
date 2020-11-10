@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 16:43:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-10 07:29:01
+* @Last Modified time: 2020-11-10 08:12:46
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -309,7 +309,7 @@ std::ostream& Map::saveMap (std::ostream& os) const {
 					break;
 
 				case 1:
-					os << "#";
+					os << ".";
 					break;
 
 				case 2:
