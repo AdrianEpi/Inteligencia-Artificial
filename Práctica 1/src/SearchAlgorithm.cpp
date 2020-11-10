@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-07 10:56:48
+* @Last Modified time: 2020-11-10 07:12:45
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -122,12 +122,13 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic
 	bool expanded = false;
 	Car newCar;
 	std::pair<unsigned, unsigned> startPoint = tree_[0].first.get_CarPosition();
-	car.updateSensor(map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() - 1], map.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() + 1], map.get_Map()[car.get_CoordinateX() + 1][car.get_CoordinateY()], map.get_Map()[car.get_CoordinateX() - 1][car.get_CoordinateY()]);
+	car.updateSensor(tree_[0].first.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() - 1], tree_[0].first.get_Map()[car.get_CoordinateX()][car.get_CoordinateY() + 1], tree_[0].first.get_Map()[car.get_CoordinateX() + 1][car.get_CoordinateY()], tree_[0].first.get_Map()[car.get_CoordinateX() - 1][car.get_CoordinateY()]);
 	if (((car.get_Sensor().get_South() == 0) || (car.get_Sensor().get_South() == 4)) && ((car.get_CoordinateY() + 1) != map.get_Rows())) {
 		expanded = true;
 		std::pair<Map, float> leaf;
 		leaf.first = map;
 		leaf.first.changeBox(car.get_CoordinateX(), car.get_CoordinateY(), 2);
+		tree_[0].first.changeBox(car.get_CoordinateX(), car.get_CoordinateY(), 2);
 		newCar.set_CoordinateX(car.get_CoordinateX());
 		newCar.set_CoordinateY(car.get_CoordinateY() + 1);
 		std::pair<unsigned, unsigned> carPosition;
@@ -151,6 +152,7 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic
 		std::pair<Map, float> leaf;
 		leaf.first = map;
 		leaf.first.changeBox(car.get_CoordinateX(), car.get_CoordinateY(), 2);
+		tree_[0].first.changeBox(car.get_CoordinateX(), car.get_CoordinateY(), 2);
 		newCar.set_CoordinateX(car.get_CoordinateX());
 		newCar.set_CoordinateY(car.get_CoordinateY() - 1);
 		std::pair<unsigned, unsigned> carPosition;
@@ -174,6 +176,7 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic
 		std::pair<Map, float> leaf;
 		leaf.first = map;
 		leaf.first.changeBox(car.get_CoordinateX(), car.get_CoordinateY(), 2);
+		tree_[0].first.changeBox(car.get_CoordinateX(), car.get_CoordinateY(), 2);
 		newCar.set_CoordinateX(car.get_CoordinateX() + 1);
 		newCar.set_CoordinateY(car.get_CoordinateY());
 		std::pair<unsigned, unsigned> carPosition;
@@ -197,6 +200,7 @@ bool SearchAlgorithm::expandLeaf (Map map, Car car, HeuristicFunction* heuristic
 		std::pair<Map, float> leaf;
 		leaf.first = map;
 		leaf.first.changeBox(car.get_CoordinateX(), car.get_CoordinateY(), 2);
+		tree_[0].first.changeBox(car.get_CoordinateX(), car.get_CoordinateY(), 2);
 		newCar.set_CoordinateX(car.get_CoordinateX() - 1);
 		newCar.set_CoordinateY(car.get_CoordinateY());
 		std::pair<unsigned, unsigned> carPosition;
@@ -227,7 +231,7 @@ int SearchAlgorithm::lowestDistance (void) {
 	int pos = 0;
 	float distance = MAXDISTANCE;
 	for (int i = 0; i < tree_.size(); i++) {
-		if (tree_[i].second < distance && parentBranch_[i].second == false) {
+		if (tree_[i].second <= distance && parentBranch_[i].second == false) {
 			distance = tree_[i].second;
 			pos = i;
 		}

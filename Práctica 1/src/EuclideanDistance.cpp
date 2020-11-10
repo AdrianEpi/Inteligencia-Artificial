@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 16:59:28
+* @Last Modified time: 2020-11-10 07:29:17
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -52,5 +52,8 @@ EuclideanDistance::~EuclideanDistance (void) {
  * @return     The distance.
  */
 float EuclideanDistance::calculateDistance (Car& car, std::pair<unsigned, unsigned>& finishLine) {
-    return (sqrt(pow((finishLine.first - car.get_CoordinateX()), 2) + pow((finishLine.second - car.get_CoordinateY()), 2)));
+    int differenceX = car.get_CoordinateX() - finishLine.first;
+    int differenceY = car.get_CoordinateY() - finishLine.second;
+    float result = sqrt(pow(differenceX, 2) + pow(differenceY, 2));
+    return result;
 }

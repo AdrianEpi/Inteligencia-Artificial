@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 11:04:26
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-07 11:13:20
+* @Last Modified time: 2020-11-10 07:46:14
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -105,7 +105,7 @@ bool selector (Game& myGame, unsigned sentinel, bool& generatedGame) {
 		std::cout << std::endl << "Please enter the output file name: ";
 		std::cin >> auxString;
 		std::ofstream os(auxString);
-		myGame.get_Map().saveMap(os);
+		myGame.get_Solution().saveMap(os);
 	}
 	else if (sentinel == 8 && generatedGame) {
 		std::cout << std::endl << "Please enter the output file name: ";
