@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-13 18:32:40
+* @Last Modified time: 2020-11-13 22:31:14
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -63,12 +63,13 @@ bool GreedyAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heurist
     Node root(start, heuristic -> calculateDistance(start, finishLine), 0, 0);
     tree_.push_back(root);
     bool finished = false;
+    if ((map_.get_Map()[finishLine.first + 1][finishLine.second] == 1) && (map_.get_Map()[finishLine.first - 1][finishLine.second] == 1) && (map_.get_Map()[finishLine.first][finishLine.second + 1] == 1) && (map_.get_Map()[finishLine.first][finishLine.second - 1] == 1)) {
+        return false;
+    }
     while (!finished) {
-        
         int nodeToExpand = lowestDistance();  
         car.set_CoordinateX(tree_[nodeToExpand].get_CarPosition().first);
         car.set_CoordinateY(tree_[nodeToExpand].get_CarPosition().second);
-
         if ((car.get_CoordinateX() == finishLine.first) && (car.get_CoordinateY() == finishLine.second)) {
             solutionPosition_ = nodeToExpand;
             return true;
@@ -80,7 +81,5 @@ bool GreedyAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heurist
             expandLeaf(car, heuristic, false, nodeToExpand, finishLine);
         }
     }
-    if (finished == false) {
-        return false;
-    }
+    return false;
 }

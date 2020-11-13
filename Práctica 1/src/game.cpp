@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-13 18:22:17
+* @Last Modified time: 2020-11-13 23:38:04
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -36,7 +36,7 @@
  */
 Game::Game (void) {
 	selectHeuristicFunction(2);
-	selectAlgorithm(2);
+	selectAlgorithm(1);
 	set_Obstacles(0);
 }
 
@@ -217,21 +217,22 @@ void Game::set_Solution (Map map) {
 	solution_ = map;
 }
 
+
 /**
- * @brief      Gets the heuristic function.
+ * @brief      Sets the heuristic function.
  *
  * @param      newHeuristicFunction  The new heuristic function
  */
-void Game::get_HeuristicFunction (HeuristicFunction* newHeuristicFunction) {
+void Game::set_HeuristicFunction (HeuristicFunction* newHeuristicFunction) {
 	heuristicFunction_ = newHeuristicFunction;
 }
 
 /**
- * @brief      Gets the search algorithm.
+ * @brief      Sets the search algorithm.
  *
  * @param      newSearchAlgorithm  The new search algorithm
  */
-void Game::get_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm) {
+void Game::set_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm) {
 	algorithm_ = newSearchAlgorithm;
 }
 
@@ -460,7 +461,6 @@ void Game::findSolution (void) {
 	selectAlgorithm(algorithmSelector_);
 	car_.set_CoordinateX(startPoint_.first);
 	car_.set_CoordinateY(startPoint_.second);
-	map_.set_CarPosition(startPoint_);
 	Chrono temporizer;
 	temporizer.startChrono();
 	if (algorithm_ -> runAlgorithm(get_Map(), get_Car(), get_HeuristicFunction(), finishLine_) == false) {
@@ -469,11 +469,16 @@ void Game::findSolution (void) {
 	}
 	else {
 		temporizer.stopChrono();
-		solution_ = algorithm_ -> get_Map();
-		//solution_ = algorithm_ -> get_Tree()[algorithm_ -> get_SolutionPosition()].first;
+		solution_ = map_;
+		algorithm_ -> saveSolution(solution_);
 		solution_.changeBox(startPoint_.first, startPoint_.second, 3);
 	}	
+	algorithm_ -> generateClosedList();
 	std::cout << std::endl << "CPU Time: " << temporizer.get_Seconds(5) << " seconds." << std::endl;
+	std::cout << std::endl << "Closed List: " << algorithm_ -> get_ClosedList().size() << " nodes." << std::endl;
+	std::cout << std::endl << "Open List: " << algorithm_ -> get_Tree().size() << " nodes." << std::endl;
+	std::cout << std::endl << "Path Length: " << solution_.calculateLength() << " nodes." << std::endl;
+
 }
 
 /**
@@ -501,7 +506,6 @@ void Game::readFile (std::string& inputFile) {
 		// Obstacles ammount
 		getline(file, line);
 		dataSaver(line, 3);
-
 		map_.initialize(get_M(), get_N());
 		map_.addStartPoint(startPoint_.first, startPoint_.second);
 		map_.addFinishLine(finishLine_.first, finishLine_.second);

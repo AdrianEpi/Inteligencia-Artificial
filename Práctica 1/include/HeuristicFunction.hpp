@@ -38,7 +38,7 @@ class HeuristicFunction {
     
     private:
         // Attributes
-        float distance_;
+        float distance_;    // The heuristic distance
 
     public:
         // Builder & Destroyer

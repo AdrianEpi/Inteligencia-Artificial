@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 11:04:26
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-10 07:46:14
+* @Last Modified time: 2020-11-13 23:26:52
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -140,7 +140,7 @@ bool selector (Game& myGame, unsigned sentinel, bool& generatedGame) {
 				break;
 
 			case 10:
-				////////// NOT IMPLEMENTED YET
+				myGame.get_SearchAlgorithm() -> showTrace(myGame.get_Map());
 				break;
 
 			case 11:

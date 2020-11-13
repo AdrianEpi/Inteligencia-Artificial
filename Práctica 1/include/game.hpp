@@ -85,8 +85,8 @@ class Game {
         void set_Car (Car car);
         void set_Map (Map map);
         void set_Solution (Map map);
-        void get_HeuristicFunction (HeuristicFunction* newHeuristicFunction);
-        void get_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm);
+        void set_HeuristicFunction (HeuristicFunction* newHeuristicFunction);
+        void set_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm);
 
         // Operators Overload
         Game& operator= (const Game& newGame);

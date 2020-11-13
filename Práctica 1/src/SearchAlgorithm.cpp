@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-13 18:32:55
+* @Last Modified time: 2020-11-13 23:47:31
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -71,6 +71,15 @@ unsigned SearchAlgorithm::get_SolutionPosition (void) const {
 }
 
 /**
+ * @brief      Gets the closed list.
+ *
+ * @return     The closed list.
+ */
+std::vector<unsigned> SearchAlgorithm::get_ClosedList (void) const {
+	return closedList_;
+}
+
+/**
  * @brief      Sets the tree.
  *
  * @param[in]  newTree  The new tree
@@ -95,6 +104,15 @@ void SearchAlgorithm::set_SolutionPosition (unsigned newPos) {
  */
 void SearchAlgorithm::set_Map (Map newMap) {
 	map_ = newMap;
+}
+
+/**
+ * @brief      Sets the closed list.
+ *
+ * @param[in]  newClosedList  The new closed list
+ */
+void SearchAlgorithm::set_ClosedList (std::vector<unsigned> newClosedList) {
+	closedList_ = newClosedList;
 }
 
 /**
@@ -184,4 +202,49 @@ int SearchAlgorithm::lowestDistance (void) {
 		}
 	}
 	return pos;
+}
+
+/**
+ * @brief      Shows the trace step by step.
+ *
+ * @param[in]  map   The map
+ */
+void SearchAlgorithm::showTrace (Map map) {
+	std::vector<int> trace;
+	int pos = solutionPosition_;
+	while (pos != 0) {
+		pos = tree_[pos].get_Parent();
+		trace.push_back(pos);
+	}
+	int time = 10000000 / trace.size();
+	for (int i = trace.size() - 1; i >= 0; i--) {
+		system("clear");
+		map.changeBox(tree_[trace[i]].get_CarPosition().first, tree_[trace[i]].get_CarPosition().second, 2);
+		map.printMap(std::cout);
+		usleep(time);
+	}
+}
+
+/**
+ * @brief      Saves the solution.
+ *
+ * @param      solution  The solution
+ */
+void SearchAlgorithm::saveSolution (Map& solution) {
+	int i = solutionPosition_;
+	while (i != 0) {
+		i = tree_[i].get_Parent();
+		solution.changeBox(tree_[i].get_CarPosition().first, tree_[i].get_CarPosition().second, 2);
+	}
+}
+
+/**
+ * @brief      Generates the closed list of the tree
+ */
+void SearchAlgorithm::generateClosedList (void) {
+	for (int i = 0; i < tree_.size(); i++) {
+		if (tree_[i].get_Visited() == true) {
+			closedList_.push_back(i);
+		}
+	}
 }

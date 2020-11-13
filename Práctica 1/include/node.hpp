@@ -37,11 +37,11 @@ class Node {
 
     private:
         // Attributes
-        std::pair<unsigned, unsigned> carPosition_;
-        float distance_;
-        unsigned parent_;
-        unsigned accumulatedDistance_;
-        bool visited_;
+        std::pair<unsigned, unsigned> carPosition_; // The current position of the car
+        float distance_;                            // The heuristic distance f(n)
+        unsigned parent_;                           // The parent's node position in vector
+        unsigned accumulatedDistance_;              // The accumulated distance in node
+        bool visited_;                              // If the node has been visited/expanded by the algorithm
 
     public:
         // Buildes & Destroyer

@@ -41,10 +41,9 @@ class Map {
 
     private:
         // Attributes
-        unsigned x_;    // The rows
-        unsigned y_;    // The columns
-        std::vector<std::vector<unsigned>> map_;  // The map of the game
-        std::pair<unsigned, unsigned> carPosition_;
+        unsigned x_;                                // The rows
+        unsigned y_;                                // The columns
+        std::vector<std::vector<unsigned>> map_;    // The map of the game
 
     public:
         // Builders & Destroyer
@@ -56,12 +55,10 @@ class Map {
         unsigned get_Rows (void) const;
         unsigned get_Columns (void) const;
         std::vector<std::vector<unsigned>> get_Map (void) const;
-        std::pair<unsigned, unsigned>  get_CarPosition (void) const;
 
         void set_Rows (unsigned x);
         void set_Columns (unsigned y);
         void set_Map (std::vector<std::vector<unsigned>> map);
-        void set_CarPosition (std::pair<unsigned, unsigned> position);
 
         // Operators Overload
         Map& operator= (const Map& newMap);
@@ -72,6 +69,7 @@ class Map {
         void addStartPoint (unsigned x, unsigned y);
         void addFinishLine (unsigned x, unsigned y);
         void changeBox (unsigned x, unsigned y, unsigned element);
+        int calculateLength (void);
 
         // Write
         std::ostream& printMap (std::ostream& os) const;

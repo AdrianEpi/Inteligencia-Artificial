@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-13 18:10:32
+* @Last Modified time: 2020-11-13 22:31:05
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -55,35 +55,30 @@ AStarAlgorithm::~AStarAlgorithm (void) {
  */
 bool AStarAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine) {
     // Generate the root of the tree 
-    /*std::pair<Map, float> root;
-    root.first = map;
-    root.second = heuristic -> calculateDistance(car, finishLine);
+    set_Map(map);
+    std::pair<unsigned, unsigned> start;
+    start.first = car.get_CoordinateX();
+    start.second = car.get_CoordinateY();
+    Node root(start, heuristic -> calculateDistance(start, finishLine), 0, 0);
     tree_.push_back(root);
     bool finished = false;
-    if ((map.get_Map()[finishLine.first + 1][finishLine.second] == 1) && (map.get_Map()[finishLine.first - 1][finishLine.second] == 1) && (map.get_Map()[finishLine.first][finishLine.second + 1] == 1) && (map.get_Map()[finishLine.first][finishLine.second - 1] == 1)) {
+    if ((map_.get_Map()[finishLine.first + 1][finishLine.second] == 1) && (map_.get_Map()[finishLine.first - 1][finishLine.second] == 1) && (map_.get_Map()[finishLine.first][finishLine.second + 1] == 1) && (map_.get_Map()[finishLine.first][finishLine.second - 1] == 1)) {
         return false;
     }
     while (!finished) {
         int nodeToExpand = lowestDistance();
-        map = tree_[nodeToExpand].first;
-        car.set_CoordinateX(tree_[nodeToExpand].first.get_CarPosition().first);
-        car.set_CoordinateY(tree_[nodeToExpand].first.get_CarPosition().second);
+        car.set_CoordinateX(tree_[nodeToExpand].get_CarPosition().first);
+        car.set_CoordinateY(tree_[nodeToExpand].get_CarPosition().second);
         if ((car.get_CoordinateX() == finishLine.first) && (car.get_CoordinateY() == finishLine.second)) {
-            parentBranch_[nodeToExpand].second = true;
-            finished = true;
             solutionPosition_ = nodeToExpand;
-            parentBranch_[nodeToExpand].second = true;
+            return true;
         }
-        else if (nodeToExpand == 0 && parentBranch_[nodeToExpand].second == true) {
+        else if (tree_[nodeToExpand].get_Visited()) {
             break;
         }
         else {
-            expandLeaf(tree_[nodeToExpand].first, car, heuristic, finishLine, nodeToExpand, true);
-            parentBranch_[nodeToExpand].second = true; 
+            expandLeaf(car, heuristic, true, nodeToExpand, finishLine);
         }
     }
-    if (finished == false) {
-        return false;
-    }
-    return true;*/
+    return false;
 }
