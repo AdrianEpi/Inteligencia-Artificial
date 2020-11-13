@@ -40,5 +40,5 @@ class EuclideanDistance : public HeuristicFunction {
         virtual ~EuclideanDistance (void);
 
         // Function
-        float calculateDistance (Car& car, std::pair<unsigned, unsigned>& finishLine);
+        float calculateDistance (std::pair<unsigned, unsigned>& startLine, std::pair<unsigned, unsigned>& finishLine);
 };

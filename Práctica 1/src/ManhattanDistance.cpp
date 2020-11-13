@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-05 16:59:44
+* @Last Modified time: 2020-11-13 17:54:26
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -46,11 +46,11 @@ ManhattanDistance::~ManhattanDistance (void) {
 /**
  * @brief      Calculates the distance using the manhattan distance.
  *
- * @param      car         The car
+ * @param      startLine   The start line
  * @param[in]  finishLine  The finish line
  *
  * @return     The distance.
  */
-float ManhattanDistance::calculateDistance (Car& car, std::pair<unsigned, unsigned>& finishLine) {
-    return (abs(finishLine.first - car.get_CoordinateX()) + abs(finishLine.second - car.get_CoordinateY()));
+float ManhattanDistance::calculateDistance (std::pair<unsigned, unsigned>& startLine, std::pair<unsigned, unsigned>& finishLine) {
+    return (abs(finishLine.first - startLine.first) + abs(finishLine.second - startLine.second));
 }

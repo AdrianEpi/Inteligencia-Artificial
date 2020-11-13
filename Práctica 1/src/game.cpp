@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-07 11:06:20
+* @Last Modified time: 2020-11-13 18:22:17
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -36,7 +36,7 @@
  */
 Game::Game (void) {
 	selectHeuristicFunction(2);
-	selectAlgorithm(1);
+	selectAlgorithm(2);
 	set_Obstacles(0);
 }
 
@@ -469,7 +469,8 @@ void Game::findSolution (void) {
 	}
 	else {
 		temporizer.stopChrono();
-		solution_ = algorithm_ -> get_Tree()[algorithm_ -> get_SolutionPosition()].first;
+		solution_ = algorithm_ -> get_Map();
+		//solution_ = algorithm_ -> get_Tree()[algorithm_ -> get_SolutionPosition()].first;
 		solution_.changeBox(startPoint_.first, startPoint_.second, 3);
 	}	
 	std::cout << std::endl << "CPU Time: " << temporizer.get_Seconds(5) << " seconds." << std::endl;

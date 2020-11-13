@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-06 17:18:21
+* @Last Modified time: 2020-11-13 18:32:40
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -35,11 +35,7 @@
  * @brief      Constructs a new instance.
  */
 GreedyAlgorithm::GreedyAlgorithm (void) {
-    std::pair<unsigned, bool> rootParent;
-    rootParent.first = 0;
-    rootParent.second = false;
-    parentBranch_.push_back(rootParent);
-    accumulatedDistance_.push_back(0);
+    set_SolutionPosition(0);
 }
 
 /**
@@ -60,26 +56,28 @@ GreedyAlgorithm::~GreedyAlgorithm (void) {
  */
 bool GreedyAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine) {
     // Generate the root of the tree 
-    std::pair<Map, float> root;
-    root.first = map;
-    root.second = heuristic -> calculateDistance(car, finishLine);
+    set_Map(map);
+    std::pair<unsigned, unsigned> start;
+    start.first = car.get_CoordinateX();
+    start.second = car.get_CoordinateY();
+    Node root(start, heuristic -> calculateDistance(start, finishLine), 0, 0);
     tree_.push_back(root);
-    bool finished = false;    
+    bool finished = false;
     while (!finished) {
-        int nodeToExpand = lowestDistance();        
-        map = tree_[nodeToExpand].first;
-        car.set_CoordinateX(tree_[nodeToExpand].first.get_CarPosition().first);
-        car.set_CoordinateY(tree_[nodeToExpand].first.get_CarPosition().second);
+        
+        int nodeToExpand = lowestDistance();  
+        car.set_CoordinateX(tree_[nodeToExpand].get_CarPosition().first);
+        car.set_CoordinateY(tree_[nodeToExpand].get_CarPosition().second);
+
         if ((car.get_CoordinateX() == finishLine.first) && (car.get_CoordinateY() == finishLine.second)) {
             solutionPosition_ = nodeToExpand;
             return true;
         }
-        else if (tree_[nodeToExpand].second == MAXDISTANCE) {
+        else if (tree_[nodeToExpand].get_Visited()) {
             break;
         }
         else {
-            expandLeaf(tree_[nodeToExpand].first, car, heuristic, finishLine, nodeToExpand, false);
-            tree_[nodeToExpand].second = MAXDISTANCE; 
+            expandLeaf(car, heuristic, false, nodeToExpand, finishLine);
         }
     }
     if (finished == false) {

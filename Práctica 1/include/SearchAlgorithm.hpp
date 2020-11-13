@@ -23,6 +23,7 @@
 #include "map.hpp"
 #include "EuclideanDistance.hpp"
 #include "ManhattanDistance.hpp"
+#include "node.hpp"
 
 /*------------------------------------------------*/
 /*------------------  LIBRARIES  -----------------*/
@@ -38,10 +39,9 @@ class SearchAlgorithm {
 
     protected:
         // Attributes
-        std::vector<std::pair<Map, float>> tree_;               // Vector with the map and the evaluation function in that moment
+        std::vector<Node> tree_;
         unsigned solutionPosition_;                             // The position of the solution in vector
-        std::vector<std::pair<unsigned, bool>> parentBranch_;   // It will store on each position the parent branch of that position on the tree vector
-        std::vector<unsigned> accumulatedDistance_;
+        Map map_;
 
     public:
         // Builder & Destroyer
@@ -49,17 +49,17 @@ class SearchAlgorithm {
         virtual ~SearchAlgorithm (void);
 
         // Getters & Setters
-        std::vector<std::pair<Map, float>> get_Tree (void) const;
+        std::vector<Node> get_Tree (void) const;
         unsigned get_SolutionPosition (void) const;
-        std::vector<std::pair<unsigned, bool>> get_ParentBranch (void) const;
+        Map get_Map (void) const;
 
-        void set_Tree (std::vector<std::pair<Map, float>> newTree);
+        void set_Tree (std::vector<Node> newTree);
         void set_SolutionPosition (unsigned newSolutionPosition);
-        void set_ParentBranch (std::vector<std::pair<unsigned, bool>> newParentBranch);
+        void set_Map (Map map);
 
         // Functions
         virtual bool runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine);
-        bool expandLeaf (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine, int& parent, bool isAStar);
+        void expandLeaf (Car car, HeuristicFunction* heuristic, bool isAStar, unsigned node, std::pair<unsigned, unsigned>& finishLine);
         int lowestDistance (void);
 };
 
