@@ -1,0 +1,231 @@
+\hypertarget{class_car}{}\doxysection{Car Class Reference}
+\label{class_car}\index{Car@{Car}}
+
+
+This class describes a car. A car has as attributes the position of the car at the current moment on the map. Also a car has a sensor who knows whats near the car.  
+
+
+
+
+{\ttfamily \#include $<$car.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_car_ad028be8d41e5aa87d2a50688dd22fde2}{Car}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_car_a4567f7c92ea391c45e0d220607e88f38}{Car}} (unsigned x, unsigned y)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_car_aec7aaace10f11f6cb031fa6678aafd78}{$\sim$\+Car}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_car_abba514e8ef9520e3ae47926c14589c81}{get\+\_\+\+CoordinateX}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the coordinate x. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_car_a4ea84556acd68822828aae441d5e31dc}{get\+\_\+\+CoordinateY}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the coordinate y. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sensor}{Sensor}} \mbox{\hyperlink{class_car_a80ab83a48d55f0a96f95444944a91afa}{get\+\_\+\+Sensor}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_car_a1fda0dc16bb0fa7c6d8fc0c768c29cab}{set\+\_\+\+CoordinateX}} (unsigned x)
+\begin{DoxyCompactList}\small\item\em Sets the coordinate x. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_car_a13ee04b4acebce2baa3ecb48e4d33eb3}{set\+\_\+\+CoordinateY}} (unsigned y)
+\begin{DoxyCompactList}\small\item\em Sets the coordinate y. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_car_a1e9d39a7a99e76a98e2934984471cc62}{set\+\_\+\+Sensor}} (\mbox{\hyperlink{class_sensor}{Sensor}} new\+Sensor)
+\begin{DoxyCompactList}\small\item\em Sets the sensor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_car}{Car}} \& \mbox{\hyperlink{class_car_a75a9e42c8f5a9211786ef2eeecbb3a29}{operator=}} (const \mbox{\hyperlink{class_car}{Car}} \&new\+Car)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_car_a053f326e7af16d8055d5c7789e50415d}{update\+Sensor}} (unsigned \&n, unsigned \&s, unsigned \&e, unsigned \&w)
+\begin{DoxyCompactList}\small\item\em Updates the existing sensor with new values. Values must be 0 if empty, 1 otherwhise. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{class_car_a8c3e581e4081e47891d79bf4f7e2f904}{print\+Car\+Position}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Prints a car position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes a car. A car has as attributes the position of the car at the current moment on the map. Also a car has a sensor who knows whats near the car. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_car_ad028be8d41e5aa87d2a50688dd22fde2}\label{class_car_ad028be8d41e5aa87d2a50688dd22fde2}} 
+\index{Car@{Car}!Car@{Car}}
+\index{Car@{Car}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{Car()}{Car()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Car\+::\+Car (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+\mbox{\Hypertarget{class_car_a4567f7c92ea391c45e0d220607e88f38}\label{class_car_a4567f7c92ea391c45e0d220607e88f38}} 
+\index{Car@{Car}!Car@{Car}}
+\index{Car@{Car}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{Car()}{Car()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Car\+::\+Car (\begin{DoxyParamCaption}\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The coordinate X \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & The coordinate Y \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_car_aec7aaace10f11f6cb031fa6678aafd78}\label{class_car_aec7aaace10f11f6cb031fa6678aafd78}} 
+\index{Car@{Car}!````~Car@{$\sim$Car}}
+\index{````~Car@{$\sim$Car}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{$\sim$Car()}{~Car()}}
+{\footnotesize\ttfamily Car\+::$\sim$\+Car (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_car_abba514e8ef9520e3ae47926c14589c81}\label{class_car_abba514e8ef9520e3ae47926c14589c81}} 
+\index{Car@{Car}!get\_CoordinateX@{get\_CoordinateX}}
+\index{get\_CoordinateX@{get\_CoordinateX}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{get\_CoordinateX()}{get\_CoordinateX()}}
+{\footnotesize\ttfamily unsigned Car\+::get\+\_\+\+CoordinateX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the coordinate x. 
+
+\begin{DoxyReturn}{Returns}
+The coordinate x. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_car_a4ea84556acd68822828aae441d5e31dc}\label{class_car_a4ea84556acd68822828aae441d5e31dc}} 
+\index{Car@{Car}!get\_CoordinateY@{get\_CoordinateY}}
+\index{get\_CoordinateY@{get\_CoordinateY}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{get\_CoordinateY()}{get\_CoordinateY()}}
+{\footnotesize\ttfamily unsigned Car\+::get\+\_\+\+CoordinateY (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the coordinate y. 
+
+\begin{DoxyReturn}{Returns}
+The coordinate y. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_car_a80ab83a48d55f0a96f95444944a91afa}\label{class_car_a80ab83a48d55f0a96f95444944a91afa}} 
+\index{Car@{Car}!get\_Sensor@{get\_Sensor}}
+\index{get\_Sensor@{get\_Sensor}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{get\_Sensor()}{get\_Sensor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sensor}{Sensor}} Car\+::get\+\_\+\+Sensor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the sensor. 
+
+\begin{DoxyReturn}{Returns}
+The sensor. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_car_a75a9e42c8f5a9211786ef2eeecbb3a29}\label{class_car_a75a9e42c8f5a9211786ef2eeecbb3a29}} 
+\index{Car@{Car}!operator=@{operator=}}
+\index{operator=@{operator=}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_car}{Car}} \& Car\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_car}{Car}} \&}]{new\+Car }\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Car} & The new car\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the assignment 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_car_a8c3e581e4081e47891d79bf4f7e2f904}\label{class_car_a8c3e581e4081e47891d79bf4f7e2f904}} 
+\index{Car@{Car}!printCarPosition@{printCarPosition}}
+\index{printCarPosition@{printCarPosition}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{printCarPosition()}{printCarPosition()}}
+{\footnotesize\ttfamily std\+::ostream \& Car\+::print\+Car\+Position (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+
+
+Prints a car position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output stream. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_car_a1fda0dc16bb0fa7c6d8fc0c768c29cab}\label{class_car_a1fda0dc16bb0fa7c6d8fc0c768c29cab}} 
+\index{Car@{Car}!set\_CoordinateX@{set\_CoordinateX}}
+\index{set\_CoordinateX@{set\_CoordinateX}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{set\_CoordinateX()}{set\_CoordinateX()}}
+{\footnotesize\ttfamily void Car\+::set\+\_\+\+CoordinateX (\begin{DoxyParamCaption}\item[{unsigned}]{x }\end{DoxyParamCaption})}
+
+
+
+Sets the coordinate x. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The new value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_car_a13ee04b4acebce2baa3ecb48e4d33eb3}\label{class_car_a13ee04b4acebce2baa3ecb48e4d33eb3}} 
+\index{Car@{Car}!set\_CoordinateY@{set\_CoordinateY}}
+\index{set\_CoordinateY@{set\_CoordinateY}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{set\_CoordinateY()}{set\_CoordinateY()}}
+{\footnotesize\ttfamily void Car\+::set\+\_\+\+CoordinateY (\begin{DoxyParamCaption}\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+
+
+Sets the coordinate y. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em y} & The new value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_car_a1e9d39a7a99e76a98e2934984471cc62}\label{class_car_a1e9d39a7a99e76a98e2934984471cc62}} 
+\index{Car@{Car}!set\_Sensor@{set\_Sensor}}
+\index{set\_Sensor@{set\_Sensor}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{set\_Sensor()}{set\_Sensor()}}
+{\footnotesize\ttfamily void Car\+::set\+\_\+\+Sensor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sensor}{Sensor}}}]{new\+Sensor }\end{DoxyParamCaption})}
+
+
+
+Sets the sensor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Sensor} & The new sensor \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_car_a053f326e7af16d8055d5c7789e50415d}\label{class_car_a053f326e7af16d8055d5c7789e50415d}} 
+\index{Car@{Car}!updateSensor@{updateSensor}}
+\index{updateSensor@{updateSensor}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{updateSensor()}{updateSensor()}}
+{\footnotesize\ttfamily void Car\+::update\+Sensor (\begin{DoxyParamCaption}\item[{unsigned \&}]{n,  }\item[{unsigned \&}]{s,  }\item[{unsigned \&}]{e,  }\item[{unsigned \&}]{w }\end{DoxyParamCaption})}
+
+
+
+Updates the existing sensor with new values. Values must be 0 if empty, 1 otherwhise. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & The north position \\
+\hline
+\mbox{\texttt{ in}}  & {\em s} & The south position \\
+\hline
+\mbox{\texttt{ in}}  & {\em e} & The east position \\
+\hline
+\mbox{\texttt{ in}}  & {\em w} & The west position \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{car_8hpp}{car.\+hpp}}\item 
+src/\mbox{\hyperlink{car_8cpp}{car.\+cpp}}\end{DoxyCompactItemize}

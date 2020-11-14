@@ -1,0 +1,343 @@
+\hypertarget{class_map}{}\doxysection{Map Class Reference}
+\label{class_map}\index{Map@{Map}}
+
+
+This class describes the map where the car is going to move, an empty position is stored as \char`\"{}0\char`\"{}, an obstacle as \char`\"{}1\char`\"{} and a position in which the car has been \char`\"{}2\char`\"{}. Also \char`\"{}3\char`\"{} will be used as the start position and \char`\"{}4\char`\"{} as the finish line.  
+
+
+
+
+{\ttfamily \#include $<$map.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_map_a94c0013854c3309b417a8480888761f7}{Map}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_map_a5954693c8b6558b3310f464f222bbc50}{Map}} (unsigned x, unsigned y)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_map_a55d7061de63bc1211c2f52592104d090}{$\sim$\+Map}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_map_a1a35714cb32b59506f8c33dae0995fdb}{get\+\_\+\+Rows}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the rows. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_map_a430e64b65e7d3a4e055f5df499f8bce7}{get\+\_\+\+Columns}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the columns. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ unsigned $>$ $>$ \mbox{\hyperlink{class_map_a5ed36715a8d8099b2786f0c96670d3b8}{get\+\_\+\+Map}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a3df40ecf203c06e1b4043dc4f7b459cb}{set\+\_\+\+Rows}} (unsigned x)
+\begin{DoxyCompactList}\small\item\em Sets the rows. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_ac04506b63f50b528b80dae4516e0f98f}{set\+\_\+\+Columns}} (unsigned y)
+\begin{DoxyCompactList}\small\item\em Sets the columns. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a2b69f424d60be9b0718aca42438f8d88}{set\+\_\+\+Map}} (std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$ map)
+\begin{DoxyCompactList}\small\item\em Sets the map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_map}{Map}} \& \mbox{\hyperlink{class_map_a365c900160518d9dcffa7cdc58659b30}{operator=}} (const \mbox{\hyperlink{class_map}{Map}} \&new\+Map)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_af143c16e5197781111f9726144d3b7d5}{initialize}} (unsigned x, unsigned y)
+\begin{DoxyCompactList}\small\item\em Initializes the map with all the positions empty (0) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_map_a984af35afcbb643f68bc945c0275ff12}{add\+Obstacle}} (unsigned x, unsigned y)
+\begin{DoxyCompactList}\small\item\em Adds an obstacle at the given coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a291efa6d0358ff3b0822717fac171cad}{add\+Start\+Point}} (unsigned x, unsigned y)
+\begin{DoxyCompactList}\small\item\em Adds the start point at the given coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a383876706a67d28fc05d64d77fa512d8}{add\+Finish\+Line}} (unsigned x, unsigned y)
+\begin{DoxyCompactList}\small\item\em Adds the finish line at the given coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a7ecd835db61a2a347c83c256c3a7415b}{change\+Box}} (unsigned x, unsigned y, unsigned element)
+\begin{DoxyCompactList}\small\item\em Changes the element in that position of the map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_a3cfe17a7656f1e628d91f6d71eb1a452}{calculate\+Length}} (void)
+\begin{DoxyCompactList}\small\item\em Calculates the length. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{class_map_a872ee17406f8ec660b280ee48aae385d}{print\+Map}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Prints the map. An empty block will be displayed in case theres no obstacle and the car has not been there. A \textquotesingle{}\#\textquotesingle{} will be shown in the obstacles positions. A \textquotesingle{}X\textquotesingle{} will be shown in the places where the car has been. Apart from that \textquotesingle{}S\textquotesingle{} means the starts position and \char`\"{}\+F\char`\"{} the finish line. A \textquotesingle{}x\textquotesingle{} will be print on the open list nodes. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{class_map_a0fbbe167e38506d0a2b7f9dea92fc075}{save\+Map}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Saves the map to a file. An empty block will be displayed in case theres no obstacle and the car has not been there. A \textquotesingle{}\#\textquotesingle{} will be shown in the obstacles positions. A \textquotesingle{}X\textquotesingle{} will be shown in the places where the car has been. Apart from that \textquotesingle{}S\textquotesingle{} means the starts position and \char`\"{}\+F\char`\"{} the finish line. A \textquotesingle{}-\/\textquotesingle{} will be print on the open list nodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes the map where the car is going to move, an empty position is stored as \char`\"{}0\char`\"{}, an obstacle as \char`\"{}1\char`\"{} and a position in which the car has been \char`\"{}2\char`\"{}. Also \char`\"{}3\char`\"{} will be used as the start position and \char`\"{}4\char`\"{} as the finish line. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_map_a94c0013854c3309b417a8480888761f7}\label{class_map_a94c0013854c3309b417a8480888761f7}} 
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Map\+::\+Map (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+\mbox{\Hypertarget{class_map_a5954693c8b6558b3310f464f222bbc50}\label{class_map_a5954693c8b6558b3310f464f222bbc50}} 
+\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Map\+::\+Map (\begin{DoxyParamCaption}\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The rows \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & The columns \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_a55d7061de63bc1211c2f52592104d090}\label{class_map_a55d7061de63bc1211c2f52592104d090}} 
+\index{Map@{Map}!````~Map@{$\sim$Map}}
+\index{````~Map@{$\sim$Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{$\sim$Map()}{~Map()}}
+{\footnotesize\ttfamily Map\+::$\sim$\+Map (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_map_a383876706a67d28fc05d64d77fa512d8}\label{class_map_a383876706a67d28fc05d64d77fa512d8}} 
+\index{Map@{Map}!addFinishLine@{addFinishLine}}
+\index{addFinishLine@{addFinishLine}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{addFinishLine()}{addFinishLine()}}
+{\footnotesize\ttfamily void Map\+::add\+Finish\+Line (\begin{DoxyParamCaption}\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+
+
+Adds the finish line at the given coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The coordinate x. \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & The coordinate y. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_a984af35afcbb643f68bc945c0275ff12}\label{class_map_a984af35afcbb643f68bc945c0275ff12}} 
+\index{Map@{Map}!addObstacle@{addObstacle}}
+\index{addObstacle@{addObstacle}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{addObstacle()}{addObstacle()}}
+{\footnotesize\ttfamily bool Map\+::add\+Obstacle (\begin{DoxyParamCaption}\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+
+
+Adds an obstacle at the given coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The coordinate x. \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & The coordinate y.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if introduced correctly, false otherwhise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a291efa6d0358ff3b0822717fac171cad}\label{class_map_a291efa6d0358ff3b0822717fac171cad}} 
+\index{Map@{Map}!addStartPoint@{addStartPoint}}
+\index{addStartPoint@{addStartPoint}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{addStartPoint()}{addStartPoint()}}
+{\footnotesize\ttfamily void Map\+::add\+Start\+Point (\begin{DoxyParamCaption}\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+
+
+Adds the start point at the given coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The coordinate x. \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & The coordinate y. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_a3cfe17a7656f1e628d91f6d71eb1a452}\label{class_map_a3cfe17a7656f1e628d91f6d71eb1a452}} 
+\index{Map@{Map}!calculateLength@{calculateLength}}
+\index{calculateLength@{calculateLength}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{calculateLength()}{calculateLength()}}
+{\footnotesize\ttfamily int Map\+::calculate\+Length (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the length. 
+
+\begin{DoxyReturn}{Returns}
+The length. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a7ecd835db61a2a347c83c256c3a7415b}\label{class_map_a7ecd835db61a2a347c83c256c3a7415b}} 
+\index{Map@{Map}!changeBox@{changeBox}}
+\index{changeBox@{changeBox}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{changeBox()}{changeBox()}}
+{\footnotesize\ttfamily void Map\+::change\+Box (\begin{DoxyParamCaption}\item[{unsigned}]{x,  }\item[{unsigned}]{y,  }\item[{unsigned}]{element }\end{DoxyParamCaption})}
+
+
+
+Changes the element in that position of the map. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The x coordinate \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & The y coordinate \\
+\hline
+\mbox{\texttt{ in}}  & {\em element} & The element \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_a430e64b65e7d3a4e055f5df499f8bce7}\label{class_map_a430e64b65e7d3a4e055f5df499f8bce7}} 
+\index{Map@{Map}!get\_Columns@{get\_Columns}}
+\index{get\_Columns@{get\_Columns}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{get\_Columns()}{get\_Columns()}}
+{\footnotesize\ttfamily unsigned Map\+::get\+\_\+\+Columns (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the columns. 
+
+\begin{DoxyReturn}{Returns}
+The columns. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a5ed36715a8d8099b2786f0c96670d3b8}\label{class_map_a5ed36715a8d8099b2786f0c96670d3b8}} 
+\index{Map@{Map}!get\_Map@{get\_Map}}
+\index{get\_Map@{get\_Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{get\_Map()}{get\_Map()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ unsigned $>$ $>$ Map\+::get\+\_\+\+Map (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the map. 
+
+\begin{DoxyReturn}{Returns}
+The map. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a1a35714cb32b59506f8c33dae0995fdb}\label{class_map_a1a35714cb32b59506f8c33dae0995fdb}} 
+\index{Map@{Map}!get\_Rows@{get\_Rows}}
+\index{get\_Rows@{get\_Rows}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{get\_Rows()}{get\_Rows()}}
+{\footnotesize\ttfamily unsigned Map\+::get\+\_\+\+Rows (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the rows. 
+
+\begin{DoxyReturn}{Returns}
+The rows. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_af143c16e5197781111f9726144d3b7d5}\label{class_map_af143c16e5197781111f9726144d3b7d5}} 
+\index{Map@{Map}!initialize@{initialize}}
+\index{initialize@{initialize}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily void Map\+::initialize (\begin{DoxyParamCaption}\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+
+
+Initializes the map with all the positions empty (0) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The rows \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & The columns \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_a365c900160518d9dcffa7cdc58659b30}\label{class_map_a365c900160518d9dcffa7cdc58659b30}} 
+\index{Map@{Map}!operator=@{operator=}}
+\index{operator=@{operator=}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map}{Map}} \& Map\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_map}{Map}} \&}]{new\+Map }\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Map} & The new map\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the assignment 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a872ee17406f8ec660b280ee48aae385d}\label{class_map_a872ee17406f8ec660b280ee48aae385d}} 
+\index{Map@{Map}!printMap@{printMap}}
+\index{printMap@{printMap}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{printMap()}{printMap()}}
+{\footnotesize\ttfamily std\+::ostream \& Map\+::print\+Map (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+
+
+Prints the map. An empty block will be displayed in case theres no obstacle and the car has not been there. A \textquotesingle{}\#\textquotesingle{} will be shown in the obstacles positions. A \textquotesingle{}X\textquotesingle{} will be shown in the places where the car has been. Apart from that \textquotesingle{}S\textquotesingle{} means the starts position and \char`\"{}\+F\char`\"{} the finish line. A \textquotesingle{}x\textquotesingle{} will be print on the open list nodes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output stream 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_a0fbbe167e38506d0a2b7f9dea92fc075}\label{class_map_a0fbbe167e38506d0a2b7f9dea92fc075}} 
+\index{Map@{Map}!saveMap@{saveMap}}
+\index{saveMap@{saveMap}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{saveMap()}{saveMap()}}
+{\footnotesize\ttfamily std\+::ostream \& Map\+::save\+Map (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+
+
+Saves the map to a file. An empty block will be displayed in case theres no obstacle and the car has not been there. A \textquotesingle{}\#\textquotesingle{} will be shown in the obstacles positions. A \textquotesingle{}X\textquotesingle{} will be shown in the places where the car has been. Apart from that \textquotesingle{}S\textquotesingle{} means the starts position and \char`\"{}\+F\char`\"{} the finish line. A \textquotesingle{}-\/\textquotesingle{} will be print on the open list nodes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output stream 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_map_ac04506b63f50b528b80dae4516e0f98f}\label{class_map_ac04506b63f50b528b80dae4516e0f98f}} 
+\index{Map@{Map}!set\_Columns@{set\_Columns}}
+\index{set\_Columns@{set\_Columns}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{set\_Columns()}{set\_Columns()}}
+{\footnotesize\ttfamily void Map\+::set\+\_\+\+Columns (\begin{DoxyParamCaption}\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+
+
+Sets the columns. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em y} & The new value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_a2b69f424d60be9b0718aca42438f8d88}\label{class_map_a2b69f424d60be9b0718aca42438f8d88}} 
+\index{Map@{Map}!set\_Map@{set\_Map}}
+\index{set\_Map@{set\_Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{set\_Map()}{set\_Map()}}
+{\footnotesize\ttfamily void Map\+::set\+\_\+\+Map (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ unsigned $>$$>$}]{map }\end{DoxyParamCaption})}
+
+
+
+Sets the map. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em map} & The new value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_map_a3df40ecf203c06e1b4043dc4f7b459cb}\label{class_map_a3df40ecf203c06e1b4043dc4f7b459cb}} 
+\index{Map@{Map}!set\_Rows@{set\_Rows}}
+\index{set\_Rows@{set\_Rows}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{set\_Rows()}{set\_Rows()}}
+{\footnotesize\ttfamily void Map\+::set\+\_\+\+Rows (\begin{DoxyParamCaption}\item[{unsigned}]{x }\end{DoxyParamCaption})}
+
+
+
+Sets the rows. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & The new value \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{map_8hpp}{map.\+hpp}}\item 
+src/\mbox{\hyperlink{map_8cpp}{map.\+cpp}}\end{DoxyCompactItemize}

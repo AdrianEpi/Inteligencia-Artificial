@@ -1,0 +1,117 @@
+\hypertarget{class_heuristic_function}{}\doxysection{Heuristic\+Function Class Reference}
+\label{class_heuristic_function}\index{HeuristicFunction@{HeuristicFunction}}
+
+
+This class describes an heuristic function.  
+
+
+
+
+{\ttfamily \#include $<$Heuristic\+Function.\+hpp$>$}
+
+Inheritance diagram for Heuristic\+Function\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_heuristic_function}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_heuristic_function_a6d3793537eef968cffac6d2e15101ea1}{Heuristic\+Function}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_heuristic_function_ab2696dfe8b3e602af86100b9cd33264b}{$\sim$\+Heuristic\+Function}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_heuristic_function_a98a405c68d53960303fb9199d6a666cc}{get\+\_\+\+Distance}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the distance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_heuristic_function_ab12ac98c6efc2ba439a234db7574e849}{set\+\_\+\+Distance}} (float new\+Distance)
+\begin{DoxyCompactList}\small\item\em Sets the distance. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{class_heuristic_function_a1d563f12d3160c95e20a3652c36dec6c}{calculate\+Distance}} (std\+::pair$<$ unsigned, unsigned $>$ \&start\+Line, std\+::pair$<$ unsigned, unsigned $>$ \&finish\+Line)
+\begin{DoxyCompactList}\small\item\em Calculates the distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes an heuristic function. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_heuristic_function_a6d3793537eef968cffac6d2e15101ea1}\label{class_heuristic_function_a6d3793537eef968cffac6d2e15101ea1}} 
+\index{HeuristicFunction@{HeuristicFunction}!HeuristicFunction@{HeuristicFunction}}
+\index{HeuristicFunction@{HeuristicFunction}!HeuristicFunction@{HeuristicFunction}}
+\doxysubsubsection{\texorpdfstring{HeuristicFunction()}{HeuristicFunction()}}
+{\footnotesize\ttfamily Heuristic\+Function\+::\+Heuristic\+Function (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+\mbox{\Hypertarget{class_heuristic_function_ab2696dfe8b3e602af86100b9cd33264b}\label{class_heuristic_function_ab2696dfe8b3e602af86100b9cd33264b}} 
+\index{HeuristicFunction@{HeuristicFunction}!````~HeuristicFunction@{$\sim$HeuristicFunction}}
+\index{````~HeuristicFunction@{$\sim$HeuristicFunction}!HeuristicFunction@{HeuristicFunction}}
+\doxysubsubsection{\texorpdfstring{$\sim$HeuristicFunction()}{~HeuristicFunction()}}
+{\footnotesize\ttfamily Heuristic\+Function\+::$\sim$\+Heuristic\+Function (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroys the object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_heuristic_function_a1d563f12d3160c95e20a3652c36dec6c}\label{class_heuristic_function_a1d563f12d3160c95e20a3652c36dec6c}} 
+\index{HeuristicFunction@{HeuristicFunction}!calculateDistance@{calculateDistance}}
+\index{calculateDistance@{calculateDistance}!HeuristicFunction@{HeuristicFunction}}
+\doxysubsubsection{\texorpdfstring{calculateDistance()}{calculateDistance()}}
+{\footnotesize\ttfamily float Heuristic\+Function\+::calculate\+Distance (\begin{DoxyParamCaption}\item[{std\+::pair$<$ unsigned, unsigned $>$ \&}]{start\+Line,  }\item[{std\+::pair$<$ unsigned, unsigned $>$ \&}]{finish\+Line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calculates the distance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em start\+Line} & The start line \\
+\hline
+\mbox{\texttt{ in}}  & {\em finish\+Line} & The finish line\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance. 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_euclidean_distance_a364f3213a58082f5c557c8152c5e6608}{Euclidean\+Distance}}, and \mbox{\hyperlink{class_manhattan_distance_aab3bdc727e79a841e24b4bbed527293f}{Manhattan\+Distance}}.
+
+\mbox{\Hypertarget{class_heuristic_function_a98a405c68d53960303fb9199d6a666cc}\label{class_heuristic_function_a98a405c68d53960303fb9199d6a666cc}} 
+\index{HeuristicFunction@{HeuristicFunction}!get\_Distance@{get\_Distance}}
+\index{get\_Distance@{get\_Distance}!HeuristicFunction@{HeuristicFunction}}
+\doxysubsubsection{\texorpdfstring{get\_Distance()}{get\_Distance()}}
+{\footnotesize\ttfamily float Heuristic\+Function\+::get\+\_\+\+Distance (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the distance. 
+
+\begin{DoxyReturn}{Returns}
+The distance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_heuristic_function_ab12ac98c6efc2ba439a234db7574e849}\label{class_heuristic_function_ab12ac98c6efc2ba439a234db7574e849}} 
+\index{HeuristicFunction@{HeuristicFunction}!set\_Distance@{set\_Distance}}
+\index{set\_Distance@{set\_Distance}!HeuristicFunction@{HeuristicFunction}}
+\doxysubsubsection{\texorpdfstring{set\_Distance()}{set\_Distance()}}
+{\footnotesize\ttfamily void Heuristic\+Function\+::set\+\_\+\+Distance (\begin{DoxyParamCaption}\item[{float}]{new\+Distance }\end{DoxyParamCaption})}
+
+
+
+Sets the distance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Distance} & The new distance \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_heuristic_function_8hpp}{Heuristic\+Function.\+hpp}}\item 
+src/\mbox{\hyperlink{_heuristic_function_8cpp}{Heuristic\+Function.\+cpp}}\end{DoxyCompactItemize}

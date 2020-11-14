@@ -1,0 +1,66 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include \char`\"{}../include/game.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/\+Colorize.\+hpp\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_aae0bb6d7fab0d43a60f2b2553036de9c}{menu}} (\mbox{\hyperlink{class_game}{Game}} \&my\+Game)
+\begin{DoxyCompactList}\small\item\em Prints the menu on screen and ask de user to select an option. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{main_8cpp_aafd0bc43342f794e60d10af3c63165ac}{selector}} (\mbox{\hyperlink{class_game}{Game}} \&my\+Game, unsigned sentinel, bool \&generated\+Game)
+\begin{DoxyCompactList}\small\item\em Runs the functions selected on the menu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em Main function of the program, creates the game and calls the menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Main function of the program, creates the game and calls the menu. 
+
+\begin{DoxyReturn}{Returns}
+0 If program finishes correctly 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_aae0bb6d7fab0d43a60f2b2553036de9c}\label{main_8cpp_aae0bb6d7fab0d43a60f2b2553036de9c}} 
+\index{main.cpp@{main.cpp}!menu@{menu}}
+\index{menu@{menu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{menu()}{menu()}}
+{\footnotesize\ttfamily void menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{my\+Game }\end{DoxyParamCaption})}
+
+
+
+Prints the menu on screen and ask de user to select an option. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+Game} & The game \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8cpp_aafd0bc43342f794e60d10af3c63165ac}\label{main_8cpp_aafd0bc43342f794e60d10af3c63165ac}} 
+\index{main.cpp@{main.cpp}!selector@{selector}}
+\index{selector@{selector}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{selector()}{selector()}}
+{\footnotesize\ttfamily bool selector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game}{Game}} \&}]{my\+Game,  }\item[{unsigned}]{sentinel,  }\item[{bool \&}]{generated\+Game }\end{DoxyParamCaption})}
+
+
+
+Runs the functions selected on the menu. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em my\+Game} & The game \\
+\hline
+\mbox{\texttt{ in}}  & {\em sentinel} & The user\textquotesingle{}s selection \\
+\hline
+ & {\em generated\+Game} & If the map has been generated or not\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if program finishes, false otherwise 
+\end{DoxyReturn}

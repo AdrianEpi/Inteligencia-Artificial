@@ -1,0 +1,236 @@
+\hypertarget{class_node}{}\doxysection{Node Class Reference}
+\label{class_node}\index{Node@{Node}}
+
+
+This class describes a node.  
+
+
+
+
+{\ttfamily \#include $<$node.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_node_a8d9cf8575744ca8c0f236a0a82eda096}{Node}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_node_a1b29afc9dc6112dd469bf1616e15bcdf}{Node}} (std\+::pair$<$ unsigned, unsigned $>$ car\+Position, float distance, unsigned parent, unsigned accumulated\+Distance)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_node_a2ba9aa5f85c0511a0608435419d248d1}{$\sim$\+Node}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+std\+::pair$<$ unsigned, unsigned $>$ \mbox{\hyperlink{class_node_a261d7bd29979882f5ef887877ed21a40}{get\+\_\+\+Car\+Position}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the car position. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_node_a60b7a8215bf0943770236d1de94c36a9}{get\+\_\+\+Distance}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the distance. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_node_a0a8b85aea62e303813bbd45cffa7026a}{get\+\_\+\+Parent}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the parent. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_node_a6bd9630f45cb8abefdc4ca140dae5fa1}{get\+\_\+\+Accumulated\+Distance}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the accumulated distance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_node_a61abcb0a5f8c40558efa1a80c45b7f61}{get\+\_\+\+Visited}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the visited. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_a9457bb61ce1ed2bbdeaa82742850e61f}{set\+\_\+\+Car\+Position}} (std\+::pair$<$ unsigned, unsigned $>$ new\+Car\+Position)
+\begin{DoxyCompactList}\small\item\em Sets the car position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_afddfebcbd73006a7ebd63a51aca44c3e}{set\+\_\+\+Distance}} (float new\+Distance)
+\begin{DoxyCompactList}\small\item\em Sets the distance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_a7347720a3f4a469b5cf90bd986464eca}{set\+\_\+\+Parent}} (unsigned new\+Parent)
+\begin{DoxyCompactList}\small\item\em Sets the parent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_a1b0bd5487037cea7ae6a9160c34e9237}{set\+\_\+\+Accumulated\+Distance}} (unsigned new\+Accumulated\+Distance)
+\begin{DoxyCompactList}\small\item\em Sets the accumulated distance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_node_a26a7768881984fc0cf7e49e7d07a2cae}{set\+\_\+\+Visited}} (bool new\+Visited)
+\begin{DoxyCompactList}\small\item\em Sets the visited. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes a node. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_node_a8d9cf8575744ca8c0f236a0a82eda096}\label{class_node_a8d9cf8575744ca8c0f236a0a82eda096}} 
+\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Node\+::\+Node (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+\mbox{\Hypertarget{class_node_a1b29afc9dc6112dd469bf1616e15bcdf}\label{class_node_a1b29afc9dc6112dd469bf1616e15bcdf}} 
+\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Node\+::\+Node (\begin{DoxyParamCaption}\item[{std\+::pair$<$ unsigned, unsigned $>$}]{car\+Position,  }\item[{float}]{distance,  }\item[{unsigned}]{parent,  }\item[{unsigned}]{accumulated\+Distance }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em car\+Position} & The car position \\
+\hline
+\mbox{\texttt{ in}}  & {\em distance} & The distance \\
+\hline
+\mbox{\texttt{ in}}  & {\em parent} & The parent \\
+\hline
+\mbox{\texttt{ in}}  & {\em accumulated\+Distance} & The accumulated distance \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_a2ba9aa5f85c0511a0608435419d248d1}\label{class_node_a2ba9aa5f85c0511a0608435419d248d1}} 
+\index{Node@{Node}!````~Node@{$\sim$Node}}
+\index{````~Node@{$\sim$Node}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{$\sim$Node()}{~Node()}}
+{\footnotesize\ttfamily Node\+::$\sim$\+Node (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_node_a6bd9630f45cb8abefdc4ca140dae5fa1}\label{class_node_a6bd9630f45cb8abefdc4ca140dae5fa1}} 
+\index{Node@{Node}!get\_AccumulatedDistance@{get\_AccumulatedDistance}}
+\index{get\_AccumulatedDistance@{get\_AccumulatedDistance}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{get\_AccumulatedDistance()}{get\_AccumulatedDistance()}}
+{\footnotesize\ttfamily unsigned Node\+::get\+\_\+\+Accumulated\+Distance (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the accumulated distance. 
+
+\begin{DoxyReturn}{Returns}
+The accumulated distance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a261d7bd29979882f5ef887877ed21a40}\label{class_node_a261d7bd29979882f5ef887877ed21a40}} 
+\index{Node@{Node}!get\_CarPosition@{get\_CarPosition}}
+\index{get\_CarPosition@{get\_CarPosition}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{get\_CarPosition()}{get\_CarPosition()}}
+{\footnotesize\ttfamily std\+::pair$<$ unsigned, unsigned $>$ Node\+::get\+\_\+\+Car\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the car position. 
+
+\begin{DoxyReturn}{Returns}
+The car position. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a60b7a8215bf0943770236d1de94c36a9}\label{class_node_a60b7a8215bf0943770236d1de94c36a9}} 
+\index{Node@{Node}!get\_Distance@{get\_Distance}}
+\index{get\_Distance@{get\_Distance}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{get\_Distance()}{get\_Distance()}}
+{\footnotesize\ttfamily float Node\+::get\+\_\+\+Distance (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the distance. 
+
+\begin{DoxyReturn}{Returns}
+The distance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a0a8b85aea62e303813bbd45cffa7026a}\label{class_node_a0a8b85aea62e303813bbd45cffa7026a}} 
+\index{Node@{Node}!get\_Parent@{get\_Parent}}
+\index{get\_Parent@{get\_Parent}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{get\_Parent()}{get\_Parent()}}
+{\footnotesize\ttfamily unsigned Node\+::get\+\_\+\+Parent (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the parent. 
+
+\begin{DoxyReturn}{Returns}
+The parent. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a61abcb0a5f8c40558efa1a80c45b7f61}\label{class_node_a61abcb0a5f8c40558efa1a80c45b7f61}} 
+\index{Node@{Node}!get\_Visited@{get\_Visited}}
+\index{get\_Visited@{get\_Visited}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{get\_Visited()}{get\_Visited()}}
+{\footnotesize\ttfamily bool Node\+::get\+\_\+\+Visited (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the visited. 
+
+\begin{DoxyReturn}{Returns}
+The visited. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_node_a1b0bd5487037cea7ae6a9160c34e9237}\label{class_node_a1b0bd5487037cea7ae6a9160c34e9237}} 
+\index{Node@{Node}!set\_AccumulatedDistance@{set\_AccumulatedDistance}}
+\index{set\_AccumulatedDistance@{set\_AccumulatedDistance}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{set\_AccumulatedDistance()}{set\_AccumulatedDistance()}}
+{\footnotesize\ttfamily void Node\+::set\+\_\+\+Accumulated\+Distance (\begin{DoxyParamCaption}\item[{unsigned}]{new\+Accumulated\+Distance }\end{DoxyParamCaption})}
+
+
+
+Sets the accumulated distance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Accumulated\+Distance} & The new accumulated distance \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_a9457bb61ce1ed2bbdeaa82742850e61f}\label{class_node_a9457bb61ce1ed2bbdeaa82742850e61f}} 
+\index{Node@{Node}!set\_CarPosition@{set\_CarPosition}}
+\index{set\_CarPosition@{set\_CarPosition}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{set\_CarPosition()}{set\_CarPosition()}}
+{\footnotesize\ttfamily void Node\+::set\+\_\+\+Car\+Position (\begin{DoxyParamCaption}\item[{std\+::pair$<$ unsigned, unsigned $>$}]{new\+Car\+Position }\end{DoxyParamCaption})}
+
+
+
+Sets the car position. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Car\+Position} & The new car position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_afddfebcbd73006a7ebd63a51aca44c3e}\label{class_node_afddfebcbd73006a7ebd63a51aca44c3e}} 
+\index{Node@{Node}!set\_Distance@{set\_Distance}}
+\index{set\_Distance@{set\_Distance}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{set\_Distance()}{set\_Distance()}}
+{\footnotesize\ttfamily void Node\+::set\+\_\+\+Distance (\begin{DoxyParamCaption}\item[{float}]{new\+Distance }\end{DoxyParamCaption})}
+
+
+
+Sets the distance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Distance} & The new distance \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_a7347720a3f4a469b5cf90bd986464eca}\label{class_node_a7347720a3f4a469b5cf90bd986464eca}} 
+\index{Node@{Node}!set\_Parent@{set\_Parent}}
+\index{set\_Parent@{set\_Parent}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{set\_Parent()}{set\_Parent()}}
+{\footnotesize\ttfamily void Node\+::set\+\_\+\+Parent (\begin{DoxyParamCaption}\item[{unsigned}]{new\+Parent }\end{DoxyParamCaption})}
+
+
+
+Sets the parent. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Parent} & The new parent \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_node_a26a7768881984fc0cf7e49e7d07a2cae}\label{class_node_a26a7768881984fc0cf7e49e7d07a2cae}} 
+\index{Node@{Node}!set\_Visited@{set\_Visited}}
+\index{set\_Visited@{set\_Visited}!Node@{Node}}
+\doxysubsubsection{\texorpdfstring{set\_Visited()}{set\_Visited()}}
+{\footnotesize\ttfamily void Node\+::set\+\_\+\+Visited (\begin{DoxyParamCaption}\item[{bool}]{new\+Visited }\end{DoxyParamCaption})}
+
+
+
+Sets the visited. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Visited} & Indicates if new visited \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{node_8hpp}{node.\+hpp}}\item 
+src/\mbox{\hyperlink{node_8cpp}{node.\+cpp}}\end{DoxyCompactItemize}

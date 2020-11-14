@@ -1,0 +1,224 @@
+\hypertarget{class_sensor}{}\doxysection{Sensor Class Reference}
+\label{class_sensor}\index{Sensor@{Sensor}}
+
+
+This class describes a sensor. A sensor must know if the adjacent directions are empty (0) or not (1)  
+
+
+
+
+{\ttfamily \#include $<$sensor.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sensor_a7e29600e96f20195c6c2829702b018d4}{Sensor}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sensor_af8e37c52affb974fdaee0dec73d515dc}{Sensor}} (unsigned n, unsigned s, unsigned e, unsigned w)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. Values must be 0 if empty, 1 otherwhise. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sensor_a1fec5d41759e1c955e03f2d598476c88}{$\sim$\+Sensor}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_sensor_adc245567732ee956a7e1c8ae6667024c}{get\+\_\+\+North}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the north. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_sensor_a803e4ea0c6b36d4fb5d9551dc1e5bc52}{get\+\_\+\+South}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the south. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_sensor_a3824219cd1f1e0b341dd00c9e2c4f94c}{get\+\_\+\+East}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the east. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_sensor_a39d93da2239d510e9bd8b05d9f06722b}{get\+\_\+\+West}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the west. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sensor_aac275691f24566f27539deb33482b2ac}{set\+\_\+\+North}} (unsigned n)
+\begin{DoxyCompactList}\small\item\em Sets the north. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sensor_afb2a99f0ad19bd3629dacd483aa8f670}{set\+\_\+\+South}} (unsigned s)
+\begin{DoxyCompactList}\small\item\em Sets the south. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sensor_ac740e169ba0859af06ec9de6e039ae55}{set\+\_\+\+East}} (unsigned e)
+\begin{DoxyCompactList}\small\item\em Sets the east. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sensor_acb6c0fb8fd32b57747cac03de00b67fb}{set\+\_\+\+West}} (unsigned w)
+\begin{DoxyCompactList}\small\item\em Sets the west. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sensor}{Sensor}} \& \mbox{\hyperlink{class_sensor_acc44c157b95b315ba1dd73e8caed5a52}{operator=}} (const \mbox{\hyperlink{class_sensor}{Sensor}} \&new\+Sensor)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes a sensor. A sensor must know if the adjacent directions are empty (0) or not (1) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sensor_a7e29600e96f20195c6c2829702b018d4}\label{class_sensor_a7e29600e96f20195c6c2829702b018d4}} 
+\index{Sensor@{Sensor}!Sensor@{Sensor}}
+\index{Sensor@{Sensor}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{Sensor()}{Sensor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Sensor\+::\+Sensor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+\mbox{\Hypertarget{class_sensor_af8e37c52affb974fdaee0dec73d515dc}\label{class_sensor_af8e37c52affb974fdaee0dec73d515dc}} 
+\index{Sensor@{Sensor}!Sensor@{Sensor}}
+\index{Sensor@{Sensor}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{Sensor()}{Sensor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Sensor\+::\+Sensor (\begin{DoxyParamCaption}\item[{unsigned}]{n,  }\item[{unsigned}]{s,  }\item[{unsigned}]{e,  }\item[{unsigned}]{w }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. Values must be 0 if empty, 1 otherwhise. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & The new value \\
+\hline
+\mbox{\texttt{ in}}  & {\em s} & The new value \\
+\hline
+\mbox{\texttt{ in}}  & {\em e} & The new value \\
+\hline
+\mbox{\texttt{ in}}  & {\em w} & The new value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sensor_a1fec5d41759e1c955e03f2d598476c88}\label{class_sensor_a1fec5d41759e1c955e03f2d598476c88}} 
+\index{Sensor@{Sensor}!````~Sensor@{$\sim$Sensor}}
+\index{````~Sensor@{$\sim$Sensor}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{$\sim$Sensor()}{~Sensor()}}
+{\footnotesize\ttfamily Sensor\+::$\sim$\+Sensor (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sensor_a3824219cd1f1e0b341dd00c9e2c4f94c}\label{class_sensor_a3824219cd1f1e0b341dd00c9e2c4f94c}} 
+\index{Sensor@{Sensor}!get\_East@{get\_East}}
+\index{get\_East@{get\_East}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{get\_East()}{get\_East()}}
+{\footnotesize\ttfamily unsigned Sensor\+::get\+\_\+\+East (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the east. 
+
+\begin{DoxyReturn}{Returns}
+The east. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sensor_adc245567732ee956a7e1c8ae6667024c}\label{class_sensor_adc245567732ee956a7e1c8ae6667024c}} 
+\index{Sensor@{Sensor}!get\_North@{get\_North}}
+\index{get\_North@{get\_North}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{get\_North()}{get\_North()}}
+{\footnotesize\ttfamily unsigned Sensor\+::get\+\_\+\+North (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the north. 
+
+\begin{DoxyReturn}{Returns}
+The north. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sensor_a803e4ea0c6b36d4fb5d9551dc1e5bc52}\label{class_sensor_a803e4ea0c6b36d4fb5d9551dc1e5bc52}} 
+\index{Sensor@{Sensor}!get\_South@{get\_South}}
+\index{get\_South@{get\_South}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{get\_South()}{get\_South()}}
+{\footnotesize\ttfamily unsigned Sensor\+::get\+\_\+\+South (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the south. 
+
+\begin{DoxyReturn}{Returns}
+The south. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sensor_a39d93da2239d510e9bd8b05d9f06722b}\label{class_sensor_a39d93da2239d510e9bd8b05d9f06722b}} 
+\index{Sensor@{Sensor}!get\_West@{get\_West}}
+\index{get\_West@{get\_West}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{get\_West()}{get\_West()}}
+{\footnotesize\ttfamily unsigned Sensor\+::get\+\_\+\+West (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the west. 
+
+\begin{DoxyReturn}{Returns}
+The west. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sensor_acc44c157b95b315ba1dd73e8caed5a52}\label{class_sensor_acc44c157b95b315ba1dd73e8caed5a52}} 
+\index{Sensor@{Sensor}!operator=@{operator=}}
+\index{operator=@{operator=}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sensor}{Sensor}} \& Sensor\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_sensor}{Sensor}} \&}]{new\+Sensor }\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Sensor} & The new sensor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the assignment 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sensor_ac740e169ba0859af06ec9de6e039ae55}\label{class_sensor_ac740e169ba0859af06ec9de6e039ae55}} 
+\index{Sensor@{Sensor}!set\_East@{set\_East}}
+\index{set\_East@{set\_East}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{set\_East()}{set\_East()}}
+{\footnotesize\ttfamily void Sensor\+::set\+\_\+\+East (\begin{DoxyParamCaption}\item[{unsigned}]{e }\end{DoxyParamCaption})}
+
+
+
+Sets the east. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em e} & The new value. Value must be 0 if empty, 1 otherwhise. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sensor_aac275691f24566f27539deb33482b2ac}\label{class_sensor_aac275691f24566f27539deb33482b2ac}} 
+\index{Sensor@{Sensor}!set\_North@{set\_North}}
+\index{set\_North@{set\_North}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{set\_North()}{set\_North()}}
+{\footnotesize\ttfamily void Sensor\+::set\+\_\+\+North (\begin{DoxyParamCaption}\item[{unsigned}]{n }\end{DoxyParamCaption})}
+
+
+
+Sets the north. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & The new value. Value must be 0 if empty, 1 otherwhise. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sensor_afb2a99f0ad19bd3629dacd483aa8f670}\label{class_sensor_afb2a99f0ad19bd3629dacd483aa8f670}} 
+\index{Sensor@{Sensor}!set\_South@{set\_South}}
+\index{set\_South@{set\_South}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{set\_South()}{set\_South()}}
+{\footnotesize\ttfamily void Sensor\+::set\+\_\+\+South (\begin{DoxyParamCaption}\item[{unsigned}]{s }\end{DoxyParamCaption})}
+
+
+
+Sets the south. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em s} & The new value. Value must be 0 if empty, 1 otherwhise. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sensor_acb6c0fb8fd32b57747cac03de00b67fb}\label{class_sensor_acb6c0fb8fd32b57747cac03de00b67fb}} 
+\index{Sensor@{Sensor}!set\_West@{set\_West}}
+\index{set\_West@{set\_West}!Sensor@{Sensor}}
+\doxysubsubsection{\texorpdfstring{set\_West()}{set\_West()}}
+{\footnotesize\ttfamily void Sensor\+::set\+\_\+\+West (\begin{DoxyParamCaption}\item[{unsigned}]{w }\end{DoxyParamCaption})}
+
+
+
+Sets the west. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em w} & The new value. Value must be 0 if empty, 1 otherwhise. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{sensor_8hpp}{sensor.\+hpp}}\item 
+src/\mbox{\hyperlink{sensor_8cpp}{sensor.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,354 @@
+\hypertarget{class_search_algorithm}{}\doxysection{Search\+Algorithm Class Reference}
+\label{class_search_algorithm}\index{SearchAlgorithm@{SearchAlgorithm}}
+
+
+This class describes a search algorithm.  
+
+
+
+
+{\ttfamily \#include $<$Search\+Algorithm.\+hpp$>$}
+
+Inheritance diagram for Search\+Algorithm\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_search_algorithm}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_search_algorithm_a0f8c29cd22009f4ac931965a90255a7e}{Search\+Algorithm}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_search_algorithm_ab6d8cdab16931cb1fe1e3d856ee4d3d2}{$\sim$\+Search\+Algorithm}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} $>$ \mbox{\hyperlink{class_search_algorithm_a208de6d4be1e534836735adf770b3020}{get\+\_\+\+Tree}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the tree. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_search_algorithm_add8b24672934eacf92df4fc148f7f62e}{get\+\_\+\+Solution\+Position}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the solution position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_map}{Map}} \mbox{\hyperlink{class_search_algorithm_a2edd1ffd06f13a35c2056ec7c0ae1340}{get\+\_\+\+Map}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the map. \end{DoxyCompactList}\item 
+std\+::vector$<$ unsigned $>$ \mbox{\hyperlink{class_search_algorithm_a3609ae85ae8c865e39236065b4d46ddf}{get\+\_\+\+Closed\+List}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the closed list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_search_algorithm_aef3ed2e29dc47d9199db9b0c8b5ab9a2}{set\+\_\+\+Tree}} (std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} $>$ new\+Tree)
+\begin{DoxyCompactList}\small\item\em Sets the tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_search_algorithm_a0fff69aefd9a7c50d52d0635083a2623}{set\+\_\+\+Solution\+Position}} (unsigned new\+Solution\+Position)
+\begin{DoxyCompactList}\small\item\em Sets the solution position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_search_algorithm_ab7684610fe1a771e0dd64ee87d73490d}{set\+\_\+\+Map}} (\mbox{\hyperlink{class_map}{Map}} map)
+\begin{DoxyCompactList}\small\item\em Sets the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_search_algorithm_a1dec95e1b542992c976b10d366311848}{set\+\_\+\+Closed\+List}} (std\+::vector$<$ unsigned $>$ new\+Closed\+List)
+\begin{DoxyCompactList}\small\item\em Sets the closed list. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_search_algorithm_a41930aecdbfe01eca3a823dfc0a9506e}{run\+Algorithm}} (\mbox{\hyperlink{class_map}{Map}} map, \mbox{\hyperlink{class_car}{Car}} car, \mbox{\hyperlink{class_heuristic_function}{Heuristic\+Function}} $\ast$heuristic, std\+::pair$<$ unsigned, unsigned $>$ \&finish\+Line)
+\begin{DoxyCompactList}\small\item\em Runs the search algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_search_algorithm_aa708dea7e2c248d2f1e9eb0d507482c0}{expand\+Leaf}} (\mbox{\hyperlink{class_car}{Car}} car, \mbox{\hyperlink{class_heuristic_function}{Heuristic\+Function}} $\ast$heuristic, bool is\+A\+Star, unsigned node, std\+::pair$<$ unsigned, unsigned $>$ \&finish\+Line)
+\begin{DoxyCompactList}\small\item\em Expands the adyacents nodes from the parent that has not been expanded yet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_search_algorithm_ab736b7e8d7aa67536e68fbc78079982e}{lowest\+Distance}} (void)
+\begin{DoxyCompactList}\small\item\em Finds the node with lowest distance to finish\+Line f(n). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_search_algorithm_afc592c967e8ac8ca38b1e7c850e0e55e}{show\+Trace}} (\mbox{\hyperlink{class_map}{Map}} map)
+\begin{DoxyCompactList}\small\item\em Shows the trace step by step during 10 seconds. It will print faster or slower in function of the path size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_search_algorithm_a2b5ab2a6230ccdd76118f360bb3e7025}{save\+Solution}} (\mbox{\hyperlink{class_map}{Map}} \&solution)
+\begin{DoxyCompactList}\small\item\em Saves the solution into the given map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_search_algorithm_a6e88090122ae780bc00175780d18e3e2}{save\+Open\+List}} (\mbox{\hyperlink{class_map}{Map}} \&solution)
+\begin{DoxyCompactList}\small\item\em Saves the open list to the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_search_algorithm_a3b2f6148254d15ae6e23e83c176ce4a7}{generate\+Closed\+List}} (void)
+\begin{DoxyCompactList}\small\item\em Generates the closed list of the tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} $>$ \mbox{\hyperlink{class_search_algorithm_a1791164288d48617ee77102203c098f5}{tree\+\_\+}}
+\item 
+unsigned \mbox{\hyperlink{class_search_algorithm_a766533bfa86b7892ff4c7af8bc6e3dce}{solution\+Position\+\_\+}}
+\item 
+\mbox{\hyperlink{class_map}{Map}} \mbox{\hyperlink{class_search_algorithm_ab264dd916e64f108203493d5de475154}{map\+\_\+}}
+\item 
+std\+::vector$<$ unsigned $>$ \mbox{\hyperlink{class_search_algorithm_a5c69ca7ca343044c53bb32e6be256a6b}{closed\+List\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes a search algorithm. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_search_algorithm_a0f8c29cd22009f4ac931965a90255a7e}\label{class_search_algorithm_a0f8c29cd22009f4ac931965a90255a7e}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!SearchAlgorithm@{SearchAlgorithm}}
+\index{SearchAlgorithm@{SearchAlgorithm}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{SearchAlgorithm()}{SearchAlgorithm()}}
+{\footnotesize\ttfamily Search\+Algorithm\+::\+Search\+Algorithm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+\mbox{\Hypertarget{class_search_algorithm_ab6d8cdab16931cb1fe1e3d856ee4d3d2}\label{class_search_algorithm_ab6d8cdab16931cb1fe1e3d856ee4d3d2}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!````~SearchAlgorithm@{$\sim$SearchAlgorithm}}
+\index{````~SearchAlgorithm@{$\sim$SearchAlgorithm}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{$\sim$SearchAlgorithm()}{~SearchAlgorithm()}}
+{\footnotesize\ttfamily Search\+Algorithm\+::$\sim$\+Search\+Algorithm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroys the object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_search_algorithm_aa708dea7e2c248d2f1e9eb0d507482c0}\label{class_search_algorithm_aa708dea7e2c248d2f1e9eb0d507482c0}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!expandLeaf@{expandLeaf}}
+\index{expandLeaf@{expandLeaf}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{expandLeaf()}{expandLeaf()}}
+{\footnotesize\ttfamily void Search\+Algorithm\+::expand\+Leaf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_car}{Car}}}]{car,  }\item[{\mbox{\hyperlink{class_heuristic_function}{Heuristic\+Function}} $\ast$}]{heuristic,  }\item[{bool}]{is\+A\+Star,  }\item[{unsigned}]{node,  }\item[{std\+::pair$<$ unsigned, unsigned $>$ \&}]{finish\+Line }\end{DoxyParamCaption})}
+
+
+
+Expands the adyacents nodes from the parent that has not been expanded yet. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em car} & The car \\
+\hline
+ & {\em heuristic} & The heuristic function \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+A\+Star} & Indicates if it\textquotesingle{}s using A$\ast$ algorithm or not \\
+\hline
+\mbox{\texttt{ in}}  & {\em node} & The parten\textquotesingle{}s node position in the tree \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_search_algorithm_a3b2f6148254d15ae6e23e83c176ce4a7}\label{class_search_algorithm_a3b2f6148254d15ae6e23e83c176ce4a7}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!generateClosedList@{generateClosedList}}
+\index{generateClosedList@{generateClosedList}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{generateClosedList()}{generateClosedList()}}
+{\footnotesize\ttfamily void Search\+Algorithm\+::generate\+Closed\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Generates the closed list of the tree. 
+
+\mbox{\Hypertarget{class_search_algorithm_a3609ae85ae8c865e39236065b4d46ddf}\label{class_search_algorithm_a3609ae85ae8c865e39236065b4d46ddf}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!get\_ClosedList@{get\_ClosedList}}
+\index{get\_ClosedList@{get\_ClosedList}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{get\_ClosedList()}{get\_ClosedList()}}
+{\footnotesize\ttfamily std\+::vector$<$ unsigned $>$ Search\+Algorithm\+::get\+\_\+\+Closed\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the closed list. 
+
+\begin{DoxyReturn}{Returns}
+The closed list. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_search_algorithm_a2edd1ffd06f13a35c2056ec7c0ae1340}\label{class_search_algorithm_a2edd1ffd06f13a35c2056ec7c0ae1340}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!get\_Map@{get\_Map}}
+\index{get\_Map@{get\_Map}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{get\_Map()}{get\_Map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map}{Map}} Search\+Algorithm\+::get\+\_\+\+Map (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the map. 
+
+\begin{DoxyReturn}{Returns}
+The map. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_search_algorithm_add8b24672934eacf92df4fc148f7f62e}\label{class_search_algorithm_add8b24672934eacf92df4fc148f7f62e}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!get\_SolutionPosition@{get\_SolutionPosition}}
+\index{get\_SolutionPosition@{get\_SolutionPosition}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{get\_SolutionPosition()}{get\_SolutionPosition()}}
+{\footnotesize\ttfamily unsigned Search\+Algorithm\+::get\+\_\+\+Solution\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the solution position. 
+
+\begin{DoxyReturn}{Returns}
+The solution position. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_search_algorithm_a208de6d4be1e534836735adf770b3020}\label{class_search_algorithm_a208de6d4be1e534836735adf770b3020}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!get\_Tree@{get\_Tree}}
+\index{get\_Tree@{get\_Tree}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{get\_Tree()}{get\_Tree()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} $>$ Search\+Algorithm\+::get\+\_\+\+Tree (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the tree. 
+
+\begin{DoxyReturn}{Returns}
+The tree. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_search_algorithm_ab736b7e8d7aa67536e68fbc78079982e}\label{class_search_algorithm_ab736b7e8d7aa67536e68fbc78079982e}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!lowestDistance@{lowestDistance}}
+\index{lowestDistance@{lowestDistance}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{lowestDistance()}{lowestDistance()}}
+{\footnotesize\ttfamily int Search\+Algorithm\+::lowest\+Distance (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Finds the node with lowest distance to finish\+Line f(n). 
+
+\begin{DoxyReturn}{Returns}
+The position in the vector of the node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_search_algorithm_a41930aecdbfe01eca3a823dfc0a9506e}\label{class_search_algorithm_a41930aecdbfe01eca3a823dfc0a9506e}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!runAlgorithm@{runAlgorithm}}
+\index{runAlgorithm@{runAlgorithm}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{runAlgorithm()}{runAlgorithm()}}
+{\footnotesize\ttfamily bool Search\+Algorithm\+::run\+Algorithm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_map}{Map}}}]{map,  }\item[{\mbox{\hyperlink{class_car}{Car}}}]{car,  }\item[{\mbox{\hyperlink{class_heuristic_function}{Heuristic\+Function}} $\ast$}]{heuristic,  }\item[{std\+::pair$<$ unsigned, unsigned $>$ \&}]{finish\+Line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Runs the search algorithm. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em map} & The map \\
+\hline
+\mbox{\texttt{ in}}  & {\em car} & The car \\
+\hline
+ & {\em heuristic} & The heuristic\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there\textquotesingle{}s solution, false otherwise 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_a_star_algorithm_a66286b6e25698979ee403b9e461db70e}{A\+Star\+Algorithm}}, and \mbox{\hyperlink{class_greedy_algorithm_a74fdfee43e6476a10eb63eaf7dacd141}{Greedy\+Algorithm}}.
+
+\mbox{\Hypertarget{class_search_algorithm_a6e88090122ae780bc00175780d18e3e2}\label{class_search_algorithm_a6e88090122ae780bc00175780d18e3e2}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!saveOpenList@{saveOpenList}}
+\index{saveOpenList@{saveOpenList}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{saveOpenList()}{saveOpenList()}}
+{\footnotesize\ttfamily void Search\+Algorithm\+::save\+Open\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{solution }\end{DoxyParamCaption})}
+
+
+
+Saves the open list to the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em solution} & The solution \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_search_algorithm_a2b5ab2a6230ccdd76118f360bb3e7025}\label{class_search_algorithm_a2b5ab2a6230ccdd76118f360bb3e7025}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!saveSolution@{saveSolution}}
+\index{saveSolution@{saveSolution}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{saveSolution()}{saveSolution()}}
+{\footnotesize\ttfamily void Search\+Algorithm\+::save\+Solution (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_map}{Map}} \&}]{solution }\end{DoxyParamCaption})}
+
+
+
+Saves the solution into the given map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em solution} & The solution \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_search_algorithm_a1dec95e1b542992c976b10d366311848}\label{class_search_algorithm_a1dec95e1b542992c976b10d366311848}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!set\_ClosedList@{set\_ClosedList}}
+\index{set\_ClosedList@{set\_ClosedList}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{set\_ClosedList()}{set\_ClosedList()}}
+{\footnotesize\ttfamily void Search\+Algorithm\+::set\+\_\+\+Closed\+List (\begin{DoxyParamCaption}\item[{std\+::vector$<$ unsigned $>$}]{new\+Closed\+List }\end{DoxyParamCaption})}
+
+
+
+Sets the closed list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Closed\+List} & The new closed list \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_search_algorithm_ab7684610fe1a771e0dd64ee87d73490d}\label{class_search_algorithm_ab7684610fe1a771e0dd64ee87d73490d}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!set\_Map@{set\_Map}}
+\index{set\_Map@{set\_Map}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{set\_Map()}{set\_Map()}}
+{\footnotesize\ttfamily void Search\+Algorithm\+::set\+\_\+\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_map}{Map}}}]{new\+Map }\end{DoxyParamCaption})}
+
+
+
+Sets the map. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Map} & The new map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_search_algorithm_a0fff69aefd9a7c50d52d0635083a2623}\label{class_search_algorithm_a0fff69aefd9a7c50d52d0635083a2623}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!set\_SolutionPosition@{set\_SolutionPosition}}
+\index{set\_SolutionPosition@{set\_SolutionPosition}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{set\_SolutionPosition()}{set\_SolutionPosition()}}
+{\footnotesize\ttfamily void Search\+Algorithm\+::set\+\_\+\+Solution\+Position (\begin{DoxyParamCaption}\item[{unsigned}]{new\+Pos }\end{DoxyParamCaption})}
+
+
+
+Sets the solution position. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Pos} & The new position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_search_algorithm_aef3ed2e29dc47d9199db9b0c8b5ab9a2}\label{class_search_algorithm_aef3ed2e29dc47d9199db9b0c8b5ab9a2}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!set\_Tree@{set\_Tree}}
+\index{set\_Tree@{set\_Tree}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{set\_Tree()}{set\_Tree()}}
+{\footnotesize\ttfamily void Search\+Algorithm\+::set\+\_\+\+Tree (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_node}{Node}} $>$}]{new\+Tree }\end{DoxyParamCaption})}
+
+
+
+Sets the tree. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Tree} & The new tree \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_search_algorithm_afc592c967e8ac8ca38b1e7c850e0e55e}\label{class_search_algorithm_afc592c967e8ac8ca38b1e7c850e0e55e}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!showTrace@{showTrace}}
+\index{showTrace@{showTrace}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{showTrace()}{showTrace()}}
+{\footnotesize\ttfamily void Search\+Algorithm\+::show\+Trace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_map}{Map}}}]{map }\end{DoxyParamCaption})}
+
+
+
+Shows the trace step by step during 10 seconds. It will print faster or slower in function of the path size. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em map} & The map \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_search_algorithm_a5c69ca7ca343044c53bb32e6be256a6b}\label{class_search_algorithm_a5c69ca7ca343044c53bb32e6be256a6b}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!closedList\_@{closedList\_}}
+\index{closedList\_@{closedList\_}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{closedList\_}{closedList\_}}
+{\footnotesize\ttfamily std\+::vector$<$unsigned$>$ Search\+Algorithm\+::closed\+List\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_search_algorithm_ab264dd916e64f108203493d5de475154}\label{class_search_algorithm_ab264dd916e64f108203493d5de475154}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!map\_@{map\_}}
+\index{map\_@{map\_}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{map\_}{map\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map}{Map}} Search\+Algorithm\+::map\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_search_algorithm_a766533bfa86b7892ff4c7af8bc6e3dce}\label{class_search_algorithm_a766533bfa86b7892ff4c7af8bc6e3dce}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!solutionPosition\_@{solutionPosition\_}}
+\index{solutionPosition\_@{solutionPosition\_}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{solutionPosition\_}{solutionPosition\_}}
+{\footnotesize\ttfamily unsigned Search\+Algorithm\+::solution\+Position\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_search_algorithm_a1791164288d48617ee77102203c098f5}\label{class_search_algorithm_a1791164288d48617ee77102203c098f5}} 
+\index{SearchAlgorithm@{SearchAlgorithm}!tree\_@{tree\_}}
+\index{tree\_@{tree\_}!SearchAlgorithm@{SearchAlgorithm}}
+\doxysubsubsection{\texorpdfstring{tree\_}{tree\_}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{class_node}{Node}}$>$ Search\+Algorithm\+::tree\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_search_algorithm_8hpp}{Search\+Algorithm.\+hpp}}\item 
+src/\mbox{\hyperlink{_search_algorithm_8cpp}{Search\+Algorithm.\+cpp}}\end{DoxyCompactItemize}

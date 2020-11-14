@@ -1,0 +1,90 @@
+\hypertarget{class_a_star_algorithm}{}\doxysection{A\+Star\+Algorithm Class Reference}
+\label{class_a_star_algorithm}\index{AStarAlgorithm@{AStarAlgorithm}}
+
+
+This class describes search algorithm usign an A$\ast$ design.  
+
+
+
+
+{\ttfamily \#include $<$A-\/star\+Algorithm.\+hpp$>$}
+
+Inheritance diagram for A\+Star\+Algorithm\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_star_algorithm}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_star_algorithm_a43eea97a21313f357f9c9a6e5806cc8d}{A\+Star\+Algorithm}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_a_star_algorithm_ad0717380737c91894c61c1dc6bd4dcf4}{$\sim$\+A\+Star\+Algorithm}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_star_algorithm_a66286b6e25698979ee403b9e461db70e}{run\+Algorithm}} (\mbox{\hyperlink{class_map}{Map}} map, \mbox{\hyperlink{class_car}{Car}} car, \mbox{\hyperlink{class_heuristic_function}{Heuristic\+Function}} $\ast$heuristic, std\+::pair$<$ unsigned, unsigned $>$ \&finish\+Line)
+\begin{DoxyCompactList}\small\item\em Executes an A$\ast$ algorithm to find the solution to the problem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This class describes search algorithm usign an A$\ast$ design. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_a_star_algorithm_a43eea97a21313f357f9c9a6e5806cc8d}\label{class_a_star_algorithm_a43eea97a21313f357f9c9a6e5806cc8d}} 
+\index{AStarAlgorithm@{AStarAlgorithm}!AStarAlgorithm@{AStarAlgorithm}}
+\index{AStarAlgorithm@{AStarAlgorithm}!AStarAlgorithm@{AStarAlgorithm}}
+\doxysubsubsection{\texorpdfstring{AStarAlgorithm()}{AStarAlgorithm()}}
+{\footnotesize\ttfamily A\+Star\+Algorithm\+::\+A\+Star\+Algorithm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+\mbox{\Hypertarget{class_a_star_algorithm_ad0717380737c91894c61c1dc6bd4dcf4}\label{class_a_star_algorithm_ad0717380737c91894c61c1dc6bd4dcf4}} 
+\index{AStarAlgorithm@{AStarAlgorithm}!````~AStarAlgorithm@{$\sim$AStarAlgorithm}}
+\index{````~AStarAlgorithm@{$\sim$AStarAlgorithm}!AStarAlgorithm@{AStarAlgorithm}}
+\doxysubsubsection{\texorpdfstring{$\sim$AStarAlgorithm()}{~AStarAlgorithm()}}
+{\footnotesize\ttfamily A\+Star\+Algorithm\+::$\sim$\+A\+Star\+Algorithm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroys the object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_star_algorithm_a66286b6e25698979ee403b9e461db70e}\label{class_a_star_algorithm_a66286b6e25698979ee403b9e461db70e}} 
+\index{AStarAlgorithm@{AStarAlgorithm}!runAlgorithm@{runAlgorithm}}
+\index{runAlgorithm@{runAlgorithm}!AStarAlgorithm@{AStarAlgorithm}}
+\doxysubsubsection{\texorpdfstring{runAlgorithm()}{runAlgorithm()}}
+{\footnotesize\ttfamily bool A\+Star\+Algorithm\+::run\+Algorithm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_map}{Map}}}]{map,  }\item[{\mbox{\hyperlink{class_car}{Car}}}]{car,  }\item[{\mbox{\hyperlink{class_heuristic_function}{Heuristic\+Function}} $\ast$}]{heuristic,  }\item[{std\+::pair$<$ unsigned, unsigned $>$ \&}]{finish\+Line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Executes an A$\ast$ algorithm to find the solution to the problem. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em map} & The map \\
+\hline
+\mbox{\texttt{ in}}  & {\em car} & The car \\
+\hline
+ & {\em heuristic} & The heuristic function \\
+\hline
+ & {\em finish\+Line} & The finish line\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there\textquotesingle{}s solution, false otherwise 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_search_algorithm_a41930aecdbfe01eca3a823dfc0a9506e}{Search\+Algorithm}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_a-star_algorithm_8hpp}{A-\/star\+Algorithm.\+hpp}}\item 
+src/\mbox{\hyperlink{_a-star_algorithm_8cpp}{A-\/star\+Algorithm.\+cpp}}\end{DoxyCompactItemize}

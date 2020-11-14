@@ -1,0 +1,608 @@
+\hypertarget{class_game}{}\doxysection{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+
+
+This class describes the game of the calculation of the minimum route for an autonomous car.  
+
+
+
+
+{\ttfamily \#include $<$game.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_a3ae96cfdab80ddfed4e942b23c59cfd9}{Game}} (void)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_adbfa23c79bf094a7b05f8602445d678c}{Game}} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Constructs a new instance from the data read by file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_a5132fe2c0d2a41ad6b613dc2baeca24c}{$\sim$\+Game}} (void)
+\begin{DoxyCompactList}\small\item\em Destroys the object. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_game_ae52b205ced5300440f71cebc4cf1996e}{get\+\_\+M}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the m. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_game_a5648a2f516a4c0bafaa1a99135965855}{get\+\_\+N}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the n. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_game_a48242b56e87829c49b4dbb11630cff88}{get\+\_\+\+Obstacles}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the obstacles. \end{DoxyCompactList}\item 
+std\+::pair$<$ unsigned, unsigned $>$ \mbox{\hyperlink{class_game_ab0ab4f02738d3242dc5a89232d58e60c}{get\+\_\+\+Start\+Point}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the start point. \end{DoxyCompactList}\item 
+std\+::pair$<$ unsigned, unsigned $>$ \mbox{\hyperlink{class_game_aa8dc42592ce1276cb5280f8abb1785f3}{get\+\_\+\+Finish\+Line}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the finish line. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_car}{Car}} \mbox{\hyperlink{class_game_ab69ada82f63c7123f427c1f5d79b9e32}{get\+\_\+\+Car}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the car. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_map}{Map}} \mbox{\hyperlink{class_game_a8ab4a4a70a0ac5f0a7e81dbc55abc10c}{get\+\_\+\+Map}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_map}{Map}} \mbox{\hyperlink{class_game_a844bd94690273b0650d15796aea3067a}{get\+\_\+\+Solution}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the solution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_heuristic_function}{Heuristic\+Function}} $\ast$ \mbox{\hyperlink{class_game_a570e0b1c705d060e6e5e1bd017e441f0}{get\+\_\+\+Heuristic\+Function}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the heuristic function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_search_algorithm}{Search\+Algorithm}} $\ast$ \mbox{\hyperlink{class_game_a878efd0b9fea288c86629d361a1f3938}{get\+\_\+\+Search\+Algorithm}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the search algorithm. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{class_game_a9ebd620816a8faec5a72e4c5ffe020f4}{get\+\_\+\+Algorithm\+Selector}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the algorithm selector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a8b3b01803b567fe741ff4ad83054586b}{set\+\_\+M}} (unsigned m)
+\begin{DoxyCompactList}\small\item\em Sets the m. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a2ef3825065317eb74c6b70b5ce340126}{set\+\_\+N}} (unsigned n)
+\begin{DoxyCompactList}\small\item\em Sets the n. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_aa0b78265ddce010440c3a422fbc4fafb}{set\+\_\+\+Obstacles}} (unsigned obstacles)
+\begin{DoxyCompactList}\small\item\em Sets the obstacles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ac5643db0f044075a978f901e8e02894d}{set\+\_\+\+Start\+Point}} (std\+::pair$<$ unsigned, unsigned $>$ start\+Point)
+\begin{DoxyCompactList}\small\item\em Sets the start point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a45ca3dc164097e26da5b8e57d34da5c4}{set\+\_\+\+Finish\+Line}} (std\+::pair$<$ unsigned, unsigned $>$ finish\+Line)
+\begin{DoxyCompactList}\small\item\em Sets the finish line. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a65f06aa7dff2088a964ed54c87224d67}{set\+\_\+\+Car}} (\mbox{\hyperlink{class_car}{Car}} car)
+\begin{DoxyCompactList}\small\item\em Sets the car. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a7061aad0a4bc494a4b3070344545ff35}{set\+\_\+\+Map}} (\mbox{\hyperlink{class_map}{Map}} map)
+\begin{DoxyCompactList}\small\item\em Sets the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a6c2c80af2c561199160dea0ffdb40d7e}{set\+\_\+\+Solution}} (\mbox{\hyperlink{class_map}{Map}} map)
+\begin{DoxyCompactList}\small\item\em Sets the solution. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a7e63d92ad20ae88f46f47fdced753188}{set\+\_\+\+Heuristic\+Function}} (\mbox{\hyperlink{class_heuristic_function}{Heuristic\+Function}} $\ast$new\+Heuristic\+Function)
+\begin{DoxyCompactList}\small\item\em Sets the heuristic function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a0f80bf6194777a01bcd7bf7a31eb175c}{set\+\_\+\+Search\+Algorithm}} (\mbox{\hyperlink{class_search_algorithm}{Search\+Algorithm}} $\ast$new\+Search\+Algorithm)
+\begin{DoxyCompactList}\small\item\em Sets the search algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a70077d746d5da70cf23e886b351fa12f}{set\+\_\+\+Algorithm\+Selector}} (unsigned new\+Selector)
+\begin{DoxyCompactList}\small\item\em Sets the algorithm selector. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game}{Game}} \& \mbox{\hyperlink{class_game_ab1c52095488e8235e0431a74e0472ef1}{operator=}} (const \mbox{\hyperlink{class_game}{Game}} \&new\+Game)
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a53dfe7a55fed36ccb347ff24c4a5fe4e}{select\+Heuristic\+Function}} (int \mbox{\hyperlink{main_8cpp_aafd0bc43342f794e60d10af3c63165ac}{selector}})
+\begin{DoxyCompactList}\small\item\em Selects the heuristic function that is going to use the program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a7fca36c03c19f014bab816e8a248ff57}{select\+Algorithm}} (int \mbox{\hyperlink{main_8cpp_aafd0bc43342f794e60d10af3c63165ac}{selector}})
+\begin{DoxyCompactList}\small\item\em Selects the search algorithm that is going to run the program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a5391659499b736c785aaf3a74b091a2c}{manual\+Data}} (void)
+\begin{DoxyCompactList}\small\item\em Method for introducing the game parametres by keyboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_abba8bd2c23a3e850c60440e761053eae}{generate\+Manual\+Obstacles}} (unsigned ammount)
+\begin{DoxyCompactList}\small\item\em Generate obstacles on the given positions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ab92b5f0b15d059a10605493235dbb673}{generate\+Random\+Obstacles}} (unsigned ammount)
+\begin{DoxyCompactList}\small\item\em Generate any ammount of random obstacles that is less than the 95\% of the map size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a607f55244b1842095cdc36b74506ed3b}{data\+Saver}} (std\+::string \&data, int mode)
+\begin{DoxyCompactList}\small\item\em Stores the read data by the read\+File method. It has one mode for each type of data. 0 -\/$>$ \mbox{\hyperlink{class_map}{Map}} size, 1 -\/$>$ Start point, 2 -\/$>$ finish line, 3 -\/$>$ obstacles ammount, 4 -\/$>$ each obstacle position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_aa69f5fe25fd72ae4d0a319201e76f9eb}{find\+Solution}} (void)
+\begin{DoxyCompactList}\small\item\em Finds the solution running the selected algorithm and prints the C\+PU time usage, open and closed list and path legth in case theres a solution for the problem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_aa53ed71b8ff64fccb695db929ce970d9}{update\+To\+Open\+List}} (void)
+\begin{DoxyCompactList}\small\item\em Updates the solution to an open\+List solution. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a16b1f0deaeb04f74384fa0b355072adb}{read\+File}} (std\+::string \&file)
+\begin{DoxyCompactList}\small\item\em Reads the data from a file and calls data\+Saver to store it. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{class_game_a80d56efcf7ff914f394ce7c77ca29d21}{save\+Data}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Saves game data into a file for being able to load that game later. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class describes the game of the calculation of the minimum route for an autonomous car. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_a3ae96cfdab80ddfed4e942b23c59cfd9}\label{class_game_a3ae96cfdab80ddfed4e942b23c59cfd9}} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance. 
+
+\mbox{\Hypertarget{class_game_adbfa23c79bf094a7b05f8602445d678c}\label{class_game_adbfa23c79bf094a7b05f8602445d678c}} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+File }\end{DoxyParamCaption})}
+
+
+
+Constructs a new instance from the data read by file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+File} & The input file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a5132fe2c0d2a41ad6b613dc2baeca24c}\label{class_game_a5132fe2c0d2a41ad6b613dc2baeca24c}} 
+\index{Game@{Game}!````~Game@{$\sim$Game}}
+\index{````~Game@{$\sim$Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{$\sim$Game()}{~Game()}}
+{\footnotesize\ttfamily Game\+::$\sim$\+Game (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_a607f55244b1842095cdc36b74506ed3b}\label{class_game_a607f55244b1842095cdc36b74506ed3b}} 
+\index{Game@{Game}!dataSaver@{dataSaver}}
+\index{dataSaver@{dataSaver}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{dataSaver()}{dataSaver()}}
+{\footnotesize\ttfamily void Game\+::data\+Saver (\begin{DoxyParamCaption}\item[{std\+::string \&}]{data,  }\item[{int}]{mode }\end{DoxyParamCaption})}
+
+
+
+Stores the read data by the read\+File method. It has one mode for each type of data. 0 -\/$>$ \mbox{\hyperlink{class_map}{Map}} size, 1 -\/$>$ Start point, 2 -\/$>$ finish line, 3 -\/$>$ obstacles ammount, 4 -\/$>$ each obstacle position. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_game_a16b1f0deaeb04f74384fa0b355072adb}{read\+File()}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & The data \\
+\hline
+\mbox{\texttt{ in}}  & {\em mode} & The mode \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_aa69f5fe25fd72ae4d0a319201e76f9eb}\label{class_game_aa69f5fe25fd72ae4d0a319201e76f9eb}} 
+\index{Game@{Game}!findSolution@{findSolution}}
+\index{findSolution@{findSolution}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{findSolution()}{findSolution()}}
+{\footnotesize\ttfamily void Game\+::find\+Solution (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Finds the solution running the selected algorithm and prints the C\+PU time usage, open and closed list and path legth in case theres a solution for the problem. 
+
+\mbox{\Hypertarget{class_game_abba8bd2c23a3e850c60440e761053eae}\label{class_game_abba8bd2c23a3e850c60440e761053eae}} 
+\index{Game@{Game}!generateManualObstacles@{generateManualObstacles}}
+\index{generateManualObstacles@{generateManualObstacles}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{generateManualObstacles()}{generateManualObstacles()}}
+{\footnotesize\ttfamily void Game\+::generate\+Manual\+Obstacles (\begin{DoxyParamCaption}\item[{unsigned}]{ammount }\end{DoxyParamCaption})}
+
+
+
+Generate obstacles on the given positions. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ammount} & The ammount \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_ab92b5f0b15d059a10605493235dbb673}\label{class_game_ab92b5f0b15d059a10605493235dbb673}} 
+\index{Game@{Game}!generateRandomObstacles@{generateRandomObstacles}}
+\index{generateRandomObstacles@{generateRandomObstacles}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{generateRandomObstacles()}{generateRandomObstacles()}}
+{\footnotesize\ttfamily void Game\+::generate\+Random\+Obstacles (\begin{DoxyParamCaption}\item[{unsigned}]{ammount }\end{DoxyParamCaption})}
+
+
+
+Generate any ammount of random obstacles that is less than the 95\% of the map size. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ammount} & The ammount \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a9ebd620816a8faec5a72e4c5ffe020f4}\label{class_game_a9ebd620816a8faec5a72e4c5ffe020f4}} 
+\index{Game@{Game}!get\_AlgorithmSelector@{get\_AlgorithmSelector}}
+\index{get\_AlgorithmSelector@{get\_AlgorithmSelector}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_AlgorithmSelector()}{get\_AlgorithmSelector()}}
+{\footnotesize\ttfamily unsigned Game\+::get\+\_\+\+Algorithm\+Selector (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the algorithm selector. 
+
+\begin{DoxyReturn}{Returns}
+The algorithm selector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_ab69ada82f63c7123f427c1f5d79b9e32}\label{class_game_ab69ada82f63c7123f427c1f5d79b9e32}} 
+\index{Game@{Game}!get\_Car@{get\_Car}}
+\index{get\_Car@{get\_Car}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_Car()}{get\_Car()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_car}{Car}} Game\+::get\+\_\+\+Car (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the car. 
+
+\begin{DoxyReturn}{Returns}
+The car. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_aa8dc42592ce1276cb5280f8abb1785f3}\label{class_game_aa8dc42592ce1276cb5280f8abb1785f3}} 
+\index{Game@{Game}!get\_FinishLine@{get\_FinishLine}}
+\index{get\_FinishLine@{get\_FinishLine}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_FinishLine()}{get\_FinishLine()}}
+{\footnotesize\ttfamily std\+::pair$<$ unsigned, unsigned $>$ Game\+::get\+\_\+\+Finish\+Line (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the finish line. 
+
+\begin{DoxyReturn}{Returns}
+The finish line. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a570e0b1c705d060e6e5e1bd017e441f0}\label{class_game_a570e0b1c705d060e6e5e1bd017e441f0}} 
+\index{Game@{Game}!get\_HeuristicFunction@{get\_HeuristicFunction}}
+\index{get\_HeuristicFunction@{get\_HeuristicFunction}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_HeuristicFunction()}{get\_HeuristicFunction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_heuristic_function}{Heuristic\+Function}} $\ast$ Game\+::get\+\_\+\+Heuristic\+Function (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the heuristic function. 
+
+\begin{DoxyReturn}{Returns}
+The heuristic function. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_ae52b205ced5300440f71cebc4cf1996e}\label{class_game_ae52b205ced5300440f71cebc4cf1996e}} 
+\index{Game@{Game}!get\_M@{get\_M}}
+\index{get\_M@{get\_M}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_M()}{get\_M()}}
+{\footnotesize\ttfamily unsigned Game\+::get\+\_\+M (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the m. 
+
+\begin{DoxyReturn}{Returns}
+The m. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a8ab4a4a70a0ac5f0a7e81dbc55abc10c}\label{class_game_a8ab4a4a70a0ac5f0a7e81dbc55abc10c}} 
+\index{Game@{Game}!get\_Map@{get\_Map}}
+\index{get\_Map@{get\_Map}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_Map()}{get\_Map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map}{Map}} Game\+::get\+\_\+\+Map (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the map. 
+
+\begin{DoxyReturn}{Returns}
+The map. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a5648a2f516a4c0bafaa1a99135965855}\label{class_game_a5648a2f516a4c0bafaa1a99135965855}} 
+\index{Game@{Game}!get\_N@{get\_N}}
+\index{get\_N@{get\_N}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_N()}{get\_N()}}
+{\footnotesize\ttfamily unsigned Game\+::get\+\_\+N (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the n. 
+
+\begin{DoxyReturn}{Returns}
+The n. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a48242b56e87829c49b4dbb11630cff88}\label{class_game_a48242b56e87829c49b4dbb11630cff88}} 
+\index{Game@{Game}!get\_Obstacles@{get\_Obstacles}}
+\index{get\_Obstacles@{get\_Obstacles}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_Obstacles()}{get\_Obstacles()}}
+{\footnotesize\ttfamily unsigned Game\+::get\+\_\+\+Obstacles (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the obstacles. 
+
+\begin{DoxyReturn}{Returns}
+The obstacles. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a878efd0b9fea288c86629d361a1f3938}\label{class_game_a878efd0b9fea288c86629d361a1f3938}} 
+\index{Game@{Game}!get\_SearchAlgorithm@{get\_SearchAlgorithm}}
+\index{get\_SearchAlgorithm@{get\_SearchAlgorithm}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_SearchAlgorithm()}{get\_SearchAlgorithm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_search_algorithm}{Search\+Algorithm}} $\ast$ Game\+::get\+\_\+\+Search\+Algorithm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the search algorithm. 
+
+\begin{DoxyReturn}{Returns}
+The search algorithm. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a844bd94690273b0650d15796aea3067a}\label{class_game_a844bd94690273b0650d15796aea3067a}} 
+\index{Game@{Game}!get\_Solution@{get\_Solution}}
+\index{get\_Solution@{get\_Solution}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_Solution()}{get\_Solution()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_map}{Map}} Game\+::get\+\_\+\+Solution (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the solution. 
+
+\begin{DoxyReturn}{Returns}
+The solution. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_ab0ab4f02738d3242dc5a89232d58e60c}\label{class_game_ab0ab4f02738d3242dc5a89232d58e60c}} 
+\index{Game@{Game}!get\_StartPoint@{get\_StartPoint}}
+\index{get\_StartPoint@{get\_StartPoint}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{get\_StartPoint()}{get\_StartPoint()}}
+{\footnotesize\ttfamily std\+::pair$<$ unsigned, unsigned $>$ Game\+::get\+\_\+\+Start\+Point (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the start point. 
+
+\begin{DoxyReturn}{Returns}
+The start point. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a5391659499b736c785aaf3a74b091a2c}\label{class_game_a5391659499b736c785aaf3a74b091a2c}} 
+\index{Game@{Game}!manualData@{manualData}}
+\index{manualData@{manualData}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{manualData()}{manualData()}}
+{\footnotesize\ttfamily void Game\+::manual\+Data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Method for introducing the game parametres by keyboard. 
+
+\mbox{\Hypertarget{class_game_ab1c52095488e8235e0431a74e0472ef1}\label{class_game_ab1c52095488e8235e0431a74e0472ef1}} 
+\index{Game@{Game}!operator=@{operator=}}
+\index{operator=@{operator=}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game}{Game}} \& Game\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_game}{Game}} \&}]{new\+Game }\end{DoxyParamCaption})}
+
+
+
+Assignment operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Game} & The new game\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the assignment 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a16b1f0deaeb04f74384fa0b355072adb}\label{class_game_a16b1f0deaeb04f74384fa0b355072adb}} 
+\index{Game@{Game}!readFile@{readFile}}
+\index{readFile@{readFile}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{readFile()}{readFile()}}
+{\footnotesize\ttfamily void Game\+::read\+File (\begin{DoxyParamCaption}\item[{std\+::string \&}]{input\+File }\end{DoxyParamCaption})}
+
+
+
+Reads the data from a file and calls data\+Saver to store it. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_game_a607f55244b1842095cdc36b74506ed3b}{data\+Saver()}}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+File} & The input file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a80d56efcf7ff914f394ce7c77ca29d21}\label{class_game_a80d56efcf7ff914f394ce7c77ca29d21}} 
+\index{Game@{Game}!saveData@{saveData}}
+\index{saveData@{saveData}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{saveData()}{saveData()}}
+{\footnotesize\ttfamily std\+::ostream \& Game\+::save\+Data (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os }\end{DoxyParamCaption}) const}
+
+
+
+Saves game data into a file for being able to load that game later. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output stream 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_a7fca36c03c19f014bab816e8a248ff57}\label{class_game_a7fca36c03c19f014bab816e8a248ff57}} 
+\index{Game@{Game}!selectAlgorithm@{selectAlgorithm}}
+\index{selectAlgorithm@{selectAlgorithm}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{selectAlgorithm()}{selectAlgorithm()}}
+{\footnotesize\ttfamily void Game\+::select\+Algorithm (\begin{DoxyParamCaption}\item[{int}]{selector }\end{DoxyParamCaption})}
+
+
+
+Selects the search algorithm that is going to run the program. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em selector} & The selector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a53dfe7a55fed36ccb347ff24c4a5fe4e}\label{class_game_a53dfe7a55fed36ccb347ff24c4a5fe4e}} 
+\index{Game@{Game}!selectHeuristicFunction@{selectHeuristicFunction}}
+\index{selectHeuristicFunction@{selectHeuristicFunction}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{selectHeuristicFunction()}{selectHeuristicFunction()}}
+{\footnotesize\ttfamily void Game\+::select\+Heuristic\+Function (\begin{DoxyParamCaption}\item[{int}]{selector }\end{DoxyParamCaption})}
+
+
+
+Selects the heuristic function that is going to use the program. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em selector} & The selector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a70077d746d5da70cf23e886b351fa12f}\label{class_game_a70077d746d5da70cf23e886b351fa12f}} 
+\index{Game@{Game}!set\_AlgorithmSelector@{set\_AlgorithmSelector}}
+\index{set\_AlgorithmSelector@{set\_AlgorithmSelector}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_AlgorithmSelector()}{set\_AlgorithmSelector()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+\+Algorithm\+Selector (\begin{DoxyParamCaption}\item[{unsigned}]{new\+Selector }\end{DoxyParamCaption})}
+
+
+
+Sets the algorithm selector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em new\+Selector} & The new selector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a65f06aa7dff2088a964ed54c87224d67}\label{class_game_a65f06aa7dff2088a964ed54c87224d67}} 
+\index{Game@{Game}!set\_Car@{set\_Car}}
+\index{set\_Car@{set\_Car}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_Car()}{set\_Car()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+\+Car (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_car}{Car}}}]{car }\end{DoxyParamCaption})}
+
+
+
+Sets the car. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em car} & The new value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a45ca3dc164097e26da5b8e57d34da5c4}\label{class_game_a45ca3dc164097e26da5b8e57d34da5c4}} 
+\index{Game@{Game}!set\_FinishLine@{set\_FinishLine}}
+\index{set\_FinishLine@{set\_FinishLine}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_FinishLine()}{set\_FinishLine()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+\+Finish\+Line (\begin{DoxyParamCaption}\item[{std\+::pair$<$ unsigned, unsigned $>$}]{finish\+Line }\end{DoxyParamCaption})}
+
+
+
+Sets the finish line. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em finish\+Line} & The finish line \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a7e63d92ad20ae88f46f47fdced753188}\label{class_game_a7e63d92ad20ae88f46f47fdced753188}} 
+\index{Game@{Game}!set\_HeuristicFunction@{set\_HeuristicFunction}}
+\index{set\_HeuristicFunction@{set\_HeuristicFunction}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_HeuristicFunction()}{set\_HeuristicFunction()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+\+Heuristic\+Function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_heuristic_function}{Heuristic\+Function}} $\ast$}]{new\+Heuristic\+Function }\end{DoxyParamCaption})}
+
+
+
+Sets the heuristic function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Heuristic\+Function} & The new heuristic function \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a8b3b01803b567fe741ff4ad83054586b}\label{class_game_a8b3b01803b567fe741ff4ad83054586b}} 
+\index{Game@{Game}!set\_M@{set\_M}}
+\index{set\_M@{set\_M}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_M()}{set\_M()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+M (\begin{DoxyParamCaption}\item[{unsigned}]{m }\end{DoxyParamCaption})}
+
+
+
+Sets the m. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em m} & The new value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a7061aad0a4bc494a4b3070344545ff35}\label{class_game_a7061aad0a4bc494a4b3070344545ff35}} 
+\index{Game@{Game}!set\_Map@{set\_Map}}
+\index{set\_Map@{set\_Map}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_Map()}{set\_Map()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_map}{Map}}}]{map }\end{DoxyParamCaption})}
+
+
+
+Sets the map. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em map} & The new value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a2ef3825065317eb74c6b70b5ce340126}\label{class_game_a2ef3825065317eb74c6b70b5ce340126}} 
+\index{Game@{Game}!set\_N@{set\_N}}
+\index{set\_N@{set\_N}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_N()}{set\_N()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+N (\begin{DoxyParamCaption}\item[{unsigned}]{n }\end{DoxyParamCaption})}
+
+
+
+Sets the n. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & The new value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_aa0b78265ddce010440c3a422fbc4fafb}\label{class_game_aa0b78265ddce010440c3a422fbc4fafb}} 
+\index{Game@{Game}!set\_Obstacles@{set\_Obstacles}}
+\index{set\_Obstacles@{set\_Obstacles}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_Obstacles()}{set\_Obstacles()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+\+Obstacles (\begin{DoxyParamCaption}\item[{unsigned}]{obstacles }\end{DoxyParamCaption})}
+
+
+
+Sets the obstacles. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em obstacles} & The obstacles \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a0f80bf6194777a01bcd7bf7a31eb175c}\label{class_game_a0f80bf6194777a01bcd7bf7a31eb175c}} 
+\index{Game@{Game}!set\_SearchAlgorithm@{set\_SearchAlgorithm}}
+\index{set\_SearchAlgorithm@{set\_SearchAlgorithm}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_SearchAlgorithm()}{set\_SearchAlgorithm()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+\+Search\+Algorithm (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_search_algorithm}{Search\+Algorithm}} $\ast$}]{new\+Search\+Algorithm }\end{DoxyParamCaption})}
+
+
+
+Sets the search algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Search\+Algorithm} & The new search algorithm \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_a6c2c80af2c561199160dea0ffdb40d7e}\label{class_game_a6c2c80af2c561199160dea0ffdb40d7e}} 
+\index{Game@{Game}!set\_Solution@{set\_Solution}}
+\index{set\_Solution@{set\_Solution}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_Solution()}{set\_Solution()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+\+Solution (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_map}{Map}}}]{map }\end{DoxyParamCaption})}
+
+
+
+Sets the solution. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em map} & The new value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_ac5643db0f044075a978f901e8e02894d}\label{class_game_ac5643db0f044075a978f901e8e02894d}} 
+\index{Game@{Game}!set\_StartPoint@{set\_StartPoint}}
+\index{set\_StartPoint@{set\_StartPoint}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{set\_StartPoint()}{set\_StartPoint()}}
+{\footnotesize\ttfamily void Game\+::set\+\_\+\+Start\+Point (\begin{DoxyParamCaption}\item[{std\+::pair$<$ unsigned, unsigned $>$}]{start\+Point }\end{DoxyParamCaption})}
+
+
+
+Sets the start point. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em start\+Point} & The start point \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_aa53ed71b8ff64fccb695db929ce970d9}\label{class_game_aa53ed71b8ff64fccb695db929ce970d9}} 
+\index{Game@{Game}!updateToOpenList@{updateToOpenList}}
+\index{updateToOpenList@{updateToOpenList}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{updateToOpenList()}{updateToOpenList()}}
+{\footnotesize\ttfamily void Game\+::update\+To\+Open\+List (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Updates the solution to an open\+List solution. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{game_8hpp}{game.\+hpp}}\item 
+src/\mbox{\hyperlink{game_8cpp}{game.\+cpp}}\end{DoxyCompactItemize}
