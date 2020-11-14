@@ -6,7 +6,7 @@
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
-    =            Fecha:         08/10/2020                                         =
+    =            Date:          08/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
@@ -20,11 +20,11 @@
 /*------------------  FUNCTIONS  -----------------*/
 
 #pragma once 
-#include "../include/map.hpp"
-#include "../include/car.hpp"
-#include "../include/A-starAlgorithm.hpp"
-#include "../include/GreedyAlgorithm.hpp"
-#include "../include/Chrono.hpp"
+#include "map.hpp"
+#include "car.hpp"
+#include "A-starAlgorithm.hpp"
+#include "GreedyAlgorithm.hpp"
+#include "Chrono.hpp"
 
 /*------------------------------------------------*/
 /*------------------  LIBRARIES  -----------------*/
@@ -35,7 +35,6 @@
 #include <time.h>
 #include <fstream>
 #include <cstring>
- 
 
 /*------------------------------------------------*/
 
@@ -76,6 +75,7 @@ class Game {
         Map get_Solution (void) const;
         HeuristicFunction* get_HeuristicFunction (void) const;
         SearchAlgorithm* get_SearchAlgorithm (void) const;
+        unsigned get_AlgorithmSelector (void) const;
 
         void set_M (unsigned m);
         void set_N (unsigned n);
@@ -87,6 +87,7 @@ class Game {
         void set_Solution (Map map);
         void set_HeuristicFunction (HeuristicFunction* newHeuristicFunction);
         void set_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm);
+        void set_AlgorithmSelector (unsigned newSelector);
 
         // Operators Overload
         Game& operator= (const Game& newGame);
@@ -99,9 +100,9 @@ class Game {
         void generateRandomObstacles (unsigned ammount);
         void dataSaver (std::string& data, int mode);
         void findSolution (void);
+        void updateToOpenList (void);
 
         // Read
         void readFile (std::string& file);
         std::ostream& saveData (std::ostream& os) const;
-
 }; 

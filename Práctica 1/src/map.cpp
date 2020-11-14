@@ -6,7 +6,7 @@
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
-    =            Fecha:         08/10/2020                                         =
+    =            Date:          08/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 16:43:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-13 23:11:01
+* @Last Modified time: 2020-11-14 09:40:25
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -134,11 +134,11 @@ void Map::initialize (unsigned x, unsigned y) {
 	set_Rows(x + 2);
 	set_Columns(y + 2);
 	map_.resize(get_Rows() + 1);
-	for (int i = 0; i <= get_Rows(); i++) {
+	for (unsigned i = 0; i <= get_Rows(); i++) {
 		map_[i].resize(get_Columns() + 1);
 	}
-	for (int i = 0; i < get_Rows(); i++) {
-		for (int j = 0; j < get_Columns(); j++) {
+	for (unsigned i = 0; i < get_Rows(); i++) {
+		for (unsigned j = 0; j < get_Columns(); j++) {
 			if (i == 0 || j == 0 || i == get_Rows() - 1 || j == get_Columns() - 1) {
 				map_[i][j] = 1;
 			}
@@ -177,8 +177,8 @@ bool Map::addObstacle (unsigned x, unsigned y) {
  */
 void Map::addStartPoint (unsigned x, unsigned y) {
 	assert((x >= 1) && (y >= 1) && (x < get_Rows()) && (y < get_Columns()));
-	for (int i = 0; i < get_Rows(); i++) {
-		for (int j = 0; j < get_Columns(); j++) {
+	for (unsigned i = 0; i < get_Rows(); i++) {
+		for (unsigned j = 0; j < get_Columns(); j++) {
 			if (map_[i][j] == 3) {
 				map_[i][j] = 0;
 				break;
@@ -196,8 +196,8 @@ void Map::addStartPoint (unsigned x, unsigned y) {
  */
 void Map::addFinishLine (unsigned x, unsigned y) {
 	assert((x >= 1) && (y >= 1) && (x < get_Rows()) && (y < get_Columns()));
-	for (int i = 0; i < get_Rows(); i++) {
-		for (int j = 0; j < get_Columns(); j++) {
+	for (unsigned i = 0; i < get_Rows(); i++) {
+		for (unsigned j = 0; j < get_Columns(); j++) {
 			if (map_[i][j] == 4) {
 				map_[i][j] = 0;
 				break;
@@ -226,8 +226,8 @@ void Map::changeBox (unsigned x, unsigned y, unsigned element) {
  */
 int Map::calculateLength (void) {
 	int counter = 0;
-	for (int i = 1; i < get_Rows(); i++) {
-		for (int j = 1; j < get_Columns(); j++) {
+	for (unsigned i = 1; i < get_Rows(); i++) {
+		for (unsigned j = 1; j < get_Columns(); j++) {
 			if (map_[i][j] == 2) {
 				counter++;
 			}
@@ -240,7 +240,7 @@ int Map::calculateLength (void) {
  * @brief      Prints the map. An empty block will be displayed in case theres no obstacle
  *             and the car has not been there. A '#' will be shown in the obstacles positions.
  *             A 'X' will be shown in the places where the car has been. Apart from that 'S' means
- *             the starts position and "F" the finish line.
+ *             the starts position and "F" the finish line. A 'x' will be print on the open list nodes
  *
  * @param      os  The output stream
  *
@@ -249,9 +249,9 @@ int Map::calculateLength (void) {
 std::ostream& Map::printMap (std::ostream& os) const {
 	Colorize color;
 	os << std::endl << "Map size " << map_.size() - 3 << "x" << map_[0].size() - 3 << std::endl << "\t";
-	for (int i = 0; i < get_Rows(); i++) {
+	for (unsigned i = 0; i < get_Rows(); i++) {
 		os << color.writeYellow(" | ");
-		for (int j = 0; j < get_Columns(); j++) {
+		for (unsigned j = 0; j < get_Columns(); j++) {
 			switch (map_[i][j]) {
 				case 0:
 					os << " ";
@@ -273,6 +273,10 @@ std::ostream& Map::printMap (std::ostream& os) const {
 					os << color.writeGreen("F");
 					break;
 
+				case 5:
+					os << color.writeBlue("x");
+					break;
+
 				default:
 					std::cout << "Error painting the map.";
 					exit(1);
@@ -290,7 +294,7 @@ std::ostream& Map::printMap (std::ostream& os) const {
  * @brief      Saves the map to a file. An empty block will be displayed in case theres no obstacle
  *             and the car has not been there. A '#' will be shown in the obstacles positions.
  *             A 'X' will be shown in the places where the car has been. Apart from that 'S' means
- *             the starts position and "F" the finish line.
+ *             the starts position and "F" the finish line. A '-' will be print on the open list nodes
  *
  * @param      os  The output stream
  *
@@ -298,9 +302,9 @@ std::ostream& Map::printMap (std::ostream& os) const {
  */
 std::ostream& Map::saveMap (std::ostream& os) const {
 	os << std::endl << "Map size " << map_.size() - 3 << "x" << map_[0].size() - 3 << std::endl << "\t";
-	for (int i = 0; i < get_Rows(); i++) {
+	for (unsigned i = 0; i < get_Rows(); i++) {
 		os << " | ";
-		for (int j = 0; j < get_Columns(); j++) {
+		for (unsigned j = 0; j < get_Columns(); j++) {
 			switch (map_[i][j]) {
 				case 0:
 					os << " ";
@@ -321,6 +325,9 @@ std::ostream& Map::saveMap (std::ostream& os) const {
 				case 4:
 					os << "F";
 					break;
+
+				case 5:
+					os << "-";
 
 				default:
 					std::cout << "Error painting the map.";

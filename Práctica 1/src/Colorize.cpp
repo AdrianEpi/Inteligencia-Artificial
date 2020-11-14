@@ -6,7 +6,7 @@
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
-    =            Fecha:         27/10/2020                                         =
+    =            Date:          27/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
@@ -19,16 +19,17 @@
 =======================================================================================*/
 /*
 * @Author: Adrian Epifanio
+* 		   Luciano Sekulic 
+* 		   Yeixon Morales 
 * @Date:   2020-10-27 21:31:27
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-30 08:11:16
+* @Last Modified time: 2020-11-14 08:42:16
 */
 /*------------------  FUNCTIONS  -----------------*/
 
 #include "../include/Colorize.hpp"
 
 /*------------------------------------------------*/
-
 
 /**
  * @brief      Constructs a new instance.
@@ -41,7 +42,6 @@ Colorize::Colorize (void) {
  */
 Colorize::~Colorize (void) {
 }
-
 
 /**
  * @brief      Writes the given text with grey color.

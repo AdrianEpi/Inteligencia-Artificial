@@ -6,7 +6,7 @@
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
-    =            Fecha:         05/11/2020                                         =
+    =            Date:          05/11/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-13 23:47:31
+* @Last Modified time: 2020-11-14 09:40:05
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -125,15 +125,16 @@ void SearchAlgorithm::set_ClosedList (std::vector<unsigned> newClosedList) {
  * @return     True if there's solution, false otherwise
  */
 bool SearchAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristic, std::pair<unsigned, unsigned>& finishLine) {
+	return false;
 }
 
 /**
- * @brief      Expands the leaf.
+ * @brief      Expands the adyacents nodes from the parent that has not been expanded yet.
  *
  * @param[in]  car        The car
- * @param      heuristic  The heuristic
- * @param[in]  isAStar    Indicates if a star
- * @param[in]  node       The node 
+ * @param      heuristic  The heuristic function
+ * @param[in]  isAStar    Indicates if it's using A* algorithm or not
+ * @param[in]  node       The parten's node position in the tree 
  *
  */
 void SearchAlgorithm::expandLeaf (Car car, HeuristicFunction* heuristic, bool isAStar, unsigned node, std::pair<unsigned, unsigned>& finishLine) {
@@ -195,7 +196,7 @@ void SearchAlgorithm::expandLeaf (Car car, HeuristicFunction* heuristic, bool is
 int SearchAlgorithm::lowestDistance (void) {
 	int pos = 0;
 	float distance = MAXDISTANCE;
-	for (int i = 0; i < tree_.size(); i++) {
+	for (unsigned i = 0; i < tree_.size(); i++) {
 		if (tree_[i].get_Distance() <= distance && tree_[i].get_Visited() == false) {
 			distance = tree_[i].get_Distance();
 			pos = i;
@@ -205,7 +206,8 @@ int SearchAlgorithm::lowestDistance (void) {
 }
 
 /**
- * @brief      Shows the trace step by step.
+ * @brief      Shows the trace step by step during 10 seconds. It will print faster
+ *             or slower in function of the path size.
  *
  * @param[in]  map   The map
  */
@@ -226,7 +228,7 @@ void SearchAlgorithm::showTrace (Map map) {
 }
 
 /**
- * @brief      Saves the solution.
+ * @brief      Saves the solution into the given map.
  *
  * @param      solution  The solution
  */
@@ -239,10 +241,26 @@ void SearchAlgorithm::saveSolution (Map& solution) {
 }
 
 /**
+ * @brief      Saves the open list to the map.
+ *
+ * @param      solution  The solution
+ */
+void SearchAlgorithm::saveOpenList (Map& solution) {
+	for (unsigned k = 1; k < tree_.size(); k++) {
+		solution.changeBox(tree_[k].get_CarPosition().first, tree_[k].get_CarPosition().second, 5);
+	}
+	int i = solutionPosition_;
+	while (i != 0) {
+		i = tree_[i].get_Parent();
+		solution.changeBox(tree_[i].get_CarPosition().first, tree_[i].get_CarPosition().second, 2);
+	}
+}
+
+/**
  * @brief      Generates the closed list of the tree
  */
 void SearchAlgorithm::generateClosedList (void) {
-	for (int i = 0; i < tree_.size(); i++) {
+	for (unsigned i = 0; i < tree_.size(); i++) {
 		if (tree_[i].get_Visited() == true) {
 			closedList_.push_back(i);
 		}

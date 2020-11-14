@@ -19,7 +19,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-16 10:49:23
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-27 21:38:21
+* @Last Modified time: 2020-11-14 08:41:10
 */
 /*------------  FUNCTIONS DECLARATION  ------------*/
 
@@ -118,7 +118,6 @@ void Chrono::set_TotalTime (int totalTime) {
  */
 void Chrono::set_StartTime (void) {
     startTime_ = time(NULL);
-	//startTime_ = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 }
 
 /**
@@ -126,7 +125,6 @@ void Chrono::set_StartTime (void) {
  */
 void Chrono::set_EndTime (void) {
 	endTime_ = time(NULL);
-	//endTime_ = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 }
 
 /**
@@ -193,7 +191,7 @@ float Chrono::get_Seconds (int decimalAmmount) {
 	std::string copy = "";
 	int counter = 0;
 	bool decimals = false;
-	for (int i = 0; i < aux.size(); i++) {
+	for (unsigned i = 0; i < aux.size(); i++) {
 		if (aux[i] == '.') {
 			decimals = true;
 			copy[i] = aux[i];
@@ -236,7 +234,7 @@ float Chrono::get_MilliSeconds (int decimalAmmount) {
 	std::string copy = "";
 	int counter = 0;
 	bool decimals = false;
-	for (int i = 0; i < aux.size(); i++) {
+	for (unsigned i = 0; i < aux.size(); i++) {
 		if (aux[i] == '.') {
 			decimals = true;
 			copy[i] = aux[i];

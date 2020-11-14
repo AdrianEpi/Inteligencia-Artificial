@@ -6,7 +6,7 @@
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
-    =            Fecha:         05/11/2020                                         =
+    =            Date:          05/11/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
@@ -23,13 +23,14 @@
 * 		   Yeixon Morales 
 * @Date:   2020-11-05 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-13 22:31:05
+* @Last Modified time: 2020-11-14 08:55:14
 */
 /*------------------  FUNCTIONS  -----------------*/
 
 #include "../include/A-starAlgorithm.hpp"
 
 /*------------------------------------------------*/
+
 /**
  * @brief      Constructs a new instance.
  */
@@ -44,11 +45,11 @@ AStarAlgorithm::~AStarAlgorithm (void) {
 }
 
 /**
- * @brief      Executes a greedy algorithm to find the solution to the problem.
+ * @brief      Executes an A* algorithm to find the solution to the problem.
  *
  * @param[in]  map         The map
  * @param[in]  car         The car
- * @param      heuristic   The heuristic
+ * @param      heuristic   The heuristic function
  * @param      finishLine  The finish line
  *
  * @return     True if there's solution, false otherwise
@@ -62,6 +63,7 @@ bool AStarAlgorithm::runAlgorithm (Map map, Car car, HeuristicFunction* heuristi
     Node root(start, heuristic -> calculateDistance(start, finishLine), 0, 0);
     tree_.push_back(root);
     bool finished = false;
+    // Look if the finish line rounded by obstacles
     if ((map_.get_Map()[finishLine.first + 1][finishLine.second] == 1) && (map_.get_Map()[finishLine.first - 1][finishLine.second] == 1) && (map_.get_Map()[finishLine.first][finishLine.second + 1] == 1) && (map_.get_Map()[finishLine.first][finishLine.second - 1] == 1)) {
         return false;
     }

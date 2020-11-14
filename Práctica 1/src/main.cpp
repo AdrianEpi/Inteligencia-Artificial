@@ -6,7 +6,7 @@
 	=            Author:        Adrián Epifanio Rodríguez Hernández                =
 	=                           Luciano Sekulic Gregoris                           =
 	=                           Yeixon Morales Gonzalez                            =
-	=            Fecha:         08/10/2020                                         =
+	=            Date:          08/10/2020                                         =
 	=            Subject:       Inteligencia Artificial                            =
 	=            Language:      C++                                                =
 	=            Email:         alu0101158280@ull.edu.es                           =
@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 11:04:26
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-13 23:26:52
+* @Last Modified time: 2020-11-14 09:35:42
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -35,16 +35,22 @@
 void menu (Game& myGame);
 bool selector (Game& myGame, unsigned sentinel, bool& generatedGame);
 
+/**
+ * @brief      Main function of the program, creates the game and calls the menu.
+ *
+ * @return     0 If program finishes correctly
+ */
 int main (void) {
 	srand(time(NULL));	// For generating random numbers
 	Game myGame;
 	menu(myGame);
+	return 0;
 }	
 
 /**
- * @brief      Prints the menu on screen
+ * @brief      Prints the menu on screen and ask de user to select an option
  *
- * @param      myGame  My game
+ * @param      myGame  The game
  */
 void menu (Game& myGame) {
 	bool finishGame = false;
@@ -64,6 +70,7 @@ void menu (Game& myGame) {
 		std::cout << std::endl << "\t 10. Show trace";
 		std::cout << std::endl << "\t 11. Choose heuristic function";
 		std::cout << std::endl << "\t 12. Choose search algorithm";
+		std::cout << std::endl << "\t 13. Use openList solution";
 		std::cout << std::endl << "\t 0. Exit" << std::endl;
 		std::cin >> selection;
 		finishGame = selector(myGame, selection, generatedGame);
@@ -74,9 +81,9 @@ void menu (Game& myGame) {
 /**
  * @brief      Runs the functions selected on the menu
  *
- * @param      myGame         My game
- * @param[in]  sentinel       The sentinel
- * @param      generatedGame  The generated game
+ * @param      myGame         The game
+ * @param[in]  sentinel       The user's selection
+ * @param      generatedGame  If the map has been generated or not
  *
  * @return     True if program finishes, false otherwise
  */
@@ -161,6 +168,10 @@ bool selector (Game& myGame, unsigned sentinel, bool& generatedGame) {
 				myGame.selectAlgorithm(sentinel);
 				break;
 
+			case 13:
+				myGame.updateToOpenList();
+				break;
+
 			default:
 				std::cout << std::endl << "Not valid option" << std::endl;
 				break;
@@ -169,62 +180,5 @@ bool selector (Game& myGame, unsigned sentinel, bool& generatedGame) {
 	else {
 		std::cout << std::endl << "Sorry, map has not been generated yet";
 	}
-	/*else if (sentinel == 3 && generatedGame) {
-		std::cout << std::endl << "Please enter the ammount of obstacles: ";
-		std::cin >> auxUnsigned;
-		myGame.generateRandomObstacles(auxUnsigned);
-	}
-	else if (sentinel == 4 && generatedGame) {
-		std::cout << std::endl << "Please enter the ammount of obstacles: ";
-		std::cin >> auxUnsigned;
-		myGame.generateManualObstacles(auxUnsigned);
-	}       
-	else if (sentinel == 5 && generatedGame) {
-		myGame.get_Map().printMap(std::cout);
-	}
-	else if (sentinel == 6 && generatedGame) {
-		myGame.get_Solution().printMap(std::cout);
-	}
-	else if (sentinel == 7 && generatedGame) {
-		std::cout << std::endl << "Please enter the output file name: ";
-		std::cin >> auxString;
-		std::ofstream os(auxString);
-		myGame.get_Map().saveMap(os);
-	}
-	else if (sentinel == 8 && generatedGame) {
-		std::cout << std::endl << "Please enter the output file name: ";
-		std::cin >> auxString;
-		std::ofstream os(auxString);
-		myGame.saveData(os);
-	}
-	else if (sentinel == 9 && generatedGame) {
-		myGame.findSolution();
-		return false;
-	}
-	else if (sentinel == 10 && generatedGame) {
-		////////// NOT IMPLEMENTED YET
-		return false;
-	}
-	else if (sentinel == 11 && generatedGame) {
-		std::cout << std::endl << "Please select the heuristic function you want to run";
-		std::cout << std::endl << "1. Euclidean distance";
-		std::cout << std::endl << "2. Manhattan distance";
-		std::cout << std::endl << "0. Cancel\n";
-		std::cin >> sentinel;
-		myGame.selectHeuristicFunction(sentinel);
-		return false;
-	}
-	else if (sentinel == 12 && generatedGame) {
-		std::cout << std::endl << "Please select the search algorithm you want to run";
-		std::cout << std::endl << "1. A-Star algorithm";
-		std::cout << std::endl << "2. Greedy algorithm";
-		std::cout << std::endl << "0. Cancel\n";
-		std::cin >> sentinel;
-		myGame.selectAlgorithm(sentinel);
-		return false;
-	}
-	else {
-		std::cout << std::endl << "Sorry, map has not been generated yet";
-	}*/
 	return false;
 }

@@ -6,7 +6,7 @@
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
-    =            Fecha:         08/10/2020                                         =
+    =            Date:          08/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
@@ -61,10 +61,8 @@ class Car {
         Car& operator= (const Car& newCar);
 
         // Functions
-        void updatePosition (unsigned x, unsigned y);
         void updateSensor (unsigned& n, unsigned& s, unsigned& e, unsigned& w);
 
         // Write
         std::ostream& printCarPosition (std::ostream& os) const;
-
 };

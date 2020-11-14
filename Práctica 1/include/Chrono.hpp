@@ -74,6 +74,4 @@ class Chrono {
 		float get_MilliSeconds (void);
 		float get_MilliSeconds (int decimalAmmount);
 		float get_MicroSeconds (void);
-		
-
 };

@@ -6,7 +6,7 @@
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
-    =            Fecha:         05/11/2020                                         =
+    =            Date:          05/11/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
@@ -32,6 +32,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <unistd.h>
+
 /*------------------------------------------------*/
 
 /**
@@ -68,6 +69,7 @@ class SearchAlgorithm {
         int lowestDistance (void);
         void showTrace (Map map);
         void saveSolution (Map& solution);
+        void saveOpenList (Map& solution);
         void generateClosedList (void);
 };
 

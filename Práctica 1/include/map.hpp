@@ -6,7 +6,7 @@
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
-    =            Fecha:         08/10/2020                                         =
+    =            Date:          08/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
@@ -34,8 +34,7 @@
 /**
  * @brief      This class describes the map where the car is going to move, an empty position 
  *             is stored as "0", an obstacle as "1" and a position in which the car has been "2".
- *             Also "3" will be used as the start position and "4" as the finish line. "5" will be used
- *             to know the position of the car.
+ *             Also "3" will be used as the start position and "4" as the finish line.
  */
 class Map {
 

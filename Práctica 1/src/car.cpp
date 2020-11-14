@@ -6,7 +6,7 @@
     =            Author:        Adrián Epifanio Rodríguez Hernández                =
     =                           Luciano Sekulic Gregoris                           =
     =                           Yeixon Morales Gonzalez                            =
-    =            Fecha:         08/10/2020                                         =
+    =            Date:          08/10/2020                                         =
     =            Subject:       Inteligencia Artificial                            =
     =            Language:      C++                                                =
     =            Email:         alu0101158280@ull.edu.es                           =
@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 15:50:33
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-30 08:02:17
+* @Last Modified time: 2020-11-14 08:44:24
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -35,7 +35,8 @@
  * @brief      Constructs a new instance.
  */
 Car::Car (void) {
-	updatePosition(1, 1);
+	set_CoordinateX(1);
+	set_CoordinateY(1);
 }
 
 /**
@@ -45,7 +46,8 @@ Car::Car (void) {
  * @param[in]  y     The coordinate Y
  */
 Car::Car (unsigned x, unsigned y) {
-	updatePosition(x, y);
+	set_CoordinateX(x);
+	set_CoordinateY(y);
 }
 
 /**
@@ -116,22 +118,10 @@ void Car::set_Sensor (Sensor newSensor) {
  * @return     The result of the assignment
  */
 Car& Car::operator= (const Car& newCar) {
-	set_CoordinateX(newCar.get_CoordinateX());
-	set_CoordinateY(newCar.get_CoordinateY());
-	set_Sensor(newCar.get_Sensor());
+	this -> set_CoordinateX(newCar.get_CoordinateX());
+	this -> set_CoordinateY(newCar.get_CoordinateY());
+	this -> set_Sensor(newCar.get_Sensor());
 	return *this;
-}
-
-/**
- * @brief      Updates the car position in map.
- *
- * @param[in]  x     The coordinate X
- * @param[in]  y     The coordinate Y
- */
-void Car::updatePosition (unsigned x, unsigned y) {
-	assert(x >= 1 && y >= 1);
-	set_CoordinateX(x);
-	set_CoordinateY(y);
 }
 
 /**

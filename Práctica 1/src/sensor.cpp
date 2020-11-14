@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-08 10:47:15
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-10-30 08:41:06
+* @Last Modified time: 2020-11-14 09:03:45
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -147,9 +147,9 @@ void Sensor::set_West (unsigned w) {
  * @return     The result of the assignment
  */
 Sensor& Sensor::operator= (const Sensor& newSensor) {
-	set_North(newSensor.get_North());
-	set_South(newSensor.get_South());
-	set_East(newSensor.get_East());
-	set_West(newSensor.get_West());
+	this -> set_North(newSensor.get_North());
+	this -> set_South(newSensor.get_South());
+	this -> set_East(newSensor.get_East());
+	this -> set_West(newSensor.get_West());
 	return *this;
 }

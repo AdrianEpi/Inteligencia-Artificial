@@ -5,7 +5,7 @@ OBJECTS = main.o sensor.o map.o car.o game.o Chrono.o Colorize.o $(HEURISTICS) $
 ALGORITHMS = SearchAlgorithm.o A-starAlgorithm.o GreedyAlgorithm.o Node.o
 HEURISTICS = HeuristicFunction.o EuclideanDistance.o ManhattanDistance.o
 # Flags de compilacion
-CFLAGS = -c -std=c++17
+CFLAGS = -c -std=c++17 -Wall
 
 game: $(OBJECTS)
 	g++  $(OBJECTS) -o game

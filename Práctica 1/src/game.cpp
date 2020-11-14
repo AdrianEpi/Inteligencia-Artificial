@@ -23,7 +23,7 @@
 * 		   Yeixon Morales 
 * @Date:   2020-10-09 17:21:53
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-11-13 23:38:04
+* @Last Modified time: 2020-11-14 09:35:31
 */
 /*------------------  FUNCTIONS  -----------------*/
 
@@ -47,6 +47,8 @@ Game::Game (void) {
  */
 Game::Game (std::string inputFile) {
 	readFile(inputFile);
+	selectHeuristicFunction(2);
+	selectAlgorithm(1);
 }
 
 /**
@@ -146,6 +148,15 @@ SearchAlgorithm* Game::get_SearchAlgorithm (void) const {
 }
 
 /**
+ * @brief      Gets the algorithm selector.
+ *
+ * @return     The algorithm selector.
+ */
+unsigned Game::get_AlgorithmSelector (void) const {
+	return algorithmSelector_;
+}
+
+/**
  * @brief      Sets the m.
  *
  * @param[in]  m     The new value
@@ -237,6 +248,15 @@ void Game::set_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm) {
 }
 
 /**
+ * @brief      Sets the algorithm selector.
+ *
+ * @param[in]  newSelector  The new selector
+ */
+void Game::set_AlgorithmSelector (unsigned newSelector) {
+	algorithmSelector_ = newSelector;
+}
+
+/**
  * @brief      Assignment operator.
  *
  * @param[in]  newGame  The new game
@@ -244,13 +264,17 @@ void Game::set_SearchAlgorithm (SearchAlgorithm* newSearchAlgorithm) {
  * @return     The result of the assignment
  */
 Game& Game::operator= (const Game& newGame) {
-	set_M(newGame.get_M());
-	set_N(newGame.get_N());
-	set_Obstacles(newGame.get_Obstacles());
-	set_StartPoint(newGame.get_StartPoint());
-	set_FinishLine(newGame.get_FinishLine());
-	set_Car(newGame.get_Car());
-	set_Map(newGame.get_Map());
+	this -> set_M(newGame.get_M());
+	this -> set_N(newGame.get_N());
+	this -> set_Obstacles(newGame.get_Obstacles());
+	this -> set_StartPoint(newGame.get_StartPoint());
+	this -> set_FinishLine(newGame.get_FinishLine());
+	this -> set_Car(newGame.get_Car());
+	this -> set_Map(newGame.get_Map());
+	this -> set_Solution(newGame.get_Solution());
+	this -> set_HeuristicFunction(newGame.get_HeuristicFunction());
+	this -> set_SearchAlgorithm(newGame.get_SearchAlgorithm());
+	this -> set_AlgorithmSelector(newGame.get_AlgorithmSelector());
 	return *this;
 }
 
@@ -263,6 +287,7 @@ void Game::selectHeuristicFunction (int selector) {
 	switch(selector) {
 		case 0:
 			break;
+
 		case 1:
 			heuristicFunction_ = new EuclideanDistance();
 			break;
@@ -287,6 +312,7 @@ void Game::selectAlgorithm (int selector) {
 	switch(selector) {
 		case 0:
 			break;
+
 		case 1:
 			algorithmSelector_ = 1;
 			algorithm_ = new AStarAlgorithm();
@@ -339,7 +365,7 @@ void Game::manualData (void) {
  */
 void Game::generateManualObstacles (unsigned ammount) {
 	if ((get_Obstacles() + ammount) <= (0.95 * (map_.get_Rows() - 2) * (map_.get_Columns() - 2))) {
-		for (int i = 0; i < ammount; i++) {
+		for (unsigned i = 0; i < ammount; i++) {
 			bool validObstacle = false;
 			while (!validObstacle) {
 				unsigned tmpX, tmpY;
@@ -366,8 +392,8 @@ void Game::generateManualObstacles (unsigned ammount) {
  * @param[in]  ammount  The ammount
  */
 void Game::generateRandomObstacles (unsigned ammount) {
-	assert((get_Obstacles() +ammount) <= ((map_.get_Rows() - 2) * (map_.get_Columns() - 2)));
-	int counter = 0;
+	assert((get_Obstacles() + ammount) <= ((map_.get_Rows() - 2) * (map_.get_Columns() - 2)));
+	unsigned counter = 0;
 	bool validObstacle = false;
 	while (counter < ammount) {
 		unsigned tmpX = (1 + rand() % (map_.get_Rows() - 2));
@@ -381,18 +407,56 @@ void Game::generateRandomObstacles (unsigned ammount) {
 	set_Obstacles(get_Obstacles() + ammount);
 }
 
+
 /**
- * @brief      Stores the data readen by the readFile method. It has one mode for each
+ * @brief      Finds the solution running the selected algorithm and prints the
+ *             CPU time usage, open and closed list and path legth in case theres
+ *             a solution for the problem.
+ */
+void Game::findSolution (void) {
+	selectAlgorithm(algorithmSelector_);
+	car_.set_CoordinateX(startPoint_.first);
+	car_.set_CoordinateY(startPoint_.second);
+	Chrono temporizer;
+	temporizer.startChrono();
+	if (algorithm_ -> runAlgorithm(get_Map(), get_Car(), get_HeuristicFunction(), finishLine_) == false) {
+		temporizer.stopChrono();
+		std::cout << std::endl << "There's no possible way for the car to reach the finish line" << std::endl;
+	}
+	else {
+		temporizer.stopChrono();
+		solution_ = map_;
+		algorithm_ -> saveSolution(solution_);
+		solution_.changeBox(startPoint_.first, startPoint_.second, 3);
+	}	
+	algorithm_ -> generateClosedList();
+	std::cout << std::endl << "CPU Time: " << temporizer.get_Seconds(8) << " seconds." << std::endl;
+	std::cout << std::endl << "Closed List: " << algorithm_ -> get_ClosedList().size() << " nodes." << std::endl;
+	std::cout << std::endl << "Open List: " << algorithm_ -> get_Tree().size() << " nodes." << std::endl;
+	std::cout << std::endl << "Path Length: " << solution_.calculateLength() << " nodes." << std::endl;
+}
+
+/**
+ * @brief      Updates the solution to an openList solution
+ */
+void Game::updateToOpenList (void) {
+	algorithm_ -> saveOpenList(solution_);
+}
+
+/**
+ * @brief      Stores the read data by the readFile method. It has one mode for each
  *             type of data. 0 -> Map size, 1 -> Start point, 2 -> finish line,
  *             3 -> obstacles ammount, 4 -> each obstacle position
- *
+ * 
+ * @see        readFile()
  * @param[in]  data  The data
  * @param[in]  mode  The mode
  */
 void Game::dataSaver (std::string& data, int mode) {
 	std::string tmp = "";
 	bool firstData = true;
-	int aux = 0, aux2 = 0, counter = 0;
+	int aux = 0, aux2 = 0;
+	unsigned counter = 0;
 	while (counter <= data.length()) {
 		if ((data[counter] != ' ') && (data[counter] != '\n') && (data[counter] != '\0')) {
 			tmp += data[counter];
@@ -455,34 +519,9 @@ void Game::dataSaver (std::string& data, int mode) {
 }
 
 /**
- * @brief      Finds the solution running the selected algorithm.
- */
-void Game::findSolution (void) {
-	selectAlgorithm(algorithmSelector_);
-	car_.set_CoordinateX(startPoint_.first);
-	car_.set_CoordinateY(startPoint_.second);
-	Chrono temporizer;
-	temporizer.startChrono();
-	if (algorithm_ -> runAlgorithm(get_Map(), get_Car(), get_HeuristicFunction(), finishLine_) == false) {
-		temporizer.stopChrono();
-		std::cout << std::endl << "There's no possible way for the car to reach the finish line" << std::endl;
-	}
-	else {
-		temporizer.stopChrono();
-		solution_ = map_;
-		algorithm_ -> saveSolution(solution_);
-		solution_.changeBox(startPoint_.first, startPoint_.second, 3);
-	}	
-	algorithm_ -> generateClosedList();
-	std::cout << std::endl << "CPU Time: " << temporizer.get_Seconds(5) << " seconds." << std::endl;
-	std::cout << std::endl << "Closed List: " << algorithm_ -> get_ClosedList().size() << " nodes." << std::endl;
-	std::cout << std::endl << "Open List: " << algorithm_ -> get_Tree().size() << " nodes." << std::endl;
-	std::cout << std::endl << "Path Length: " << solution_.calculateLength() << " nodes." << std::endl;
-
-}
-
-/**
- * @brief      Reads a the data from a file.
+ * @brief      Reads the data from a file and calls dataSaver to store it.
+ * 
+ * @see        dataSaver()
  *
  * @param[in]  inputFile  The input file
  */
@@ -510,7 +549,7 @@ void Game::readFile (std::string& inputFile) {
 		map_.addStartPoint(startPoint_.first, startPoint_.second);
 		map_.addFinishLine(finishLine_.first, finishLine_.second);
 		// Each obstacle position
-		for (int i = 0; i < get_Obstacles(); i++) {
+		for (unsigned i = 0; i < get_Obstacles(); i++) {
 			getline(file, line);
 			dataSaver(line, 4);
 		}
@@ -530,8 +569,8 @@ std::ostream& Game::saveData (std::ostream& os) const {
 	os << get_StartPoint().first << " " << get_StartPoint().second << std::endl;
 	os << get_FinishLine().first << " " << get_FinishLine().second << std::endl;
 	os << get_Obstacles() << std::endl;
-	for (int i = 1; i < map_.get_Rows() - 1; i++) {
-		for (int j = 1; j < map_.get_Columns() - 1; j++) {
+	for (unsigned i = 1; i < map_.get_Rows() - 1; i++) {
+		for (unsigned j = 1; j < map_.get_Columns() - 1; j++) {
 			if (map_.get_Map()[i][j] == 1) {
 				os << i << " " << j << std::endl;
 			}
